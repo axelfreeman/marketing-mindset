@@ -5,6 +5,9 @@
 [![Use in Claude Code](https://img.shields.io/badge/Use%20in-Claude%20Code-orange)](SKILL.md)
 [![Add to Cursor](https://img.shields.io/badge/Add%20to-Cursor-blue)](.cursorrules)
 
+![GitHub Repo stars](https://img.shields.io/github/stars/axelfreeman/marketing-mindset?style=social)
+![Hits](https://hits.seeyoufarm.com/api/count/incr/badge.svg?url=https%3A%2F%2Fgithub.com%2Faxelfreeman%2Fmarketing-mindset&count_bg=%2379C83D&title_bg=%23555555&icon=&icon_color=%23E7E7E7&title=views&edge_flat=false)
+
 ---
 
 ### The gap this fills
