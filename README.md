@@ -9,7 +9,7 @@
 [![Grok](https://img.shields.io/badge/Grok-SKILL.md-111111)](SKILL.md)
 
 ![GitHub Repo stars](https://img.shields.io/github/stars/axelfreeman/marketing-mindset?style=social)
-![Hits](https://hits.seeyoufarm.com/api/count/incr/badge.svg?url=https%3A%2F%2Fgithub.com%2Faxelfreeman%2Fmarketing-mindset&count_bg=%2379C83D&title_bg=%23555555&icon=&icon_color=%23E7E7E7&title=views&edge_flat=false)
+![views](https://komarev.com/ghpvc/?username=axelfreeman&repo=marketing-mindset&label=views&style=flat-square&color=2563eb)
 
 ---
 
