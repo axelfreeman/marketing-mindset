@@ -4,6 +4,9 @@
 
 [![Use in Claude Code](https://img.shields.io/badge/Use%20in-Claude%20Code-orange)](SKILL.md)
 [![Add to Cursor](https://img.shields.io/badge/Add%20to-Cursor-blue)](.cursorrules)
+[![Codex](https://img.shields.io/badge/Codex-AGENTS.md-6e40c9)](AGENTS.md)
+[![ChatGPT](https://img.shields.io/badge/ChatGPT-SKILL.lite.md-10a37f)](SKILL.lite.md)
+[![Grok](https://img.shields.io/badge/Grok-SKILL.md-111111)](SKILL.md)
 
 ![GitHub Repo stars](https://img.shields.io/github/stars/axelfreeman/marketing-mindset?style=social)
 ![Hits](https://hits.seeyoufarm.com/api/count/incr/badge.svg?url=https%3A%2F%2Fgithub.com%2Faxelfreeman%2Fmarketing-mindset&count_bg=%2379C83D&title_bg=%23555555&icon=&icon_color=%23E7E7E7&title=views&edge_flat=false)
@@ -55,6 +58,18 @@ Plus: competitors as the source of truth, three keys to the human, and the clien
 - **Open-source maintainers** — grow adoption of a project
 - **Startup accelerators & incubators** — a repeatable framework for portfolio companies
 - **SDRs & sales engineers** — own their own outreach and positioning
+
+### Tested on
+
+Verified to load correctly on these models before release — each adapter matches the target's native syntax:
+
+| Model | File to use |
+|---|---|
+| **Claude Code** | `SKILL.md` → `.claude/skills/marketing-mindset/` |
+| **Cursor** | `.cursorrules` |
+| **Codex** | `AGENTS.md` + `SKILL.md` |
+| **ChatGPT (Custom GPT)** | paste `SKILL.lite.md` as instructions |
+| **Grok / xAI** | `SKILL.md` (system prompt) |
 
 ### What you actually get
 
