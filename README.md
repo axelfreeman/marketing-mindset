@@ -70,6 +70,12 @@ Verified to load correctly on these models before release — each adapter match
 | **Codex** | `AGENTS.md` + `SKILL.md` |
 | **ChatGPT (Custom GPT)** | paste `SKILL.lite.md` as instructions |
 | **Grok / xAI** | `SKILL.md` (system prompt) |
+| **Qwen (qwen3)** | `SKILL.lite.md` |
+| **DeepSeek (V3 / Flash)** | `SKILL.lite.md` |
+| **Llama (Meta)** | `SKILL.md` |
+| **Mistral** | `SKILL.md` |
+| **Gemini** | `SKILL.md` |
+| **Hermes (Nous)** | `SKILL.md` |
 
 ### What you actually get
 
