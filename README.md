@@ -66,6 +66,8 @@ Working through this skill ends in concrete deliverables — a competitor analys
 npx skills add axelfreeman/marketing-mindset
 ```
 
+**Low-context or weaker models?** Use the compact [`SKILL.lite.md`](SKILL.lite.md) — the same mindset compressed to the essentials.
+
 ### The first-client gate
 
 ```bash
