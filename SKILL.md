@@ -4,6 +4,7 @@ description: Use when the user needs a professional marketer's operating mindset
 version: 0.1.0
 author: Axel Freeman (axelfreeman)
 license: MIT
+install: "npx skills add axelfreeman/marketing-mindset"
 ---
 
 # Marketing Mindset
