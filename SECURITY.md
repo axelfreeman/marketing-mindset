@@ -14,7 +14,7 @@ This keeps the report private until a fix is ready.
 
 ### Alternative: email
 
-Contact **send@axelfreeman.com** with:
+Contact **axel@axelfreeman.com** with:
 
 - A description of the vulnerability
 - Steps to reproduce
