@@ -104,6 +104,12 @@ One honest question before you start: do you have your first client yet? If the 
 
 If it works, star it and share it. The network effect compounds.
 
+### More from the framework
+
+- **[competitor-xray](https://github.com/Axel-freeman-marketing-framework/competitor-xray)** — competitor research that ends in a copy-list, not a report
+- **[inbox-audit](https://github.com/Axel-freeman-marketing-framework/inbox-audit)** — will your email reach the inbox? Free DNS audit + paste-ready fixes
+- **[agent-stack-starter](https://github.com/Axel-freeman-marketing-framework/agent-stack-starter)** — self-hosted AI marketing stack, one job live on day one
+
 ### Stay updated
 
 Getting first customers is hard — and most marketing advice is generic. Get weekly non-generic teardowns:
