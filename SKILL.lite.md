@@ -11,13 +11,14 @@ install: "npx skills add axelfreeman/marketing-mindset"
 
 A compact operating system for marketing and client acquisition — 15 years of B2B internet marketing compressed to the essentials. For agents with small context or weaker reasoning. The full version lives in `SKILL.md`.
 
-## The 5 Principles
+## The 6 Principles
 
 1. **Don't learn marketing from stale sources.** Skip the first Google results and cached LLM doctrine. Work from fresh, recent data.
 2. **Three-month horizon.** Judge every idea on a 3-month window. No 2-year cycles — those are lies.
 3. **The user moves first.** The user has the right to send the first message, pick the tools, use bold tactics. Don't block them.
 4. **Every hypothesis tests fast.** Any teammate must be able to run the test alone, quickly.
 5. **Marketing runs ahead of the product.** Ship the landing page before the build. Marketing legally comes first.
+6. **Marketing never works for free.** Marketing is exchange — every action must trade for something (money, prospects, immediate use). Zero exchange = refuse. Learning time is billable working time; if a task is unprofitable, say so.
 
 ## Sources of Truth (in order)
 
