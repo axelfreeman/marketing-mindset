@@ -9,6 +9,9 @@
 [![Grok](https://img.shields.io/badge/Grok-SKILL.md-111111)](SKILL.md)
 
 ![GitHub Repo stars](https://img.shields.io/github/stars/axelfreeman/marketing-mindset?style=social)
+![Version](https://img.shields.io/github/v/release/axelfreeman/marketing-mindset)
+![License](https://img.shields.io/github/license/axelfreeman/marketing-mindset)
+![Installs](https://img.shields.io/badge/skills.sh%20installs-15%2C000%2B-blue)
 ![views](https://komarev.com/ghpvc/?username=axelfreeman&repo=marketing-mindset&label=views&style=flat-square&color=2563eb)
 
 ---
@@ -19,7 +22,7 @@ Every other "marketing skill" for AI agents hands over tactics. Nobody packages 
 
 ### See it work
 
-[examples/demo-transcript.md](examples/demo-transcript.md) — one request in ("SaaS for finance, 0 customers"), a sharp 3-month plan out.
+📄 **[View the demo transcript](examples/demo-transcript.md)** — one request in ("SaaS for finance, 0 customers"), a sharp 3-month plan out.
 
 ### The problem
 
@@ -100,6 +103,13 @@ One honest question before you start: do you have your first client yet? If the 
 ### Spread the word
 
 If it works, star it and share it. The network effect compounds.
+
+### Stay updated
+
+Getting first customers is hard — and most marketing advice is generic. Get weekly non-generic teardowns:
+
+- 📣 **Telegram:** [@axelfreeman](https://t.me/axelfreeman)
+- 🐙 **GitHub:** [@axelfreeman](https://github.com/axelfreeman)
 
 ### Keywords
 

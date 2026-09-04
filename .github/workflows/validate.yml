@@ -1,0 +1,43 @@
+name: Validate
+
+on:
+  push:
+    branches: [master]
+  pull_request:
+    branches: [master]
+
+jobs:
+  validate:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+
+      - name: Required files present
+        run: |
+          for f in README.md LICENSE SKILL.md SKILL.lite.md SKILL.deepseek-flash.md AGENTS.md llms.txt SECURITY.md CONTRIBUTING.md; do
+            test -f "$f" || { echo "MISSING: $f"; exit 1; }
+          done
+          echo "All required files present."
+
+      - name: Markdown links valid (relative)
+        run: |
+          # check relative md links point to existing files
+          fail=0
+          for md in $(find . -name '*.md' -not -path './.git/*'); do
+            dir=$(dirname "$md")
+            grep -oE '\]\(([^)#http][^)]*)\)' "$md" | sed -E 's/^\]\((.*)\)$/\1/' | while read -r link; do
+              target="$dir/$link"
+              if [ ! -e "$target" ]; then
+                echo "BROKEN LINK in $md -> $link"
+                echo "$fail" > /dev/null
+                touch /tmp/broken
+              fi
+            done
+          done
+          if [ -f /tmp/broken ]; then echo "Broken links found"; exit 1; fi
+          echo "All relative links OK."
+
+      - name: Install command works (dry check)
+        run: |
+          grep -q "npx skills add axelfreeman/marketing-mindset" README.md || { echo "install command missing from README"; exit 1; }
+          echo "Install command present."
