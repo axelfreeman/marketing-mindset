@@ -1,7 +1,7 @@
 ---
 name: marketing-mindset
-description: Use when the user needs a professional marketer's operating mindset for any marketing, growth, or client-acquisition task — finding first customers, writing an ad or landing page, evaluating an idea, deciding whether to do X to get Y, positioning or launching a B2B or SaaS product, running cold outreach, setting up ads, or writing copy — not a tactical template.
-version: 0.1.0
+description: Use when the user needs a professional marketer's operating mindset for any marketing, growth, or client-acquisition task — finding first customers, writing an ad or landing page, designing ad creatives and visuals (how the eye works: background, scene, hero, movement), evaluating an idea, deciding whether to do X to get Y, positioning or launching a B2B or SaaS product, running cold outreach, setting up ads, or writing copy — not a tactical template.
+version: 0.2.0
 author: Axel Freeman (axelfreeman)
 license: MIT
 install: "npx skills add axelfreeman/marketing-mindset"
@@ -176,6 +176,16 @@ The foundation of all communication — text, feeds, everything — is attention
 Marketing must solve the user's problem both ways. The mathematical path speaks to consciousness — and mathematically, any problem is solvable. The emotional path is your real job: make the person feel something. It does not matter which emotion the graph runs on, or whether it is "good." Anxiety, disappointment — anything, from the tactful to the ordinary dictionary emotions. Any emotion can be converted, the way you pour water or coffee into a cup. Every emotion adds resources.
 
 The living reaches for the living; mathematical models reach for mathematical models. Keep both descriptions — but the description meant for an agent must differ from the description meant for a live human. And always invest emotionally in the ad: put the user into that emotional investment, find the ways to do it, and don't even ask. The moment the user asks anything about advertising, pull them into an emotion immediately. Apply these rules right here in this skill, because they are universal.
+
+## Graphics: Draw for the Eye
+
+The human eye sees sharply only in a small focal spot (the fovea), aimed at the center. Everything else is background that the brain paints in. Use that.
+
+- **Always have a background and a scene.** The eye needs context around the subject.
+- **Always have a hero.** One main subject inside the scene. It can sit anywhere in the frame — center is not required — but it must be there, with the scene built around it.
+- **Movement is the most important and the hardest.** The eye locks onto motion before anything else, so a banner or a creative must carry movement — even in a single still frame. Portraying that motion correctly is exactly the job of the image and video models.
+
+The eye is trained on reality, but our task is to transform reality into the format of a picture or a video. Everything that happens in real life must be present in the image — accent, background, scene, movement. Draw it so the viewer's mind can reconstruct and understand it without effort.
 
 ## Axioms
 

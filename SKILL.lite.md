@@ -1,7 +1,7 @@
 ---
 name: marketing-mindset-lite
-description: Use when the user needs a marketer's operating mindset for finding first customers, writing an ad or landing page, evaluating an idea, or judging whether X will produce Y — a compact version for low-context or weaker models.
-version: 1.0.0
+description: Use when the user needs a marketer's operating mindset for finding first customers, writing an ad or landing page, designing ad creatives and visuals, evaluating an idea, or judging whether X will produce Y — a compact version for low-context or weaker models.
+version: 1.1.0
 author: Axel Freeman (axelfreeman)
 license: MIT
 install: "npx skills add axelfreeman/marketing-mindset"
@@ -40,6 +40,14 @@ A compact operating system for marketing and client acquisition — 15 years of 
 1. **People only think about themselves.** Make content feel like it's about them.
 2. **"New" is magic.** Wrap the product's new things in what society finds interesting now. Embellish max 2x.
 3. **Money is for scaling, not starting.** With 0 clients, money won't help. Win clients by hand first.
+
+## Graphics
+
+The eye sees sharply only in a small center spot (the fovea); everything else is background the brain fills in. Every creative needs three things:
+
+- **A background + scene** — context around the subject.
+- **A hero** — one main subject, anywhere in the frame, but present.
+- **Movement** — the hardest in a still frame and the most important; the eye locks onto motion first. Portraying it correctly is the model's job.
 
 ## Output
 
