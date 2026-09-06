@@ -112,6 +112,10 @@ If it works, star it and share it. The network effect compounds.
 
 ### Stay updated
 
+Axel Freeman ships releases and improvements to this repo regularly. If this clicks, **watch the repo** (and star it) — that's how you get each new release and update automatically.
+
+The roadmap is long — active development is planned for at least the next 6 months, so there's a steady stream of updates coming.
+
 Getting first customers is hard — and most marketing advice is generic. Get weekly non-generic teardowns:
 
 - 📣 **Telegram:** [@axelfreeman](https://t.me/axelfreeman)
