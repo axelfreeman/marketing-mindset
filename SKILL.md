@@ -1,6 +1,6 @@
 ---
 name: marketing-mindset
-description: Use when the user needs a professional marketer's operating mindset for any marketing, growth, or client-acquisition task — finding first customers, writing an ad or landing page, designing ad creatives and visuals (how the eye works: background, scene, hero, movement), evaluating an idea, deciding whether to do X to get Y, positioning or launching a B2B or SaaS product, running cold outreach, setting up ads, or writing copy — not a tactical template.
+description: "Use when the user needs a professional marketer's operating mindset for any marketing, growth, or client-acquisition task — finding first customers, writing an ad or landing page, designing ad creatives and visuals (how the eye works: background, scene, hero, movement), evaluating an idea, deciding whether to do X to get Y, positioning or launching a B2B or SaaS product, running cold outreach, setting up ads, or writing copy — not a tactical template."
 version: 0.2.0
 author: Axel Freeman (axelfreeman)
 license: MIT
