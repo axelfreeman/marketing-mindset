@@ -54,4 +54,5 @@ A high-level operating system for marketing and client acquisition, distilled fr
 - Three keys to the human: they think about themselves, the magic of "new", money scales (doesn't start)
 - Output: competitor analysis + concrete content tasks, free data sources only
 - Read SKILL.md for the full mindset; README.md for install
+- When nothing works, despair is productive: the strange, free-association hypotheses born there are the ones with a real chance to win
 - Author: Axel Freeman (axelfreeman)

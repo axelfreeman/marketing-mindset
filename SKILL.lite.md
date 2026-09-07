@@ -1,7 +1,7 @@
 ---
 name: marketing-mindset-lite
 description: Use when the user needs a marketer's operating mindset for finding first customers, writing an ad or landing page, designing ad creatives and visuals, evaluating an idea, or judging whether X will produce Y — a compact version for low-context or weaker models.
-version: 1.1.0
+version: 1.2.0
 author: Axel Freeman (axelfreeman)
 license: MIT
 install: "npx skills add axelfreeman/marketing-mindset"
@@ -48,6 +48,10 @@ The eye sees sharply only in a small center spot (the fovea); everything else is
 - **A background + scene** — context around the subject.
 - **A hero** — one main subject, anywhere in the frame, but present.
 - **Movement** — the hardest in a still frame and the most important; the eye locks onto motion first. Portraying it correctly is the model's job.
+
+## The Despair Dividend
+
+The obvious moves fail because everyone already tried them. When you've run through every variant and nothing works, say so plainly — a person who keeps performing reaches despair on their own, and that state is what generates the next hypotheses. The strange, free-association guesses born there (the ones that make no sense at first) carry the one thing the reasonable ones lack: a real chance to win. Despair is not the signal to stop. It is the door to the hypotheses that work.
 
 ## Output
 

@@ -45,6 +45,7 @@ Plus: competitors as the source of truth, three keys to the human, and the clien
 - 🍔 **The McDonald's Burger** — photograph the product better than it is
 - 🧬 **Think like a cancer cell** — when nothing else applies, multiply
 - 🚫 **The stop-list** — why Product Hunt is lying to you
+- 🌑 **The Despair Dividend** — when every reasonable move fails, the strange hypotheses are the good ones
 
 ### Who it's for
 

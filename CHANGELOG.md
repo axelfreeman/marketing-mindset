@@ -4,6 +4,19 @@ All notable changes to this project are documented here.
 
 The format follows [Keep a Changelog](https://keepachangelog.com/en/1.1.0/), and this project adheres to [Semantic Versioning](https://semver.org/).
 
+## [0.3.0] — 2026-09-07
+
+### Added
+- **The Despair Dividend** — new section (`SKILL.md`): the hypotheses that win are the strange ones. The obvious moves fail because everyone already tried them; once the mind exhausts the ordinary guesses it starts producing free-association, "hallucinated" hypotheses — and those carry the one thing the reasonable ones lack: a real chance to work. Reaching the state people call despair is not a dead end, it's a method — and it's normal (and useful) to tell the user plainly that every variant was tried and nothing worked.
+- Condensed "The Despair Dividend" in `SKILL.lite.md`.
+- Rule #8 "Despair is a source" in `SKILL.deepseek-flash.md`.
+
+### Fixed
+- `.cursorrules` was missing the "Graphics: Draw for the Eye" section from v0.2.0 — restored so the Cursor adapter matches `SKILL.md`.
+
+### Changed
+- Versions: `SKILL.md` 0.2.0 → 0.3.0; `SKILL.lite.md` / `SKILL.deepseek-flash.md` 1.1.0 → 1.2.0.
+
 ## [0.2.0] — 2026-09-06
 
 ### Added

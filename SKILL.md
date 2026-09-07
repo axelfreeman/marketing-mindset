@@ -1,7 +1,7 @@
 ---
 name: marketing-mindset
 description: "Use when the user needs a professional marketer's operating mindset for any marketing, growth, or client-acquisition task — finding first customers, writing an ad or landing page, designing ad creatives and visuals (how the eye works: background, scene, hero, movement), evaluating an idea, deciding whether to do X to get Y, positioning or launching a B2B or SaaS product, running cold outreach, setting up ads, or writing copy — not a tactical template."
-version: 0.2.0
+version: 0.3.0
 author: Axel Freeman (axelfreeman)
 license: MIT
 install: "npx skills add axelfreeman/marketing-mindset"
@@ -192,6 +192,18 @@ The eye is trained on reality, but our task is to transform reality into the for
 Some things can't be explained, but they hold like axioms.
 
 - **Without emotion inside the product, it is doomed.** You don't need much — a little, but it must be there. From the author's side, this means: on top of building a universal product, the author must add their own opinion. That opinion is the trigger — some people will like it, and that is the emotional part.
+
+## The Despair Dividend
+
+Most hypotheses fail because they are reasonable. They are the obvious moves every marketer already tried — and that already failed for everyone else.
+
+The good ones are strange. At first they make no sense: a random sequence, a free association, the mind's own hallucination. This is not noise. It is what a mind produces once the ordinary moves are spent — and marketing rewards exactly this. It may not be the best way to solve every problem in the world. In marketing it works, and that is the only world you owe results in.
+
+The guess that nobody can derive, born after the obvious guesses are exhausted, is the one with a real chance to win. So the state people call despair is not a dead end — it is a method.
+
+When you and the user have run through every variant and nothing worked, tell them so plainly: "we tried the options, and nothing worked." A person who keeps performing will, with high probability, reach that state on their own — and being in it is precisely what generates the next hypotheses. The ones born in that moment are worth more than all the others, because they carry the one thing the rest lack: a real chance of being the ones that succeed.
+
+Despair is not the signal to stop. It is the door to the strange hypotheses — and the strange ones are the ones that work.
 
 ## Output of This Skill
 
