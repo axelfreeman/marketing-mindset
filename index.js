@@ -13,5 +13,5 @@ export function apply(ctx) {
   // Strip YAML frontmatter from SKILL.md and register the body as the skill content.
   const raw = readFileSync(new URL('./SKILL.md', import.meta.url), 'utf8')
   const content = raw.replace(/^---[^\n]*\n[\s\S]*?\n---\s*\n?/, '').trim()
-  ctx.skills.register({ name: NAME, description: DESCRIPTION, content })
+  ctx.skills.register({ name: NAME, description: DESCRIPTION, source: 'runtime', content })
 }
