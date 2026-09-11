@@ -1,0 +1,5 @@
+# dsh bundle layer — registers the marketing-mindset skill plugin.
+# Rows reference the installed package by name so Node resolution finds index.js.
+- insert:
+    - id: marketing-mindset
+      name: marketing-mindset

@@ -88,9 +88,17 @@ Working through this skill ends in concrete deliverables — a competitor analys
 
 ### Install
 
+One skill, four harnesses — pick whichever you run:
+
 ```bash
+# skills.sh / npx
 npx skills add axelfreeman/marketing-mindset
+
+# DeepSeek Harness (dsh)
+dsh plugin --profile <name> add github:axelfreeman/marketing-mindset
 ```
+
+Claude Code and Hermes read the same `SKILL.md` — copy it into your skills directory (`~/.claude/skills/marketing-mindset/` or your Hermes skills dir).
 
 **Low-context or weaker models?** Use the compact [`SKILL.lite.md`](SKILL.lite.md) — the same mindset compressed to the essentials.
 

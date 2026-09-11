@@ -1,0 +1,16 @@
+{
+  "name": "dsh-marketing-mindset",
+  "version": "0.3.0",
+  "description": "A professional marketer's operating mindset as a dsh skill — how to think, decide, and prioritize for any marketing or client-acquisition task. Not a tactical template.",
+  "type": "module",
+  "main": "index.js",
+  "files": ["index.js", "cordis.patch.yml", "SKILL.md"],
+  "keywords": ["dsh-plugin", "deepseek-harness", "marketing", "mindset", "skill", "b2b", "growth"],
+  "license": "MIT",
+  "author": "Axel Freeman (axelfreeman)",
+  "dsh": {
+    "bundle": {
+      "patch": "./cordis.patch.yml"
+    }
+  }
+}
