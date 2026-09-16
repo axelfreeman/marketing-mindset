@@ -8,11 +8,37 @@
 [![ChatGPT](https://img.shields.io/badge/ChatGPT-SKILL.lite.md-10a37f)](SKILL.lite.md)
 [![Grok](https://img.shields.io/badge/Grok-SKILL.md-111111)](SKILL.md)
 
+📄 **Landing page & docs:** https://axelfreeman.github.io/marketing-mindset/
+
 ![GitHub Repo stars](https://img.shields.io/github/stars/axelfreeman/marketing-mindset?style=social)
 ![Version](https://img.shields.io/github/v/release/axelfreeman/marketing-mindset)
 ![License](https://img.shields.io/github/license/axelfreeman/marketing-mindset)
 ![Installs](https://img.shields.io/badge/skills.sh%20installs-15%2C000%2B-blue)
 ![views](https://komarev.com/ghpvc/?username=axelfreeman&repo=marketing-mindset&label=views&style=flat-square&color=2563eb)
+
+---
+
+---
+
+## Test limits — how much volume before a test can be judged
+
+Below the limit you are measuring randomness, not the market. Declare the volume before the test starts.
+
+| Channel | Minimum volume before a verdict | What it tells you |
+|---|---|---|
+| Cold email — deliverability/wording smoke test | **50–100 sends** | Whether the email lands and reads plausibly. Not whether the offer works. |
+| Cold email — reply-rate test | **~1,500–2,000 sends per variant** | Whether one variant genuinely beats another instead of a quiet week. |
+| Cold email — subject line / open-rate test | **100–500 sends per version** | How the subject performs (opens are frequent). |
+| Landing page smoke test | **100–200 targeted visitors** | Whether the promise produces interest (≈30 leads at 15% capture from 200 cold visitors). |
+| Strict A/B test | **~10,000 visitors per variation, ≥300 conversions** | Statistical significance — usually out of reach for a startup's first tests. |
+| Paid ad | **Spend gate of 1–3× target CPA, 48–72 hours** | Keep / re-hook / kill. Never judge during the learning phase. |
+| Cold calls | **Volume until a repeatable pattern appears in one segment** | Whether the script survives real conversations. |
+
+**The rule that follows: what comes easy, scale it.** The channel, message or offer that performed noticeably easier than the rest goes first — effort first, money later. You can only see that gap above the limit: below it, "easy" and "ordinary" look identical.
+
+> Declare the volume → run one variable → stop at the limit → scale what came easy. Anything else is interpretation.
+
+Full write-up with sources: https://axelfreeman.github.io/marketing-mindset/
 
 ---
 

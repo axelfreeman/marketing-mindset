@@ -4,13 +4,47 @@
   "description": "A professional marketer's operating mindset as a dsh skill — how to think, decide, and prioritize for any marketing or client-acquisition task. Not a tactical template.",
   "type": "module",
   "main": "index.js",
-  "files": ["index.js", "cordis.patch.yml", "SKILL.md"],
-  "keywords": ["dsh-plugin", "deepseek-harness", "marketing", "mindset", "skill", "b2b", "growth"],
+  "files": [
+    "index.js",
+    "cordis.patch.yml",
+    "SKILL.md"
+  ],
+  "keywords": [
+    "agent-skills",
+    "ai-agent-skill",
+    "ai-agents",
+    "claude-code",
+    "claude-skill",
+    "cursor-rules",
+    "codex",
+    "chatgpt",
+    "marketing",
+    "marketing-skill",
+    "marketing-mindset",
+    "marketing-strategy",
+    "b2b",
+    "b2b-sales",
+    "cold-email",
+    "lead-generation",
+    "go-to-market",
+    "growth",
+    "solopreneur",
+    "sample-size",
+    "ab-testing",
+    "deepseek-harness",
+    "dsh-plugin",
+    "llm-prompting"
+  ],
   "license": "MIT",
   "author": "Axel Freeman (axelfreeman)",
   "dsh": {
     "bundle": {
       "patch": "./cordis.patch.yml"
     }
+  },
+  "homepage": "https://axelfreeman.github.io/marketing-mindset/",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/axelfreeman/marketing-mindset.git"
   }
 }

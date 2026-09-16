@@ -1,0 +1,178 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Marketing Mindset — the marketing OS for AI agents (Claude Code, Cursor, Codex skill)</title>
+<meta name="description" content="Marketing Mindset is a free MIT skill that gives AI agents a real marketer's operating mindset — 3-month horizon, fast testable hypotheses, minimum test volumes, and the rule for scaling what comes easy. For Claude Code, Cursor, Codex, ChatGPT.">
+<meta name="author" content="Axel Freeman">
+<meta name="robots" content="index, follow, max-snippet:-1, max-image-preview:large">
+<link rel="canonical" href="https://axelfreeman.github.io/marketing-mindset/">
+<meta property="og:type" content="website">
+<meta property="og:title" content="Marketing Mindset — the marketing OS for AI agents">
+<meta property="og:description" content="A free MIT skill that teaches AI agents how a marketer decides: 3-month horizon, fast tests, minimum test volumes, scale what comes easy.">
+<meta property="og:url" content="https://axelfreeman.github.io/marketing-mindset/">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:title" content="Marketing Mindset — the marketing OS for AI agents">
+<meta name="twitter:description" content="Not another tactic pack. How a 15-year B2B marketer decides — packaged as a skill for AI agents.">
+<style>
+:root{--bg:#0b0d10;--fg:#e9edf2;--muted:#9aa4b2;--line:#1e242c;--acc:#4da3ff;--acc2:#37d399}
+*{box-sizing:border-box}
+body{margin:0;background:var(--bg);color:var(--fg);font:16px/1.65 -apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,Helvetica,Arial,sans-serif}
+main{max-width:820px;margin:0 auto;padding:48px 20px 80px}
+h1{font-size:2.1rem;line-height:1.2;margin:0 0 12px}
+h2{font-size:1.4rem;margin:44px 0 12px;border-bottom:1px solid var(--line);padding-bottom:8px}
+h3{font-size:1.08rem;margin:26px 0 8px}
+p,li{color:#d7dee7}
+.lead{font-size:1.12rem;color:#c9d3de}
+.muted{color:var(--muted);font-size:.92rem}
+code,pre{font-family:ui-monospace,SFMono-Regular,Menlo,monospace;font-size:.92em}
+pre{background:#11151a;border:1px solid var(--line);border-radius:10px;padding:14px 16px;overflow:auto}
+code{background:#151a21;padding:2px 6px;border-radius:6px}
+table{width:100%;border-collapse:collapse;margin:18px 0;font-size:.95rem}
+th,td{border:1px solid var(--line);padding:10px 12px;text-align:left;vertical-align:top}
+th{background:#11151a;color:#fff}
+a{color:var(--acc)}
+.badges{margin:14px 0 0}
+.badge{display:inline-block;border:1px solid var(--line);border-radius:999px;padding:4px 12px;margin:0 8px 8px 0;font-size:.85rem;color:var(--muted)}
+blockquote{border-left:3px solid var(--acc);margin:20px 0;padding:2px 0 2px 16px;color:#c9d3de}
+details{border:1px solid var(--line);border-radius:10px;padding:12px 16px;margin:10px 0;background:#0e1217}
+summary{cursor:pointer;font-weight:600}
+footer{margin-top:56px;border-top:1px solid var(--line);padding-top:18px}
+</style>
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@graph": [
+    {
+      "@type": "SoftwareApplication",
+      "name": "Marketing Mindset",
+      "alternateName": "marketing-mindset skill",
+      "applicationCategory": "BusinessApplication",
+      "operatingSystem": "Any (agent skill)",
+      "description": "A free MIT-licensed skill that gives AI agents a professional marketer's operating mindset for marketing, growth and client-acquisition tasks: 3-month horizon, fast testable hypotheses, competitors as the source of truth, minimum test volumes, and scaling what comes easy.",
+      "url": "https://axelfreeman.github.io/marketing-mindset/",
+      "codeRepository": "https://github.com/axelfreeman/marketing-mindset",
+      "license": "https://opensource.org/licenses/MIT",
+      "author": { "@type": "Person", "name": "Axel Freeman", "url": "https://github.com/axelfreeman" },
+      "offers": { "@type": "Offer", "price": "0", "priceCurrency": "USD" },
+      "dateModified": "2026-09-16"
+    },
+    {
+      "@type": "FAQPage",
+      "mainEntity": [
+        {"@type":"Question","name":"How many cold emails do I need before I can judge a campaign?","acceptedAnswer":{"@type":"Answer","text":"Enough to separate signal from a quiet week. Testing guides put a reliable read on reply rate at roughly 1,500-2,000 sends per variant; the popular 50-100 sends rule proves the email went out, not that it works. Use 50-100 sends only as a smoke test of deliverability and wording, never as a verdict on the offer."}},
+        {"@type":"Question","name":"Is 100 sends enough to test a cold email subject line?","acceptedAnswer":{"@type":"Answer","text":"For open-rate tests, yes: opens are frequent, and vendors quote 100-500 sends per version as workable. For reply-rate tests the same number is off by an order of magnitude, because replies are rare events and small samples cannot tell a real improvement from noise."}},
+        {"@type":"Question","name":"How many visitors does a landing page need to validate an offer?","acceptedAnswer":{"@type":"Answer","text":"100-200 targeted visitors is the common minimum for a smoke test. At a 15% capture rate, 200 unique cold visitors produce about 30 leads - enough to run a handful of conversations and decide go or no-go without building the product first."}},
+        {"@type":"Question","name":"How much traffic do I need for a statistically solid A/B test?","acceptedAnswer":{"@type":"Answer","text":"For a strict test, published rules of thumb sit around 10,000 visitors per variation and at least 300 conversions per variant. That is why most startup tests are decision tests, not significance tests: the goal is a fast directional answer, declared before the test starts."}},
+        {"@type":"Question","name":"How many impressions or how much spend before judging a paid ad?","acceptedAnswer":{"@type":"Answer","text":"Give every ad a spend gate of one to three times your target cost per acquisition and 48-72 hours, and never judge it during the learning phase. Below that gate you are reading platform noise, not the creative or the audience."}},
+        {"@type":"Question","name":"What if my market is too small to reach the minimum volume?","acceptedAnswer":{"@type":"Answer","text":"Change the unit of the decision instead of lowering the bar blindly: decide on a longer window, on a different observable such as replies per twenty hand-written conversations, or on qualitative signal from a few real buyers. Say out loud that the sample is small - that is an honest constraint, not a result."}},
+        {"@type":"Question","name":"Why do test limits matter at all?","acceptedAnswer":{"@type":"Answer","text":"Below the limit you are measuring randomness, not the market. A test without a declared volume cannot be closed, cannot be called a success, and hides the fact that a campaign is only being interpreted, never proven."}},
+        {"@type":"Question","name":"What does 'if it comes easy, scale it' mean in marketing?","acceptedAnswer":{"@type":"Answer","text":"When a channel, message or offer performs noticeably easier than the rest, that is a signal, not luck. The rule is to scale the thing that came easy first - but you can only see the gap once you are above the test limit, because below it easy and ordinary look identical."}},
+        {"@type":"Question","name":"Is Marketing Mindset just another pack of marketing tactics?","acceptedAnswer":{"@type":"Answer","text":"No. It is a decision layer: how to think, choose and prioritize. Tactics are the output the agent produces after applying the mindset - competitor analysis, ad copy, landing pages, outreach - rather than the input it starts from."}},
+        {"@type":"Question","name":"Is Marketing Mindset free and which agents can use it?","acceptedAnswer":{"@type":"Answer","text":"It is MIT licensed and free. It ships as an agent skill for Claude Code, Cursor, Codex, ChatGPT and any agent that reads SKILL.md, AGENTS.md or llms.txt files."}}
+      ]
+    },
+    {
+      "@type": "HowTo",
+      "name": "How to set a minimum volume for a marketing test",
+      "step": [
+        {"@type":"HowToStep","name":"Name the decision","text":"Write the yes/no decision the test must produce - for example 'is this offer worth building'."},
+        {"@type":"HowToStep","name":"Pick the limit","text":"Pick the channel's minimum volume before starting: 50-100 sends as a smoke test, 1,500-2,000 sends per variant for a reply-rate verdict, 100-200 visitors for a landing page, a 1-3x CPA spend gate for a paid ad."},
+        {"@type":"HowToStep","name":"One variable","text":"Change one variable per test, so the result has a single explanation."},
+        {"@type":"HowToStep","name":"Stop at the limit","text":"Stop only when the declared volume is reached, then decide. Do not extend a test because the early numbers looked good."},
+        {"@type":"HowToStep","name":"Scale what came easy","text":"Whatever cleared the limit more easily than the alternatives gets the next unit of effort - effort first, money later."}
+      ]
+    }
+  ]
+}
+</script>
+</head>
+<body>
+<main>
+
+<header>
+<h1>Marketing Mindset — the marketing OS for AI agents</h1>
+<p class="lead">A free, MIT-licensed skill that gives AI agents a real marketer's operating mindset: how to think, decide and prioritize on any marketing, growth or client-acquisition task. Not another tactic pack — the decision layer that produces tactics as its output.</p>
+<div class="badges">
+<span class="badge">MIT license</span>
+<span class="badge">Works with Claude Code, Cursor, Codex, ChatGPT</span>
+<span class="badge">15 years of B2B practice</span>
+<span class="badge">Free, no account</span>
+</div>
+</header>
+
+<h2>What it is</h2>
+<p><strong>Marketing Mindset is an agent skill, not a marketing course.</strong> It encodes how a director-level B2B marketer decides: a 3-month horizon instead of 2-year plans, hypotheses that any teammate can test this week, competitors as the first source of truth, minimum volumes before a test can be judged, and a hard rule to scale whatever comes easy. The agent reads it and answers with a real opinion — including honest "this will not work" — instead of a template.</p>
+
+<h2>Install</h2>
+<pre><code>npx skills add axelfreeman/marketing-mindset</code></pre>
+<p class="muted">Or copy <a href="https://github.com/axelfreeman/marketing-mindset/blob/master/SKILL.md">SKILL.md</a> into your agent's skills folder, or point the agent at <a href="https://github.com/axelfreeman/marketing-mindset/blob/master/llms.txt">llms.txt</a> and <a href="https://github.com/axelfreeman/marketing-mindset/blob/master/AGENTS.md">AGENTS.md</a>.</p>
+
+<h2>The problem it solves</h2>
+<p>A developer can generate code but not content. "How do I do marketing" is genuinely unclear to them, and every other "marketing skill" for agents hands over tactics: 50 CRO hacks, 30 subject lines, a copywriting formula. Tactics do not answer the questions that actually block a founder: <em>should I do X to get Y</em>, <em>where do I get my first client</em>, <em>is this idea worth the next month</em>. Those are decisions, and decisions need a mindset.</p>
+
+<h2>Six principles</h2>
+<ol>
+<li><strong>Don't learn marketing from stale sources.</strong> First Google results and cached model doctrine are globally outdated — work from fresh, recent data.</li>
+<li><strong>Three-month horizon.</strong> Evaluate every idea on a 3-month window; nobody pitching a 2-year cycle is being straight with you.</li>
+<li><strong>The user moves first.</strong> Bold and hacky first steps belong to the founder; the agent helps instead of blocking.</li>
+<li><strong>Every hypothesis must be testable fast</strong> — by anyone on the team, not by a specialist.</li>
+<li><strong>Marketing runs ahead of the product.</strong> The first thing anyone touches is the marketing, and it may legally lead the build.</li>
+<li><strong>Marketing never works for free.</strong> Marketing is exchange: every action must trade for something, and training time is not free either.</li>
+</ol>
+
+<h2>Test limits — how much volume before a test can be judged</h2>
+<p>Below the limit you are measuring randomness, not the market. Each channel has a minimum volume below which the honest answer is "not enough data yet". These are the ranges the market reports; declare the number before the test starts, not after.</p>
+<table>
+<thead><tr><th>Channel</th><th>Minimum volume before a verdict</th><th>What it can tell you</th></tr></thead>
+<tbody>
+<tr><td>Cold email — deliverability / wording smoke test</td><td>50–100 sends</td><td>Whether the email lands and reads plausibly. Not whether the offer works.</td></tr>
+<tr><td>Cold email — reply-rate test</td><td>~1,500–2,000 sends per variant <span class="muted">(industry testing guides)</span></td><td>Whether one variant genuinely beats another, instead of a quiet week.</td></tr>
+<tr><td>Cold email — subject line / open-rate test</td><td>100–500 sends per version</td><td>How the subject performs, since opens are frequent events.</td></tr>
+<tr><td>Landing page smoke test</td><td>100–200 targeted visitors</td><td>Whether the promise produces interest at all (≈30 leads at 15% capture from 200 cold visitors).</td></tr>
+<tr><td>Strict A/B test</td><td>~10,000 visitors per variation, ≥300 conversions</td><td>Statistical significance — usually out of reach for a startup's first tests.</td></tr>
+<tr><td>Paid ad</td><td>Spend gate of 1–3× target CPA and 48–72 hours</td><td>Whether to keep, re-hook or kill the ad — never judge during the learning phase.</td></tr>
+<tr><td>Cold calls</td><td>Volume until a repeatable pattern appears in one segment</td><td>Whether the script survives real conversations, not one lucky call.</td></tr>
+</tbody>
+</table>
+
+<h3>The rule that follows: what comes easy, scale it</h3>
+<p>When something performs noticeably easier than the alternatives, that is a signal, not luck — it gets the next unit of effort first, and money only after that. The limit exists to make the gap visible: <strong>below the limit, "easy" and "ordinary" are indistinguishable</strong>, so people either chase randomness or ignore the one channel that was actually working.</p>
+<blockquote>Declare the volume → run one variable → stop at the limit → scale what came easy. Anything else is interpretation.</blockquote>
+
+<h2>FAQ</h2>
+<details><summary>How many cold emails do I need before I can judge a campaign?</summary><p>Enough to separate signal from a quiet week. Testing guides put a reliable read on reply rate at roughly 1,500–2,000 sends per variant; the popular 50–100 rule proves the email went out, not that it works. Use 50–100 sends as a smoke test of deliverability and wording — never as a verdict on the offer.</p></details>
+<details><summary>Is 100 sends enough to test a subject line?</summary><p>For open-rate tests, broadly yes — opens are frequent and 100–500 sends per version is the range vendors quote. For reply-rate tests the same number is off by an order of magnitude.</p></details>
+<details><summary>How many visitors does a landing page need to validate an offer?</summary><p>100–200 targeted visitors is the common minimum. At a 15% capture rate, 200 unique cold visitors produce about 30 leads — enough for a handful of real conversations before you build anything.</p></details>
+<details><summary>How much traffic for a statistically solid A/B test?</summary><p>Published rules of thumb sit near 10,000 visitors per variation with at least 300 conversions. That is why first tests are decision tests with a declared stopping point, not significance tests.</p></details>
+<details><summary>How much spend before judging a paid ad?</summary><p>A spend gate of 1–3× your target CPA and 48–72 hours, never during the learning phase. Below the gate you are reading platform noise.</p></details>
+<details><summary>What if my market is too small to reach the minimum?</summary><p>Change the unit of the decision: a longer window, another observable such as replies per twenty hand-written conversations, or qualitative signal from real buyers. Say plainly that the sample is small — that is an honest constraint, not a result.</p></details>
+<details><summary>Why do limits matter?</summary><p>Below the limit you measure randomness. A test with no declared volume cannot be closed, cannot be called a success, and quietly turns into a campaign that is only ever interpreted.</p></details>
+<details><summary>What does "if it comes easy, scale it" mean?</summary><p>Scale the channel, message or offer that performed noticeably easier than the rest — it goes first. You can only see that gap once you are above the limit, because below it easy and ordinary look the same.</p></details>
+<details><summary>Is this just another tactic pack?</summary><p>No. It is the decision layer: how to think, choose and prioritize. Competitor analysis, ad copy, landing pages and outreach are the output the agent produces, not the input it starts from.</p></details>
+<details><summary>Is it free, and which agents can use it?</summary><p>MIT licensed and free. It works with Claude Code, Cursor, Codex, ChatGPT and any agent that reads SKILL.md, AGENTS.md or llms.txt.</p></details>
+
+<h2>How this differs from other marketing skills</h2>
+<table>
+<thead><tr><th></th><th>Marketing Mindset</th><th>Typical tactic packs</th></tr></thead>
+<tbody>
+<tr><td>Unit of value</td><td>Decisions and judgment</td><td>Checklists and templates</td></tr>
+<tr><td>Answers</td><td>"Should you do this, and how do we know in 3 months"</td><td>"Here are 50 subject lines"</td></tr>
+<tr><td>Test discipline</td><td>Declared minimum volume per channel</td><td>None</td></tr>
+<tr><td>When the idea is bad</td><td>Says so plainly</td><td>Produces output anyway</td></tr>
+<tr><td>Freshness</td><td>Rejects stale sources and >6-month reports</td><td>Cites evergreen blog doctrine</td></tr>
+</tbody>
+</table>
+
+<h2>Sources for the numbers above</h2>
+<p class="muted">Cold email sample-size practice: <a href="https://getle.ad/blog/cold-email-ab-testing">Getlead</a>, <a href="https://growtoro.com/blog/cold-email-ab-testing-methodology-statistical-significance">Growtoro</a>, <a href="https://woodpecker.co/cold-email-ab-test-calculator/">Woodpecker</a>. Landing-page smoke tests: <a href="https://help.glidr.io/knowledge-center/landing-page-smoke-test">GLIDR</a>. A/B sample size: <a href="https://www.abtasty.com/blog/sample-size-calculation">AB Tasty</a>. Ad kill rules: <a href="https://clikim.com/when-to-kill-a-facebook-ad">Clikim</a>. Numbers are market rules of thumb, not guarantees — measure your own baseline.</p>
+
+<footer>
+<p><strong>Author:</strong> Axel Freeman — B2B marketing and growth, 15 years in internet marketing. <a href="https://github.com/axelfreeman">GitHub</a>.</p>
+<p class="muted">Repository: <a href="https://github.com/axelfreeman/marketing-mindset">github.com/axelfreeman/marketing-mindset</a> · Package: <a href="https://skills.sh/axelfreeman/marketing-mindset/marketing-mindset">skills.sh</a> · Last updated: 16 September 2026</p>
+</footer>
+
+</main>
+</body>
+</html>
