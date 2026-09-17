@@ -49,4 +49,5 @@
     <priority>0.8</priority>
   </url>
   <url><loc>https://axelfreeman.github.io/marketing-mindset/tools/email-test-planner.html</loc><priority>0.9</priority></url>
+  <url><loc>https://axelfreeman.github.io/marketing-mindset/tools/aeo-readiness-checklist.html</loc><changefreq>monthly</changefreq><priority>0.7</priority></url>
 </urlset>
