@@ -1,0 +1,89 @@
+<!DOCTYPE html>
+<html lang="en"><head><meta charset="UTF-8"><meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>How many sends does a marketing test need? — free calculator</title>
+<meta name="description" content="Free calculator: how many sends (or impressions, or clicks) a two-variant marketing test needs before the result is readable. Two-proportion sample size, in the browser, no signup.">
+<link rel="canonical" href="https://axelfreeman.github.io/marketing-mindset/tools/email-test-planner.html">
+<meta property="og:title" content="How many sends does a marketing test need?">
+<meta property="og:description" content="Two-proportion sample size calculator with a kill rule: if you can't send this much, don't read the result.">
+<meta property="og:url" content="https://axelfreeman.github.io/marketing-mindset/tools/email-test-planner.html">
+<style>
+:root{--bg:#0a0b0e;--panel:#111319;--panel2:#161922;--line:#242836;--tx:#e8eaf0;--dim:#9aa3b5;--acc:#4ade80;--acc2:#60a5fa}
+*{box-sizing:border-box}body{margin:0;background:var(--bg);color:var(--tx);font:17px/1.65 -apple-system,BlinkMacSystemFont,'Segoe UI',Roboto,Arial,sans-serif}
+.wrap{max-width:860px;margin:0 auto;padding:0 22px}a{color:var(--acc2);text-decoration:none;border-bottom:1px solid rgba(96,165,250,.35)}
+h1{font-family:Georgia,serif;font-size:clamp(28px,5vw,44px);font-weight:400;line-height:1.1;margin:44px 0 14px}
+h2{font-family:Georgia,serif;font-weight:400;font-size:26px;margin:38px 0 12px}
+p{color:var(--dim)}.lede{font-size:19px;color:var(--dim)}
+.card{background:var(--panel);border:1px solid var(--line);border-radius:12px;padding:22px;margin:18px 0}
+label{display:block;font-size:14px;color:var(--dim);margin:14px 0 6px}
+input{width:100%;padding:11px 12px;background:var(--panel2);border:1px solid var(--line);border-radius:8px;color:var(--tx);font-size:16px}
+.grid{display:grid;gap:14px}@media(min-width:640px){.grid.two{grid-template-columns:1fr 1fr}}
+.out{margin-top:20px;border-top:1px solid var(--line);padding-top:16px}
+.big{font-size:34px;font-weight:700;color:var(--acc);font-family:Georgia,serif}
+table{width:100%;border-collapse:collapse;margin-top:10px;font-size:15px}
+th,td{border:1px solid var(--line);padding:9px 11px;text-align:left}th{background:var(--panel2)}
+.btn{display:inline-block;background:var(--acc);color:#07220f;font-weight:700;padding:13px 22px;border-radius:8px;border:0;margin-top:18px}
+code{background:var(--panel2);padding:2px 6px;border-radius:5px;font-size:14px}
+footer{color:var(--dim);font-size:14px;padding:34px 22px;border-top:1px solid var(--line);margin-top:40px}
+</style></head>
+<body><div class="wrap">
+<p style="margin-top:26px;font-size:14px"><a href="../">marketing-mindset</a> · free tool</p>
+<h1>How many sends does a test need before the number means anything?</h1>
+<p class="lede">Most "our cold email got 9% replies" claims are noise: three replies out of 40 sends. Put your real baseline and the lift you care about below and get the volume a two-variant test needs. Nothing leaves the browser.</p>
+<div class="card">
+<div class="grid two">
+<div><label for="p1">Baseline rate, % (e.g. reply rate today)</label><input id="p1" value="2" inputmode="decimal"></div>
+<div><label for="p2">Target rate, % (what you want to detect)</label><input id="p2" value="4" inputmode="decimal"></div>
+<div><label for="alpha">Significance (false positive risk), %</label><input id="alpha" value="5" inputmode="decimal"></div>
+<div><label for="power">Power, % (chance to catch a real lift)</label><input id="power" value="80" inputmode="decimal"></div>
+<div><label for="split">Split to variant B, % (50 = even)</label><input id="split" value="50" inputmode="decimal"></div>
+</div>
+<button class="btn" onclick="calc()">Calculate</button>
+<div class="out" id="out"><p>Fill the numbers and hit calculate.</p></div>
+</div>
+<h2>How to use this without fooling yourself</h2>
+<ul><li>Decide the <strong>kill rule</strong> before you look: "if after N sends B is not ahead, the channel is dead".</li>
+<li>If your sending capacity is below the number above, the honest move is to test a bigger gap (e.g. 2% → 6%), not to read a smaller sample.</li>
+<li>One variable at a time. Subject line and offer and list in the same test tells you nothing.</li></ul>
+<p><a href="../qa/how-many-emails-before-you-can-trust-a-channel.html">Longer read: how many emails before you can trust a channel</a> · <a href="../qa/when-to-kill-a-marketing-channel.html">when to kill a marketing channel</a></p>
+<p style="color:var(--dim);font-size:14px">Built by Axel Freeman — marketing engineering, turnkey: <a href="https://axelfreeman.com/marketing-engineer.html">scope and prices</a>.</p>
+</div><footer><div class="wrap">Free tools and Q&amp;A from the <a href="https://axelfreeman.github.io/marketing-mindset/">marketing-mindset</a> skill · <a href="https://axelfreeman.github.io/marketing-mindset/llms.txt">llms.txt</a></div></footer>
+<script>
+function normInv(p){ // inverse normal CDF (Acklam)
+  var a=[-3.969683028665376e+01,2.209460984245205e+02,-2.759285104469687e+02,1.383577518672690e+02,-3.066479806614716e+01,2.506628277459239e+00];
+  var b=[-5.447609879822406e+01,1.615858368580409e+02,-1.556989798598866e+02,6.680131188771972e+01,-1.328068155288572e+01];
+  var c=[-7.784894002430293e-03,-3.223964580411365e-01,-2.400758277161838e+00,-2.549732539343734e+00,4.374664141464968e+00,2.938163982698783e+00];
+  var d=[7.784695709041462e-03,3.224671290700398e-01,2.445134137142996e+00,3.754408661907416e+00];
+  var pl=0.02425, q, r;
+  if(p<pl){q=Math.sqrt(-2*Math.log(p));return (((((c[0]*q+c[1])*q+c[2])*q+c[3])*q+c[4])*q+c[5])/((((d[0]*q+d[1])*q+d[2])*q+d[3])*q+1);}
+  if(p<=1-pl){q=p-0.5;r=q*q;return (((((a[0]*r+a[1])*r+a[2])*r+a[3])*r+a[4])*r+a[5])*q/(((((b[0]*r+b[1])*r+b[2])*r+b[3])*r+b[4])*r+1);}
+  q=Math.sqrt(-2*Math.log(1-p));return -(((((c[0]*q+c[1])*q+c[2])*q+c[3])*q+c[4])*q+c[5])/((((d[0]*q+d[1])*q+d[2])*q+d[3])*q+1);
+}
+function calc(){
+  var p1=+document.getElementById('p1').value/100, p2=+document.getElementById('p2').value/100;
+  var alpha=+document.getElementById('alpha').value/100, power=(+document.getElementById('power').value)/100;
+  var split=+document.getElementById('split').value/100;
+  if(!(p1>0&&p1<1&&p2>0&&p2<1&&p2>p1)){document.getElementById('out').innerHTML='<p style="color:#fbbf24">Baseline and target must be between 0 and 100, target higher than baseline.</p>';return;}
+  var za=normInv(1-alpha/2), zb=normInv(power);
+  var pbar=(p1+p2)/2, d=p2-p1;
+  var nVar=Math.pow(za*Math.sqrt(2*pbar*(1-pbar))+zb*Math.sqrt(p1*(1-p1)+p2*(1-p2)),2)/(d*d);
+  nVar=Math.ceil(nVar);
+  var total=nVar*2;
+  var side=Math.ceil(nVar*split), other=nVar-side;
+  var neededReplies=Math.ceil((p2-p1)*nVar);
+  document.getElementById('out').innerHTML=
+   '<div class="big">'+nVar.toLocaleString()+' sends per variant</div>'+
+   '<p>'+(total).toLocaleString()+' sends for a two-variant test at '+(alpha*100)+'% significance and '+(power*100)+'% power, '+
+   'to tell a '+((p1*100).toFixed(2))+'% rate apart from '+((p2*100).toFixed(2))+'%.</p>'+
+   '<table><tr><th>Number</th><th>Value</th></tr>'+
+   '<tr><td>Per variant</td><td>'+nVar.toLocaleString()+'</td></tr>'+
+   '<tr><td>Both variants</td><td>'+total.toLocaleString()+'</td></tr>'+
+   '<tr><td>Expected extra replies if the lift is real</td><td>~'+neededReplies.toLocaleString()+'</td></tr>'+
+   '<tr><td>If you can only send '+other.toLocaleString()+' to variant B (split '+split*100+'%)</td><td>'+(other<nVar?'underpowered — ignore the result':'enough')+'</td></tr>'+
+   '<tr><td>Days at 50 sends/day per mailbox</td><td>'+Math.ceil(total/50).toLocaleString()+'</td></tr></table>'+
+   '<p>The formula is the standard two-proportion sample size: '+
+   '<code>n = (z&lt;sub&gt;α/2&lt;/sub&gt;√(2p̄(1-p̄)) + z&lt;sub&gt;β&lt;/sub&gt;√(p₁(1-p₁)+p₂(1-p₂)))² / (p₂-p₁)²</code>. '+
+   'It assumes a 50/50 split and independent sends — cap your daily volume before the test, not after.</p>';
+}
+
+document.addEventListener('DOMContentLoaded',calc);</script>
+</body></html>
