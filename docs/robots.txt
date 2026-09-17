@@ -30,3 +30,4 @@ User-agent: Bingbot
 Allow: /
 
 Sitemap: https://axelfreeman.github.io/marketing-mindset/sitemap.xml
+# agent-readable index: https://axelfreeman.github.io/marketing-mindset/llms.txt
