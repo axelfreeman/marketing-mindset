@@ -172,3 +172,26 @@ Written by Axel Freeman, a B2B marketer with 15 years of validated experience ac
 ### License
 
 MIT
+
+<!-- artifacts-block -->
+## Where else this lives
+
+Everything below is public and checkable — pages, packages, articles:
+
+| What | Link |
+|---|---|
+| Landing page & docs | https://axelfreeman.github.io/marketing-mindset/ |
+| Install (npm) | https://www.npmjs.com/package/marketing-mindset — `npx marketing-mindset` |
+| MCP server (npm) | https://www.npmjs.com/package/marketing-mindset-mcp |
+| Q&A pages | https://axelfreeman.github.io/marketing-mindset/qa/ |
+| Free tool: email test planner | https://axelfreeman.github.io/marketing-mindset/tools/email-test-planner.html |
+| Release notes | https://github.com/axelfreeman/marketing-mindset/releases |
+| Work with the author (turnkey) | https://axelfreeman.com/marketing-engineer.html |
+| Scope of work | https://axelfreeman.com/scope.html |
+| Pricing comparison | https://axelfreeman.com/pricing.html |
+| What shipped (artifacts) | https://axelfreeman.com/cases.html |
+| Proof page (all links) | https://axelfreeman.com/proof.html |
+| Article: what a marketing engineer does | https://dev.to/axelfreeman/what-a-marketing-engineer-actually-does-and-what-the-invoice-pays-for-1blj |
+
+The skill is free and MIT. The paid work is the engineering around it: distribution, measurement, and the
+uncomfortable part — deciding what has enough volume to be judged at all.
