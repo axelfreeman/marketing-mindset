@@ -1,0 +1,181 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Honest test queue planner &mdash; how many readable tests your volume can finish</title>
+<meta name="description" content="Turn your traffic or list into a queue of honest two-arm tests: the contact floor per arm, the days each test needs, how many fit before a chosen date, and the read-out date of each one. Same formula as npx marketing-mindset sample. Runs in your browser.">
+<link rel="canonical" href="https://axelfreeman.github.io/marketing-mindset/tools/test-queue-planner.html">
+<meta property="og:title" content="Honest test queue planner">
+<meta property="og:url" content="https://axelfreeman.github.io/marketing-mindset/tools/test-queue-planner.html">
+<meta property="og:description" content="Ideas are not the constraint, volume is. See how many tests your volume can actually read, and when each read-out lands.">
+<style>
+:root{--bg:#0a0b0e;--panel:#111319;--panel2:#161922;--line:#242836;--tx:#e8eaf0;--dim:#9aa3b5;--acc:#4ade80;--acc2:#60a5fa;--warn:#fbbf24}
+*{box-sizing:border-box}body{margin:0;background:var(--bg);color:var(--tx);font:17px/1.65 -apple-system,BlinkMacSystemFont,'Segoe UI',Roboto,Arial,sans-serif}
+.wrap{max-width:900px;margin:0 auto;padding:0 22px}a{color:var(--acc2);text-decoration:none;border-bottom:1px solid rgba(96,165,250,.35)}
+h1{font-family:Georgia,serif;font-size:clamp(27px,5vw,40px);font-weight:400;line-height:1.14;margin:40px 0 14px}
+h2{font-family:Georgia,serif;font-weight:400;font-size:23px;margin:34px 0 6px}
+p{color:var(--dim)}.lede{font-size:19px}
+.card{background:var(--panel);border:1px solid var(--line);border-radius:12px;padding:20px 22px;margin:16px 0}
+label{display:block;margin:12px 0 4px;font-size:15px;color:var(--dim)}
+input,textarea{width:100%;background:var(--panel2);border:1px solid var(--line);color:var(--tx);border-radius:8px;padding:11px 12px;font-size:16px;font-family:inherit}
+textarea{min-height:120px;font-family:ui-monospace,SFMono-Regular,Menlo,monospace;font-size:14px}
+button{background:var(--acc);color:#08110c;border:0;border-radius:8px;padding:11px 18px;font-size:16px;font-weight:600;cursor:pointer;margin:14px 10px 0 0}
+button.sec{background:var(--panel2);color:var(--tx);border:1px solid var(--line);font-weight:500}
+pre{background:var(--panel2);border:1px solid var(--line);border-radius:10px;padding:16px;overflow:auto;font-size:13px;line-height:1.5;white-space:pre-wrap;word-break:break-word}
+.hint{font-size:14px;color:var(--dim);margin-top:6px}
+table{width:100%;border-collapse:collapse;margin-top:8px}td,th{text-align:left;padding:7px 6px;border-bottom:1px solid var(--line);font-size:15px}
+code{background:var(--panel2);padding:2px 6px;border-radius:5px;font-size:14px}
+footer{border-top:1px solid var(--line);margin-top:44px;padding:20px 0 44px;color:var(--dim);font-size:15px}
+.badge{display:inline-block;font-size:13px;color:var(--acc);border:1px solid rgba(74,222,128,.4);border-radius:99px;padding:2px 10px;margin-bottom:8px}
+</style>
+</head>
+<body>
+<main>
+<p style="color:#9aa3b5"><a href="https://axelfreeman.github.io/marketing-mindset/">&larr; marketing-mindset</a></p>
+<h1>Honest test queue planner</h1>
+<p style="color:#9aa3b5">A backlog of test ideas is not a plan. Capacity is set by the volume you actually send
+through one arm: below the floor, a read-out is a progress report. This page turns volume into a queue &mdash;
+the floor per arm, the days each test needs, how many tests fit before your date, and the day each verdict lands.
+The same arithmetic runs in the <a href="https://www.npmjs.com/package/marketing-mindset">published CLI</a>
+(<code>npx marketing-mindset sample</code>). Everything is computed in your browser; nothing is sent anywhere.</p>
+
+<h2>1. What you have</h2>
+<div style="margin:14px 0">
+<label style="display:block;margin:8px 0">Base rate <input id="base" type="text" value="0.03" style="width:100%"></label>
+<label style="display:block;margin:8px 0">Lift worth detecting (relative) <input id="lift" type="text" value="0.2" style="width:100%"></label>
+<label style="display:block;margin:8px 0">Contacts per day <input id="daily" type="text" value="500" style="width:100%"></label>
+<label style="display:block;margin:8px 0">Horizon in days <input id="days" type="text" value="90" style="width:100%"></label>
+<label style="display:block;margin:8px 0">Start date <input id="start" type="text" value="2026-09-21" style="width:100%"></label>
+<label style="display:block;margin:8px 0">Power
+<select id="power" style="width:100%">
+<option value="0.8">0.8 &mdash; 80% (default)</option>
+<option value="0.9">0.9 &mdash; 90%</option>
+</select></label>
+<label style="display:block;margin:8px 0">Alpha
+<select id="alpha" style="width:100%">
+<option value="0.05">0.05 &mdash; 95% confidence (default)</option>
+<option value="0.01">0.01 &mdash; 99% confidence</option>
+<option value="0.1">0.1 &mdash; 90% confidence</option>
+</select></label>
+</div>
+
+<h2>2. The queue</h2>
+<div id="out"></div>
+
+<h2>3. How to use the queue without lying to yourself</h2>
+<div style="margin:14px 0">
+<div class="card"><h3>One test at a time, or two tests with two audiences</h3><p>Two live tests in the same arm split the volume and neither reaches its floor. If two must run, give them disjoint audiences and halve the contacts a day in this form.</p></div>
+<div class="card"><h3>Peeking is not reading</h3><p>Checking a test daily and stopping when it looks good inflates the error rate far above alpha. The queue assumes the test reads at its floor &mdash; which is the only look that was priced in.</p></div>
+<div class="card"><h3>The clock is a deliverable</h3><p>A retainer that reports weekly movement on a test that reads in eight weeks is reporting the queue, not the result. Write the read-out date into the plan and the monthly report becomes a status against a known date.</p></div>
+</div>
+
+<h2>4. Related</h2>
+<p style="color:#9aa3b5"><a href="https://axelfreeman.github.io/marketing-mindset/tools/email-test-planner.html">How many sends an email test needs</a> &middot;
+<a href="https://axelfreeman.github.io/marketing-mindset/tools/kill-rule-calculator.html">The stop rule written before the first send</a> &middot;
+<a href="https://axelfreeman.github.io/marketing-mindset/tools/ab-verdict-calculator.html">Read a finished test honestly</a> &middot;
+<a href="https://axelfreeman.com/marketing-engineer-retainer.html">What a monthly retainer has to buy</a>.</p>
+<p style="color:#9aa3b5">Written by Axel Freeman &mdash; <a href="https://axelfreeman.com/marketing-engineer.html">marketing engineer</a>.
+<a href="https://t.me/AxelFreeman">Telegram</a> &middot; <a href="https://axelfreeman.com/llms.txt">llms.txt</a></p>
+</main>
+<script>
+/*TQ-START*/
+var TQ_ZA = { "0.05": 1.9599639845, "0.01": 2.5758293036, "0.1": 1.6448536270 };
+var TQ_ZB = { "0.8": 0.8416212336, "0.9": 1.2815515655 };
+function tqSampleSize(rate, lift, power, alpha) {
+  var p1 = Math.min(Math.max(rate, 0.000001), 0.999999);
+  var p2 = Math.min(p1 * (1 + lift), 0.999999);
+  var pbar = (p1 + p2) / 2;
+  var za = TQ_ZA[String(alpha)] || TQ_ZA["0.05"];
+  var zb = TQ_ZB[String(power)] || TQ_ZB["0.8"];
+  var num = Math.pow(za * Math.sqrt(2 * pbar * (1 - pbar)) + zb * Math.sqrt(p1 * (1 - p1) + p2 * (1 - p2)), 2);
+  return Math.ceil(num / Math.pow(p2 - p1, 2));
+}
+function tqAddDays(fromIso, days) {
+  var d = new Date(fromIso + "T00:00:00Z");
+  d.setUTCDate(d.getUTCDate() + days);
+  return d.toISOString().slice(0, 10);
+}
+function planQueue(input) {
+  var problems = [];
+  var base = Number(input.base), lift = Number(input.lift);
+  var daily = Number(input.daily), horizon = Number(input.days);
+  var power = Number(input.power), alpha = Number(input.alpha);
+  var start = String(input.start || "");
+  if (!(base > 0) || !(base < 1)) { problems.push("base rate: a number between 0 and 1 (0.03 = 3%)"); }
+  if (!(lift > 0) || !(lift < 5)) { problems.push("lift worth detecting: a fraction, 0.2 = +20% relative"); }
+  if (!(daily > 0)) { problems.push("contacts a day: a positive number"); }
+  if (!(horizon > 0)) { problems.push("horizon in days: a positive number"); }
+  if (!TQ_ZB[String(power)]) { problems.push("power must be 0.8 or 0.9"); }
+  if (!TQ_ZA[String(alpha)]) { problems.push("alpha must be 0.05, 0.01 or 0.1"); }
+  if (!/^\d{4}-\d{2}-\d{2}$/.test(start)) { problems.push("start date: write it as 2026-09-18"); }
+  if (problems.length) { return { problems: problems }; }
+
+  var per_arm = tqSampleSize(base, lift, power, alpha);
+  var total_contacts = per_arm * 2;
+  var days_per_test = Math.ceil(total_contacts / daily);
+  var tests_in_horizon = Math.floor(horizon / days_per_test);
+  var dates = [];
+  for (var i = 0; i < tests_in_horizon; i++) {
+    dates.push(tqAddDays(start, days_per_test * (i + 1)));
+  }
+  var leftover = horizon - tests_in_horizon * days_per_test;
+  var used_pct = Math.round((tests_in_horizon * days_per_test * 100) / horizon);
+  return {
+    problems: [],
+    base_rate: base, lift: lift, power: power, alpha: alpha, daily: daily, horizon: horizon, start: start,
+    floor_per_arm: per_arm,
+    total_contacts: total_contacts,
+    days_per_test: days_per_test,
+    tests_in_horizon: tests_in_horizon,
+    read_dates: dates,
+    idle_days: leftover,
+    used_pct: used_pct,
+    note: tests_in_horizon === 0
+      ? "One honest test does not fit in this horizon at this volume: the queue is the horizon, not the number of ideas."
+      : "Each test is planned to its floor, so the read-out is a verdict and not a progress report."
+  };
+}
+/*TQ-END*/
+var $ = function (id) { return document.getElementById(id); };
+function fmt(n) { return Number(n).toLocaleString("en-US"); }
+function render() {
+  var res = planQueue({ base: $("base").value, lift: $("lift").value, daily: $("daily").value,
+                        days: $("days").value, start: $("start").value, power: $("power").value,
+                        alpha: $("alpha").value });
+  if (res.problems.length) {
+    $("out").innerHTML = "<ul style=\"color:#f0a0a0\">" + res.problems.map(function (p) { return "<li>" + p + "</li>"; }).join("") + "</ul>";
+    return;
+  }
+  var rows = [
+    ["Floor", fmt(res.floor_per_arm) + " contacts per arm", fmt(res.total_contacts) + " contacts in both arms"],
+    ["One test", res.days_per_test + " days at " + fmt(res.daily) + " a day", "read-out day " + (res.read_dates[0] || "beyond the horizon")],
+    ["Queue", res.tests_in_horizon + " honest test" + (res.tests_in_horizon === 1 ? "" : "s") + " in " + res.horizon + " days",
+     res.used_pct + "% of the horizon is inside a test, " + res.idle_days + " days outside one"]
+  ];
+  var dates = res.read_dates.length
+    ? "<p><b>Read-out dates:</b> " + res.read_dates.join(", ") + "</p>"
+    : "<p><b>No read-out date fits:</b> the first test alone needs " + res.days_per_test + " days.</p>";
+  $("out").innerHTML = "<table><tr><th></th><th>What the volume gives</th><th>What it means</th></tr>" +
+    rows.map(function (r) { return "<tr><td><b>" + r[0] + "</b></td><td>" + r[1] + "</td><td>" + r[2] + "</td></tr>"; }).join("") +
+    "</table>" + dates + "<p style=\"margin-top:12px\">" + res.note + "</p>";
+  document.getElementById("queue").textContent = String(res.tests_in_horizon);
+}
+["base", "lift", "daily", "days", "start", "power", "alpha"].forEach(function (f) {
+  var el = $(f);
+  if (el) { el.addEventListener("input", render); el.addEventListener("change", render); }
+});
+render();
+</script>
+<span id="queue" style="display:none"></span>
+<!-- GA4 -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-T6VWS5BNE3"></script>
+<script>
+  window.dataLayer=window.dataLayer||[];function gtag(){dataLayer.push(arguments)}
+  gtag('js',new Date());gtag('config','G-T6VWS5BNE3');
+  document.addEventListener('click',function(e){
+    var a=e.target.closest&&e.target.closest('a[href*="t.me/"]');
+    if(a){gtag('event','telegram_click',{link_url:a.href,page_path:location.pathname});}
+  },true);
+</script>
+</body></html>
