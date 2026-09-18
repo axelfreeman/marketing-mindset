@@ -1,0 +1,157 @@
+<!DOCTYPE html>
+<html lang="en"><head><meta charset="UTF-8"><meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Marketing engineer job description generator</title>
+<meta name="description" content="Free generator for a marketing engineer job description: what the role owns, the artifacts due in the first 90 days, how the work is measured, and the screening questions that separate an engineer from a marketer. Copy the markdown and post it.">
+<link rel="canonical" href="https://axelfreeman.github.io/marketing-mindset/tools/marketing-engineer-jd-generator.html">
+<meta property="og:title" content="Marketing engineer job description generator">
+<meta property="og:description" content="Stop hiring a marketer to do a builder's job. Generate the JD with first-90-days artifacts, measurement rules and screening questions.">
+<meta property="og:url" content="https://axelfreeman.github.io/marketing-mindset/tools/marketing-engineer-jd-generator.html">
+<style>
+:root{--bg:#0a0b0e;--panel:#111319;--panel2:#161922;--line:#242836;--tx:#e8eaf0;--dim:#9aa3b5;--acc:#4ade80;--acc2:#60a5fa;--warn:#fbbf24}
+*{box-sizing:border-box}body{margin:0;background:var(--bg);color:var(--tx);font:17px/1.65 -apple-system,BlinkMacSystemFont,'Segoe UI',Roboto,Arial,sans-serif}
+.wrap{max-width:900px;margin:0 auto;padding:0 22px}a{color:var(--acc2);text-decoration:none;border-bottom:1px solid rgba(96,165,250,.35)}
+h1{font-family:Georgia,serif;font-size:clamp(27px,5vw,40px);font-weight:400;line-height:1.14;margin:40px 0 14px}
+h2{font-family:Georgia,serif;font-weight:400;font-size:22px;margin:34px 0 6px}p{color:var(--dim)}.lede{font-size:19px}
+.card{background:var(--panel);border:1px solid var(--line);border-radius:12px;padding:20px 22px;margin:16px 0}
+label{display:block;margin:12px 0 4px;font-size:15px;color:var(--dim)}
+input,select{width:100%;background:var(--panel2);border:1px solid var(--line);color:var(--tx);border-radius:8px;padding:11px 12px;font-size:16px}
+.grid2{display:grid;grid-template-columns:1fr 1fr;gap:16px}
+.chk{display:flex;align-items:flex-start;gap:9px;margin:9px 0;font-size:15px;color:var(--tx)}
+.chk input{width:auto;margin-top:5px}
+textarea{width:100%;min-height:420px;background:var(--panel2);border:1px solid var(--line);color:var(--tx);border-radius:10px;padding:14px;font:14px/1.6 ui-monospace,SFMono-Regular,Menlo,Consolas,monospace;white-space:pre-wrap}
+button{background:var(--acc);color:#06120a;border:0;border-radius:8px;padding:12px 18px;font-size:16px;font-weight:700;cursor:pointer;margin-top:14px}
+table{width:100%;border-collapse:collapse}td,th{text-align:left;padding:7px 6px;border-bottom:1px solid var(--line);font-size:15px}
+code{background:var(--panel2);padding:2px 6px;border-radius:5px;font-size:14px}
+footer{border-top:1px solid var(--line);margin-top:40px;padding:20px 0 40px;color:var(--dim);font-size:15px}
+@media(max-width:620px){.grid2{grid-template-columns:1fr}}
+</style></head>
+<body><div class="wrap">
+<h1>Marketing engineer job description generator</h1>
+<p class="lede">Most JDs for this role are a marketer's JD with "engineer" typed over the title &mdash; and
+then the hire fails in month three because nobody wrote down what should exist at the end of it. Pick the
+level and the surface, and this generates the version that names artifacts, numbers and kill rules instead of
+"passion for growth".</p>
+
+<div class="card">
+<div class="grid2">
+<div><label for="level">Level</label>
+<select id="level">
+<option value="senior">Senior (owns a surface end to end)</option>
+<option value="mid">Mid (owns one path, works from a spec)</option>
+<option value="lead">Lead / Head of Marketing Engineering (owns the system)</option>
+<option value="contract">Contract / fractional (3&ndash;6 months)</option>
+</select></div>
+<div><label for="mode">Engagement</label>
+<select id="mode">
+<option value="fulltime">Full-time hire</option>
+<option value="contract">Contract or fractional retainer</option>
+<option value="either">Open to both</option>
+</select></div>
+</div>
+<label for="company">Company, product and the one thing you sell (one line)</label>
+<input id="company" placeholder="e.g. B2B API for invoice reconciliation, sold to finance teams">
+<label for="bottleneck">The bottleneck you are hiring against (be blunt)</label>
+<input id="bottleneck" placeholder="e.g. 900 cold emails a month, nobody knows if they work">
+<label>Surfaces this role owns</label>
+<div class="chk"><input type="checkbox" id="s_seo" checked><label for="s_seo" style="margin:0">Search &amp; answer engines (pages, schema, AEO)</label></div>
+<div class="chk"><input type="checkbox" id="s_out"><label for="s_out" style="margin:0">Outbound &amp; lifecycle email</label></div>
+<div class="chk"><input type="checkbox" id="s_paid"><label for="s_paid" style="margin:0">Paid acquisition</label></div>
+<div class="chk"><input type="checkbox" id="s_auto" checked><label for="s_auto" style="margin:0">Automation, routing and tracking</label></div>
+<div class="chk"><input type="checkbox" id="s_analytics" checked><label for="s_analytics" style="margin:0">Measurement, dashboards, kill rules</label></div>
+<div class="chk"><input type="checkbox" id="s_ai" checked><label for="s_ai" style="margin:0">Agent skills / AI-assisted production</label></div>
+<button id="go">Generate the job description</button>
+</div>
+
+<h2>The job description (markdown)</h2>
+<p>Copy this into your hiring doc. It states numbers and artifacts on purpose: the wrong candidates
+self-select out before the first call.</p>
+<textarea id="out" readonly></textarea>
+
+<h2>What to check before you hire one</h2>
+<table>
+<tr><th>Question to ask</th><th>Marketer's answer</th><th>Engineer's answer</th></tr>
+<tr><td>What can I open when the month is over?</td><td>A plan, a calendar, a report</td><td>URLs, events, accounts, a repo</td></tr>
+<tr><td>How many sends does an email test need?</td><td>"Depends on the audience"</td><td>~1,500&ndash;2,000 per variant for a 3% baseline and a 20% lift</td></tr>
+<tr><td>When do you kill a channel?</td><td>After a review</td><td>When the volume is met and conversions are at or under the floor</td></tr>
+<tr><td>Who owns the tracking?</td><td>"Our analytics person"</td><td>"I instrumented it; here is the event"</td></tr>
+</table>
+<p>The numbers above are the same floors the free
+<a href="https://axelfreeman.github.io/marketing-mindset/tools/email-test-planner.html">test planner</a> and the
+<a href="https://axelfreeman.github.io/marketing-mindset/tools/kill-rule-calculator.html">kill-rule calculator</a> compute in the browser.</p>
+
+<h2>Do not want to hire yet?</h2>
+<p>The same work is available as a fixed package: <a href="https://axelfreeman.com/marketing-engineer.html">what a marketing engineer does</a>,
+<a href="https://axelfreeman.com/marketing-engineer-cost.html">Sprint $900 / Engine $1,900 per month / Full build $2,900</a>, and
+<a href="https://axelfreeman.com/hire-marketing-engineer.html">what to check before you pay a retainer</a>. Tool, method and case pages are all linked from
+the <a href="https://axelfreeman.github.io/marketing-mindset/tools/aeo-readiness-checklist.html">agent-readiness checklist</a>.</p>
+
+<footer>
+<p>Free tool, no account, nothing stored &mdash; everything runs in your browser. Part of the
+<a href="https://axelfreeman.github.io/marketing-mindset/">marketing-mindset</a> skill
+(<a href="https://www.npmjs.com/package/marketing-mindset">npm</a>,
+<a href="https://github.com/axelfreeman/marketing-engineer-playbook">playbook</a>).
+Written by <a href="https://axelfreeman.com/marketing-engineer.html">Axel Freeman</a>.</p>
+</footer>
+</div>
+<script>
+function blockers(mode,level){
+  if(mode==="contract") return "A 6-week engagement with one written kill rule, then a decision";
+  if(level==="lead") return "A documented system: which paths exist, what each one costs, what gets killed next quarter";
+  return "A path live in production with its event recording, or a written note saying why it was killed";
+}
+function generate(){
+  var level=document.getElementById("level").value;
+  var mode=document.getElementById("mode").value;
+  var company=document.getElementById("company").value.trim()||"[company, product, what you sell in one line]";
+  var bottleneck=document.getElementById("bottleneck").value.trim()||"[the bottleneck you are hiring against]";
+  var surf=[];
+  if(document.getElementById("s_seo").checked) surf.push("search and answer engines (pages written to be quoted, schema, llms.txt)");
+  if(document.getElementById("s_out").checked) surf.push("outbound and lifecycle email (list, sequence, deliverability, suppression)");
+  if(document.getElementById("s_paid").checked) surf.push("paid acquisition (structure, creative, spend gates)");
+  if(document.getElementById("s_auto").checked) surf.push("automation and tracking (routing, events, failure alerts)");
+  if(document.getElementById("s_analytics").checked) surf.push("measurement (one event that matters, sample-size floors, kill rules)");
+  if(document.getElementById("s_ai").checked) surf.push("agent skills and AI-assisted production (reusable operating files, not one-off prompts)");
+  if(!surf.length) surf.push("[pick at least one surface]");
+  var t="";
+  t+="# Marketing Engineer ("+level+", "+mode+")\n\n";
+  t+="## The company and the job\n";
+  t+=company+".\n\nWe are hiring a marketing engineer because: "+bottleneck+".\n\n";
+  t+="You will not be handed a channel to run and a deck to fill in. You will be handed a broken or unmeasured path and be expected to make it work, show the number, and write the rule that decides whether it lives.\n\n";
+  t+="## What the role owns\n";
+  surf.forEach(function(s,i){ t+=(i+1)+". "+s+"\n"; });
+  t+="\n## What must exist by day 90\n";
+  t+="1. One path live in production: entry point, sequence or flow, and the event that fires on a conversion. Yours, inside our accounts.\n";
+  t+="2. A written declaration of the sample size each running test needs before any result counts as a result.\n";
+  t+="3. A kill rule per test, written before the test starts: at what volume and what result we stop, and what happens to the winner.\n";
+  t+="4. One dashboard we can open without asking you for an export.\n";
+  t+="5. "+blockers(mode,level)+".\n";
+  t+="\n## How we will measure you\n";
+  t+="- Cost per qualified conversation or per activated account, when the volume is above the declared floor.\n";
+  t+="- Number of live, openable artifacts (pages, sequences, automations) still running 30 days after you touched them.\n";
+  t+="- Whether a decision made last month can be re-checked today from the data, without you in the room.\n";
+  t+="- We do not count posts published, prompts written, or hours logged.\n";
+  t+="\n## Requirements\n";
+  t+="- You have shipped something that is still running: a page, a sequence, a script, an integration. Links beat adjectives.\n";
+  t+="- You can explain, in one paragraph, why a 4-of-100 result is not a win.\n";
+  t+="- You are comfortable in the tooling yourself \u2014 HTML/CSS, a spreadsheet, analytics, basic scripting or an agent that writes them for you.\n";
+  t+="- You write plainly. Internal names and jargon are not allowed in anything a customer reads.\n";
+  t+="\n## Nice to have\n";
+  t+="- Experience writing pages that answer engines quote (schema, FAQ markup, plain HTML).\n";
+  t+="- A history of killing your own work in public, with the numbers attached.\n";
+  t+="\n## Not this role\n";
+  t+="- Meeting-led account management, community management, brand campaigns, and reporting for its own sake.\n";
+  t+="\n## Screening questions (ask these first)\n";
+  t+="1. Send us one link to something you built that is still live.\n";
+  t+="2. We ran 40 sends, got 4 replies, variant B looks better. What do you do next?\n";
+  t+="3. How many sends does a two-variant email test need before the result means anything? (Expected: ~1,500\u20132,000 per arm at a 3% baseline, 80% power, 20% relative lift.)\n";
+  t+="4. Name one thing you killed and what the number was.\n";
+  t+="5. What will you build in the first two weeks here, and how will we see it?\n";
+  document.getElementById("out").value=t;
+}
+document.getElementById("go").addEventListener("click",generate);
+["level","mode","company","bottleneck","s_seo","s_out","s_paid","s_auto","s_analytics","s_ai"].forEach(function(id){
+  var el=document.getElementById(id); el.addEventListener("change",function(){ if(document.getElementById("out").value) generate(); });
+});
+generate();
+</script>
+</body></html>
