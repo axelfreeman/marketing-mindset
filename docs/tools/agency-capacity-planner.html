@@ -3,9 +3,9 @@
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
-<title>Two-sided verdict planner &mdash; which side of a marketplace can be read</title>
-<meta name="description" content="Both sides of a marketplace funnel need their own floor. Enter sellers and buyers per month: get the floor per arm (13,914 for a 3% base rate and a +20% lift), the months until each side can be read, and the cost of one full two-arm test.">
-<link rel="canonical" href="https://axelfreeman.github.io/marketing-mindset/tools/two-sided-verdict-planner.html">
+<title>Agency capacity planner &mdash; which client can be read, and when</title>
+<meta name="description" content="An agency cannot pool its clients' traffic, so each client needs its own floor. Enter one client per line: get the months until each client can be read against the 13,914-per-arm floor, the price of one full test, and the smallest monthly volume readable inside your horizon.">
+<link rel="canonical" href="https://axelfreeman.github.io/marketing-mindset/tools/agency-capacity-planner.html">
 <style>
 :root{--bg:#0a0b0e;--panel:#111319;--panel2:#161922;--line:#242836;--tx:#e8eaf0;--dim:#9aa3b5;--acc:#4ade80;--acc2:#60a5fa;--warn:#fbbf24}
 *{box-sizing:border-box}body{margin:0;background:var(--bg);color:var(--tx);font:17px/1.65 -apple-system,BlinkMacSystemFont,'Segoe UI',Roboto,Arial,sans-serif}
@@ -30,19 +30,21 @@ footer{border-top:1px solid var(--line);margin-top:44px;padding:20px 0 44px;colo
 <body>
 <main>
 <p class="dim">Free tool &middot; no signup &middot; <a href="https://axelfreeman.github.io/marketing-mindset/tools/">all tools</a></p>
-<h1>Two-sided verdict planner</h1>
-<p><b>What it does.</b> A marketplace has two sides and each one needs its own floor. Enter what each side
-produces in a month (<code>name:per_month:cost_per_contact</code>, one per line) and the planner returns the
-contact floor per arm for the test you are running, how many months each side needs to see half of the floor in
-one arm, the price of one full two-arm test, and which side can actually be read first.</p>
+<h1>Agency capacity planner</h1>
+<p><b>What it does.</b> Clients are separate funnels: 10 clients with 2,000 contacts a month each is 20,000
+contacts a month and <b>not</b> one test &mdash; it is ten tests, because audiences do not merge. Enter one client
+per line (<code>name:contacts_per_month:cost_per_contact</code>) and the planner returns, per client, how many
+months until their arm reaches the floor, what one full two-arm test costs, who can be read first, and what
+monthly volume a client would need to be readable inside your horizon.</p>
 <p class="dim">The floor comes from the same formula as <code>npx marketing-mindset sample</code>: base 3%,
 +20% relative lift, 80% power, alpha 0.05 &rarr; <b>13,914</b> contacts per arm, <b>27,828</b> in total.</p>
 
 <section>
-<h2>Your sides</h2>
-<textarea id="sides" rows="5" style="width:100%;font-family:ui-monospace,Menlo,Consolas,monospace;background:#141821;color:#e6e9ef;border:1px solid #2a3040;border-radius:8px;padding:10px">sellers:400:0
-matched-transactions:600:0
-buyers:3000:0.4</textarea>
+<h2>Your roster</h2>
+<textarea id="clients" rows="5" style="width:100%;font-family:ui-monospace,Menlo,Consolas,monospace;background:#141821;color:#e6e9ef;border:1px solid #2a3040;border-radius:8px;padding:10px">client-a:2000:0
+client-b:6000:0.4
+client-c:12000:0
+client-d:900:0</textarea>
 <div style="display:flex;gap:14px;flex-wrap:wrap;margin:10px 0">
 <label>Base rate <input id="base" value="0.03" size="5"></label>
 <label>Relative lift <input id="lift" value="0.2" size="5"></label>
@@ -56,45 +58,49 @@ buyers:3000:0.4</textarea>
 
 <section>
 <h2>How to read the result</h2>
-<p>The floor is per arm, so each side has to deliver half of it: a side producing 400 units a month puts 200 in
-one arm, and 13,914 &divide; 200 is 70 months. Two sides do not make the test cheaper &mdash; they make it two
-tests, and if both draw on the scarce side, they split one arm's volume and neither finishes.</p>
-<p>The planner deliberately does not invent a lift. If you do not have a lift to test, the honest answer is not a
-number here: it is the smallest lift your volume can read, which the CLI reports with
+<p>Each client has to deliver half the floor on one arm: a client at 2,000 contacts a month puts 1,000 in an arm,
+and 13,914 &divide; 1,000 is 14 months. At 6,000 a month it is 5 months; at 12,000, 3. A roster of small clients is
+a roster of long tests &mdash; parallel, but long.</p>
+<p>The <b>smallest volume readable inside the horizon</b> is 27,828 &divide; horizon, so a 6-month promise needs
+4,638 contacts a month and a 3-month promise needs 9,276. Clients below that line can still be sold definitions,
+instrumentation and a stop rule; they cannot be sold a verdict.</p>
+<p>The planner does not invent a lift. If there is no lift to test, the honest answer is the smallest lift the
+volume can read, which the CLI reports with
 <code>npx marketing-mindset mde --base 0.03 --per-arm 5000</code>.</p>
 </section>
 
 <section>
 <h2>Related</h2>
 <p class="dim">
-<a href="https://axelfreeman.com/marketing-engineer.html">Marketing engineer for marketplaces</a> &middot;
-<a href="https://axelfreeman.com/marketing-engineer-for-marketplaces.html">the page this tool supports</a> &middot;
+<a href="https://axelfreeman.com/marketing-engineer-for-agencies.html">Marketing engineer for agencies</a> &middot;
+<a href="https://axelfreeman.com/marketing-engineer.html">the offer</a> &middot;
 <a href="channel-verdict-fit.html">channel verdict fit</a> &middot;
+<a href="two-sided-verdict-planner.html">two-sided verdict planner</a> &middot;
+<a href="test-queue-planner.html">test queue planner</a> &middot;
 <a href="test-cost-calculator.html">test cost calculator</a> &middot;
 <a href="readable-unit-chooser.html">readable unit chooser</a> &middot;
-<a href="test-queue-planner.html">test queue planner</a> &middot;
 <a href="https://www.npmjs.com/package/marketing-mindset">the same maths as an npm CLI</a> &middot;
 <a href="https://t.me/AxelFreeman">Telegram</a>
 </p>
 </section>
 </main>
 <script>
-/*TS-START*/
-var TS_ZA = { "0.05": 1.9599639845, "0.01": 2.5758293036, "0.1": 1.6448536270 };
-var TS_ZB = { "0.8": 0.8416212336, "0.9": 1.2815515655 };
-function tsSampleSize(rate, lift, power, alpha) {
+/*AP-START*/
+var AP_ZA = { "0.05": 1.9599639845, "0.01": 2.5758293036, "0.1": 1.6448536270 };
+var AP_ZB = { "0.8": 0.8416212336, "0.9": 1.2815515655 };
+function apSampleSize(rate, lift, power, alpha) {
   var p1 = Math.min(Math.max(rate, 0.000001), 0.999999);
   var p2 = Math.min(p1 * (1 + lift), 0.999999);
   var pbar = (p1 + p2) / 2;
-  var za = TS_ZA[String(alpha)] || TS_ZA["0.05"];
-  var zb = TS_ZB[String(power)] || TS_ZB["0.8"];
+  var za = AP_ZA[String(alpha)] || AP_ZA["0.05"];
+  var zb = AP_ZB[String(power)] || AP_ZB["0.8"];
   var num = Math.pow(za * Math.sqrt(2 * pbar * (1 - pbar)) + zb * Math.sqrt(p1 * (1 - p1) + p2 * (1 - p2)), 2);
   return Math.ceil(num / Math.pow(p2 - p1, 2));
 }
-function tsFmt(n) { return String(n).replace(/\B(?=(?:\d{3})+(?!\d))/g, ","); }
-function tsMoney(x) { return "$" + (Math.round(x * 100) / 100).toFixed(2); }
-function tsParse(text) {
-  var sides = [], notes = [];
+function apFmt(n) { return String(n).replace(/\B(?=(?:\d{3})+(?!\d))/g, ","); }
+function apMoney(x) { return "$" + (Math.round(x * 100) / 100).toFixed(2); }
+function apParse(text) {
+  var clients = [], notes = [];
   String(text || "").split(/[\n;,]+/).forEach(function (line) {
     line = line.trim();
     if (!line) { return; }
@@ -104,45 +110,44 @@ function tsParse(text) {
     if (!name) { notes.push("skipped (no name): " + line); return; }
     if (!isFinite(vol) || vol <= 0) { notes.push("skipped (per_month must be > 0): " + line); return; }
     if (!isFinite(cost) || cost < 0) { notes.push("skipped (cost must be >= 0): " + line); return; }
-    sides.push({ name: name, volume: vol, cost: cost });
+    clients.push({ name: name, volume: vol, cost: cost });
   });
-  return { sides: sides, notes: notes };
+  return { clients: clients, notes: notes };
 }
-function tsPlan(text, opts) {
+function apPlan(text, opts) {
   var o = opts || {};
   var base = o.base === undefined ? 0.03 : o.base;
   var lift = o.lift === undefined ? 0.2 : o.lift;
   var power = o.power === undefined ? 0.8 : o.power;
   var alpha = o.alpha === undefined ? 0.05 : o.alpha;
   var horizon = o.horizon === undefined ? 12 : o.horizon;
-  var parsed = tsParse(text);
-  var floor = tsSampleSize(base, lift, power, alpha);
+  var parsed = apParse(text);
+  var floor = apSampleSize(base, lift, power, alpha);
   var total = floor * 2;
-  var rows = parsed.sides.map(function (s) {
-    var perArm = Math.floor(s.volume / 2);
+  var rows = parsed.clients.map(function (c) {
+    var perArm = Math.floor(c.volume / 2);
     var months = perArm > 0 ? Math.ceil(floor / perArm) : null;
-    var testCost = s.cost > 0 ? total * s.cost : null;
+    var testCost = c.cost > 0 ? total * c.cost : null;
     return {
-      name: s.name, volume: s.volume, cost: s.cost, perArm: perArm,
-      months: months, testCost: testCost,
-      fits: months !== null && months <= horizon,
-      floorMonths: months
+      name: c.name, volume: c.volume, cost: c.cost, perArm: perArm, months: months, testCost: testCost,
+      fits: months !== null && months <= horizon
     };
   });
-  var fits = rows.filter(function (r) { return r.fits; });
-  fits.sort(function (a, b) { return a.months - b.months; });
-  var best = fits.length ? fits[0] : null;
-  var infeasible = rows.filter(function (r) { return r.months === null || !r.fits; })
-                       .map(function (r) { return r.name; });
+  var readable = rows.filter(function (r) { return r.fits; });
+  readable.sort(function (a, b) { return a.months - b.months; });
+  var best = readable.length ? readable[0] : null;
+  var waitlist = rows.filter(function (r) { return r.months === null || !r.fits; })
+                     .map(function (r) { return r.name; });
   return { floor: floor, total: total, rows: rows, best: best ? best.name : null,
-           bestMonths: best ? best.months : null, infeasible: infeasible,
-           horizon: horizon, notes: parsed.notes };
+           bestMonths: best ? best.months : null, readable: readable.length,
+           waitlist: waitlist, minVolume: Math.ceil(total / horizon), horizon: horizon,
+           notes: parsed.notes };
 }
-/*TS-END*/
+/*AP-END*/
 (function () {
   function render() {
     var out = document.getElementById("out");
-    var plan = tsPlan(document.getElementById("sides").value, {
+    var plan = apPlan(document.getElementById("clients").value, {
       base: Number(document.getElementById("base").value),
       lift: Number(document.getElementById("lift").value),
       power: Number(document.getElementById("power").value),
@@ -150,26 +155,26 @@ function tsPlan(text, opts) {
       horizon: Number(document.getElementById("horizon").value)
     });
     var h = "";
-    h += "<p><b>Floor:</b> " + tsFmt(plan.floor) + " contacts per arm &middot; " + tsFmt(plan.total) +
-         " in total &middot; horizon " + plan.horizon + " months</p>";
-    h += "<table><tr><th>Side</th><th>Per month</th><th>Per arm</th><th>Months to floor</th>" +
+    h += "<p><b>Floor:</b> " + apFmt(plan.floor) + " contacts per arm &middot; " + apFmt(plan.total) +
+         " in total &middot; horizon " + plan.horizon + " months &middot; smallest readable volume: " +
+         apFmt(plan.minVolume) + " contacts a month</p>";
+    h += "<table><tr><th>Client</th><th>Per month</th><th>Per arm</th><th>Months to floor</th>" +
          "<th>One full test</th><th>Inside horizon</th></tr>";
     plan.rows.forEach(function (r) {
-      h += "<tr><td>" + r.name + "</td><td>" + tsFmt(r.volume) + "</td><td>" + tsFmt(r.perArm) + "</td><td>" +
+      h += "<tr><td>" + r.name + "</td><td>" + apFmt(r.volume) + "</td><td>" + apFmt(r.perArm) + "</td><td>" +
            (r.months === null ? "&mdash;" : r.months) + "</td><td>" +
-           (r.testCost === null ? "&mdash;" : tsMoney(r.testCost)) + "</td><td>" +
+           (r.testCost === null ? "&mdash;" : apMoney(r.testCost)) + "</td><td>" +
            (r.fits ? "yes" : "no") + "</td></tr>";
     });
     h += "</table>";
+    h += "<p><b>" + plan.readable + " of " + plan.rows.length + "</b> clients can be read inside the horizon.";
     if (plan.best) {
-      h += "<p><b>Read this side first:</b> " + plan.best + " &mdash; " + plan.bestMonths +
-           " months to its floor, the shortest inside the horizon.</p>";
+      h += " Start with <b>" + plan.best + "</b> &mdash; " + plan.bestMonths + " months to its floor.</p>";
     } else {
-      h += "<p><b>No side can be read inside the horizon.</b> Either extend the horizon, raise the volume on one " +
-           "side, or test a larger lift (a bigger effect needs fewer contacts).</p>";
+      h += " None of them: raise the horizon, raise the volume on one client, or test a larger lift.</p>";
     }
-    if (plan.infeasible.length) {
-      h += "<p class=\"dim\">Outside the horizon: " + plan.infeasible.join(", ") + "</p>";
+    if (plan.waitlist.length) {
+      h += "<p class=\"dim\">Waitlist (sell a diagnostic, not a verdict): " + plan.waitlist.join(", ") + "</p>";
     }
     if (plan.notes.length) {
       h += "<p class=\"dim\">" + plan.notes.join("<br>") + "</p>";
@@ -177,7 +182,7 @@ function tsPlan(text, opts) {
     out.innerHTML = h;
   }
   document.getElementById("run").addEventListener("click", render);
-  ["sides", "base", "lift", "power", "alpha", "horizon"].forEach(function (id) {
+  ["clients", "base", "lift", "power", "alpha", "horizon"].forEach(function (id) {
     document.getElementById(id).addEventListener("input", render);
   });
   render();
@@ -194,5 +199,4 @@ function tsPlan(text, opts) {
   },true);
 </script>
 
-<p style="color:#9aa3b5">Also: <a href="https://axelfreeman.github.io/marketing-mindset/tools/agency-capacity-planner.html">agency capacity planner</a> &mdash; enter one client per line and see which client can be read and when, plus the smallest monthly volume readable inside your horizon.</p>
 </body></html>
