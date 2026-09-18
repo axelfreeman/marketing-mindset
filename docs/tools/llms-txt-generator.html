@@ -1,0 +1,146 @@
+<!DOCTYPE html>
+<html lang="en"><head><meta charset="UTF-8"><meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>llms.txt generator: the file AI crawlers read before they quote you</title>
+<meta name="description" content="Free llms.txt generator. Fill in what your site answers and where the canonical pages are; it writes the llms.txt file that model crawlers read. No account, runs in the browser.">
+<link rel="canonical" href="https://axelfreeman.github.io/marketing-mindset/tools/llms-txt-generator.html">
+<meta property="og:title" content="llms.txt generator — tell AI crawlers what your site answers">
+<meta property="og:description" content="Writes a valid llms.txt from your site name, the questions you answer and your canonical pages. Copy or download, no account.">
+<meta property="og:url" content="https://axelfreeman.github.io/marketing-mindset/tools/llms-txt-generator.html">
+<style>
+:root{--bg:#0a0b0e;--panel:#111319;--panel2:#161922;--line:#242836;--tx:#e8eaf0;--dim:#9aa3b5;--acc:#4ade80;--acc2:#60a5fa;--warn:#fbbf24}
+*{box-sizing:border-box}body{margin:0;background:var(--bg);color:var(--tx);font:17px/1.65 -apple-system,BlinkMacSystemFont,'Segoe UI',Roboto,Arial,sans-serif}
+.wrap{max-width:900px;margin:0 auto;padding:0 22px}a{color:var(--acc2);text-decoration:none;border-bottom:1px solid rgba(96,165,250,.35)}
+h1{font-family:Georgia,serif;font-size:clamp(27px,5vw,40px);font-weight:400;line-height:1.14;margin:40px 0 14px}
+h2{font-family:Georgia,serif;font-weight:400;font-size:23px;margin:34px 0 6px}
+p{color:var(--dim)}.lede{font-size:19px}
+.card{background:var(--panel);border:1px solid var(--line);border-radius:12px;padding:20px 22px;margin:16px 0}
+label{display:block;margin:12px 0 4px;font-size:15px;color:var(--dim)}
+input,textarea{width:100%;background:var(--panel2);border:1px solid var(--line);color:var(--tx);border-radius:8px;padding:11px 12px;font-size:16px;font-family:inherit}
+textarea{min-height:120px;font-family:ui-monospace,SFMono-Regular,Menlo,monospace;font-size:14px}
+button{background:var(--acc);color:#08110c;border:0;border-radius:8px;padding:11px 18px;font-size:16px;font-weight:600;cursor:pointer;margin:14px 10px 0 0}
+button.sec{background:var(--panel2);color:var(--tx);border:1px solid var(--line);font-weight:500}
+pre{background:var(--panel2);border:1px solid var(--line);border-radius:10px;padding:16px;overflow:auto;font-size:13px;line-height:1.5;white-space:pre-wrap;word-break:break-word}
+.hint{font-size:14px;color:var(--dim);margin-top:6px}
+table{width:100%;border-collapse:collapse;margin-top:8px}td,th{text-align:left;padding:7px 6px;border-bottom:1px solid var(--line);font-size:15px}
+code{background:var(--panel2);padding:2px 6px;border-radius:5px;font-size:14px}
+footer{border-top:1px solid var(--line);margin-top:44px;padding:20px 0 44px;color:var(--dim);font-size:15px}
+.badge{display:inline-block;font-size:13px;color:var(--acc);border:1px solid rgba(74,222,128,.4);border-radius:99px;padding:2px 10px;margin-bottom:8px}
+</style></head>
+<body>
+<div class="wrap">
+<h1>llms.txt generator: what AI crawlers read before they quote you</h1>
+<p class="lede">An <code>llms.txt</code> is a plain-text file at the root of your site that tells model
+crawlers what the site answers and which pages are canonical. It is not a ranking trick &mdash; it is the
+difference between a model reading your home page and a model reading the page that actually answers the
+question. Fill this in and you get the file.</p>
+
+<div class="card">
+  <span class="badge">runs in your browser &middot; nothing is uploaded</span>
+  <label>Site name</label>
+  <input id="name" value="Acme Analytics" oninput="build()">
+  <label>One line: what the site is and who it is for</label>
+  <input id="about" value="Acme Analytics is a web analytics product for B2B SaaS teams that need to explain activation, not pageviews." oninput="build()">
+  <label>Canonical base URL</label>
+  <input id="base" value="https://acme.example" oninput="build()">
+  <label>Questions the site answers (one per line, most important first)</label>
+  <textarea id="qs" oninput="build()">What is a good activation rate for B2B SaaS?
+How do you measure activation without a data team?
+Product analytics vs marketing analytics: which do you need first?</textarea>
+  <label>Canonical pages (one per line: URL, then a short description after a pipe)</label>
+  <textarea id="pages" oninput="build()">https://acme.example/what-is-activation-rate.html | Definition, benchmarks and how to compute the number
+https://acme.example/activation-without-a-data-team.html | Setup for teams with no analyst
+https://acme.example/pricing.html | Plans and prices in numbers
+https://acme.example/docs/ | Product documentation</textarea>
+  <label>Optional: anything the model should ignore</label>
+  <input id="ignore" value="Blog posts older than 2024; job listings." oninput="build()">
+  <label>Optional: licensing / attribution line</label>
+  <input id="lic" value="Content may be quoted with a link to the canonical URL." oninput="build()">
+  <button onclick="build();document.getElementById('out').scrollIntoView({behavior:'smooth'})">Generate llms.txt</button>
+  <button class="sec" onclick="copyOut()">Copy</button>
+  <button class="sec" onclick="dl()">Download llms.txt</button>
+  <div class="hint" id="stat"></div>
+</div>
+
+<h2>The file</h2>
+<pre id="out"></pre>
+
+<h2>Where to put it (60 seconds of work)</h2>
+<table>
+<tr><th>Step</th><th>What to do</th></tr>
+<tr><td>1</td><td>Save the file as <code>llms.txt</code> in the root of the domain, next to <code>robots.txt</code>.</td></tr>
+<tr><td>2</td><td>Check it returns <code>200</code> as <code>text/plain</code>: <code>curl -sI https://your.site/llms.txt</code>.</td></tr>
+<tr><td>3</td><td>Make sure <code>robots.txt</code> does not block <code>GPTBot</code>, <code>ClaudeBot</code>, <code>PerplexityBot</code>, <code>Google-Extended</code> or <code>OAI-SearchBot</code>.</td></tr>
+<tr><td>4</td><td>Add the URL to your sitemap ping (IndexNow) so it is re-read when the pages change.</td></tr>
+<tr><td>5</td><td>Re-generate whenever you add or retire a canonical page &mdash; a stale llms.txt is worse than none.</td></tr>
+</table>
+
+<h2>What it will not do</h2>
+<p>It will not make a page quotable on its own. A model quotes pages that answer one question in the first
+60 words, state prices and limits as numbers, and are linked from somewhere the model already reads
+(registries, repos, docs, third-party pages). <code>llms.txt</code> is the signpost; the page is the
+content. Run the <a href="aeo-readiness-checklist.html">23-point agent-readiness checklist</a> for the rest
+of it, and use the <a href="kill-rule-calculator.html">kill-rule calculator</a> before you decide an AEO
+project failed because nothing was quoted in week two.</p>
+
+<footer>
+<p>Free tool from <a href="https://github.com/axelfreeman/marketing-mindset">marketing-mindset</a> (MIT),
+also on <a href="https://www.npmjs.com/package/marketing-mindset">npm</a> (<code>npx marketing-mindset aeo</code>).</p>
+<p>If you want this layer built for you &mdash; the pages, the markup, the sitemap, the tracking and the kill
+rule &mdash; that is the job: <a href="https://axelfreeman.com/marketing-engineer.html">marketing engineer</a>
+&middot; <a href="https://axelfreeman.com/answer-engine-optimization-service.html">AEO service</a>
+&middot; <a href="https://axelfreeman.com/marketing-engineer-cost.html">what it costs</a>
+&middot; <a href="https://t.me/AxelFreeman">Telegram</a>.</p>
+</footer>
+</div>
+<script>
+function lines(id){return document.getElementById(id).value.split("\n").map(s=>s.trim()).filter(Boolean);}
+function build(){
+  var n=document.getElementById("name").value.trim();
+  var ab=document.getElementById("about").value.trim();
+  var base=document.getElementById("base").value.replace(/\/+$/,"");
+  var qs=lines("qs"), pages=lines("pages");
+  var L=[];
+  L.push("# "+n);
+  L.push("");
+  L.push("> "+(ab||"[one line about the site]"));
+  L.push("");
+  L.push("## Canonical pages");
+  pages.forEach(function(p){
+    var parts=p.split("|");
+    var url=parts[0].trim(), desc=(parts[1]||"").trim();
+    L.push("- "+url+(desc?": "+desc:""));
+  });
+  if(qs.length){
+    L.push("");
+    L.push("## Questions this site answers");
+    qs.forEach(function(q){L.push("- "+q);});
+  }
+  var ig=document.getElementById("ignore").value.trim();
+  var lic=document.getElementById("lic").value.trim();
+  if(ig||lic){
+    L.push("");
+    L.push("## Notes");
+    if(ig) L.push("- Ignore: "+ig);
+    if(lic) L.push("- Licensing: "+lic);
+  }
+  L.push("");
+  L.push("## Contact / more");
+  L.push("- Sitemap: "+base+"/sitemap.xml");
+  L.push("- Machine-readable file list: "+base+"/llms.txt");
+  var out=L.join("\n");
+  document.getElementById("out").textContent=out;
+  document.getElementById("stat").textContent=pages.length+" canonical page(s), "+qs.length+" question(s), "+out.length+" characters"+(out.length>4000?" — long files get truncated by some clients, keep it tight":"");
+}
+function copyOut(){
+  var t=document.getElementById("out").textContent;
+  navigator.clipboard.writeText(t).then(function(){document.getElementById("stat").textContent="copied " + t.length + " characters";});
+}
+function dl(){
+  var t=document.getElementById("out").textContent;
+  var b=new Blob([t],{type:"text/plain"});
+  var a=document.createElement("a");
+  a.href=URL.createObjectURL(b);a.download="llms.txt";a.click();
+}
+build();
+</script>
+</body></html>
