@@ -1,0 +1,106 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Outbound deliverability checklist — 12 checks before your first send</title>
+<meta name="description" content="A 12-point weighted checklist for cold outbound deliverability: domain and identity, SPF/DKIM/DMARC, sending behaviour, list hygiene. Scores live in the browser and tells you the three heaviest items you have not fixed yet.">
+<link rel="canonical" href="https://axelfreeman.github.io/marketing-mindset/tools/outbound-deliverability-checklist.html">
+<meta property="og:title" content="Outbound deliverability checklist">
+<meta property="og:url" content="https://axelfreeman.github.io/marketing-mindset/tools/outbound-deliverability-checklist.html">
+<style>
+:root{--bg:#0a0b0e;--panel:#111319;--panel2:#161922;--line:#242836;--tx:#e8eaf0;--dim:#9aa3b5;--acc:#4ade80;--acc2:#60a5fa;--warn:#fbbf24}
+*{box-sizing:border-box}body{margin:0;background:var(--bg);color:var(--tx);font:17px/1.65 -apple-system,BlinkMacSystemFont,'Segoe UI',Roboto,Arial,sans-serif}
+.wrap{max-width:900px;margin:0 auto;padding:0 22px}a{color:var(--acc2);text-decoration:none;border-bottom:1px solid rgba(96,165,250,.35)}
+h1{font-family:Georgia,serif;font-size:clamp(27px,5vw,40px);font-weight:400;line-height:1.14;margin:40px 0 14px}
+h2{font-family:Georgia,serif;font-weight:400;font-size:23px;margin:34px 0 6px}
+p{color:var(--dim)}.lede{font-size:19px}
+.card{background:var(--panel);border:1px solid var(--line);border-radius:12px;padding:20px 22px;margin:16px 0}
+label{display:block;margin:12px 0 4px;font-size:15px;color:var(--dim)}
+input,textarea{width:100%;background:var(--panel2);border:1px solid var(--line);color:var(--tx);border-radius:8px;padding:11px 12px;font-size:16px;font-family:inherit}
+textarea{min-height:120px;font-family:ui-monospace,SFMono-Regular,Menlo,monospace;font-size:14px}
+button{background:var(--acc);color:#08110c;border:0;border-radius:8px;padding:11px 18px;font-size:16px;font-weight:600;cursor:pointer;margin:14px 10px 0 0}
+button.sec{background:var(--panel2);color:var(--tx);border:1px solid var(--line);font-weight:500}
+pre{background:var(--panel2);border:1px solid var(--line);border-radius:10px;padding:16px;overflow:auto;font-size:13px;line-height:1.5;white-space:pre-wrap;word-break:break-word}
+.hint{font-size:14px;color:var(--dim);margin-top:6px}
+table{width:100%;border-collapse:collapse;margin-top:8px}td,th{text-align:left;padding:7px 6px;border-bottom:1px solid var(--line);font-size:15px}
+code{background:var(--panel2);padding:2px 6px;border-radius:5px;font-size:14px}
+footer{border-top:1px solid var(--line);margin-top:44px;padding:20px 0 44px;color:var(--dim);font-size:15px}
+.badge{display:inline-block;font-size:13px;color:var(--acc);border:1px solid rgba(74,222,128,.4);border-radius:99px;padding:2px 10px;margin-bottom:8px}
+</style>
+</head>
+<body>
+<main>
+<p style="color:#9aa3b5"><a href="https://axelfreeman.github.io/marketing-mindset/">&larr; marketing-mindset</a></p>
+<h1>Outbound deliverability checklist</h1>
+<p style="color:#9aa3b5">Twelve weighted checks, 100 points, scored in your browser. Nothing is sent anywhere:
+the score stays on this page. Fix the three heaviest unchecked items before you send anything.</p>
+<div id="score" style="font-size:1.5rem;margin:12px 0"></div>
+<div id="bar" style="height:8px;background:#222a3a;border-radius:4px;overflow:hidden"><div id="fill" style="height:8px;width:0;background:#5b8def"></div></div>
+<p id="verdict" style="color:#9aa3b5"></p>
+<div id="groups"></div>
+<p id="next" style="color:#f0c674"></p>
+<h2>Why these weights</h2>
+<p style="color:#9aa3b5">Authentication and list hygiene carry 50 of the 100 points because they are binary:
+either the record exists or every send is taking a penalty you cannot see. Sending behaviour is next (25) because
+it is the part people rush. Identity is smallest (25 → 15 explained below) because it is the easiest to fix once
+you know it matters.</p>
+<h2>Do it on your own domain first</h2>
+<p>This checklist is the same one I run before touching a client's outbound setup, and the same one this site
+passes. If you want it done for you — domain plan, records, ramp schedule, suppression and the sequence —
+that is what the <a href="https://axelfreeman.com/marketing-engineer.html">marketing engineer engagement</a> covers: <b>Sprint $900</b>,
+<b>Engine $1,900/month</b>, <b>Full Build $2,900</b>.</p>
+<p><a href="https://t.me/AxelFreeman"><b>Write to me on Telegram &rarr;</b></a></p>
+<p style="color:#9aa3b5">Related free tools:
+<a href="email-test-planner.html">test-size planner</a> &middot;
+<a href="kill-rule-calculator.html">kill-rule calculator</a> &middot;
+<a href="aeo-readiness-checklist.html">AEO readiness checklist</a> &middot;
+<a href="marketing-engineer-jd-generator.html">JD generator</a> &middot;
+<a href="llms-txt-generator.html">llms.txt generator</a></p>
+<p style="color:#9aa3b5">Method in the open: <a href="https://github.com/axelfreeman/marketing-engineer-playbook">playbook repo</a>
+&middot; <a href="https://www.npmjs.com/package/marketing-mindset">npx marketing-mindset</a></p>
+</main>
+<script>
+const CHECKS = [{"g": "Domain & identity", "w": 25, "items": [{"t": "Sending from a subdomain, not the root domain", "w": 8, "n": "mail.yoursite.com protects yoursite.com reputation. If the root domain burns, the website keeps working."}, {"t": "The sending domain has been in use for weeks, not hours", "w": 7, "n": "Purchase date is day one. A domain that has never sent anything is an unknown sender to every filter."}, {"t": "From name and reply-to are a real person", "w": 10, "n": "A human name and a mailbox somebody reads. noreply@ on a first touch burns the reply rate and the reputation."}]}, {"g": "Authentication", "w": 30, "items": [{"t": "SPF published for the sending domain", "w": 10, "n": "One record, under 10 DNS lookups. Over the limit and receivers silently drop the pass."}, {"t": "DKIM signing enabled", "w": 10, "n": "The signature is what survives forwarding. Without it, aligned SPF alone is a fragile pass."}, {"t": "DMARC published for the main domain", "w": 10, "n": "Start at p=none with an rua address, read the reports for two weeks, then move to quarantine."}]}, {"g": "Sending behaviour", "w": 25, "items": [{"t": "Volume ramped day over day instead of launched at full speed", "w": 9, "n": "Doubling every 2-3 days from a small start. A flat launch at target volume is how new domains get filtered."}, {"t": "At most ~50 sends per mailbox per day", "w": 8, "n": "Spread the day's volume over several mailboxes. One mailbox pushing hundreds a day is a signature, not a strategy."}, {"t": "A reply pauses the sequence automatically", "w": 8, "n": "The reply is the goal. Continuing to sequence somebody who already answered is the fastest way to a complaint."}]}, {"g": "List and hygiene", "w": 20, "items": [{"t": "Zero purchased or scraped addresses", "w": 10, "n": "Spam traps are the product of list vendors. A bought list is a pre-paid deliverability loss."}, {"t": "Hard bounces are suppressed automatically", "w": 5, "n": "One bounce is a dead mailbox. Retrying it repeatedly is what the filters count."}, {"t": "One-click unsubscribe present in every message", "w": 5, "n": "Required by Gmail/Yahoo bulk rules, and cheaper than the complaint it prevents."}]}];
+let html = "";
+CHECKS.forEach(function(g, gi){
+  html += '<h2>'+g.g+' <span style="color:#9aa3b5;font-size:0.8rem">'+g.w+' pts</span></h2>';
+  g.items.forEach(function(it, ii){
+    const id = 'c'+gi+'_'+ii;
+    html += '<div style="margin:6px 0"><label><input type="checkbox" data-w="'+it.w+'" data-t="'+it.t.replace(/"/g,'&quot;')+'" id="'+id+'"> '
+         + '<b>'+it.t+'</b> <span style="color:#9aa3b5">('+it.w+')</span></label>'
+         + '<div style="color:#9aa3b5;font-size:0.9rem;margin-left:22px">'+it.n+'</div></div>';
+  });
+});
+document.getElementById('groups').innerHTML = html;
+function score(){
+  let s = 0, missing = [];
+  document.querySelectorAll('input[type=checkbox]').forEach(function(c){
+    if (c.checked) s += Number(c.dataset.w); else missing.push({t: c.dataset.t, w: Number(c.dataset.w)});
+  });
+  document.getElementById('score').textContent = s + ' / 100';
+  document.getElementById('fill').style.width = s + '%';
+  let v = 'Not safe to send yet.';
+  if (s >= 90) v = 'Ship it — and keep the reports open for a week.';
+  else if (s >= 70) v = 'Sendable at low volume. Fix the rest as you ramp.';
+  else if (s >= 50) v = 'Half-fixed. You are paying for deliverability with volume.';
+  document.getElementById('verdict').textContent = v;
+  missing.sort(function(a,b){return b.w - a.w;});
+  document.getElementById('next').textContent = missing.length
+    ? 'Fix these first: ' + missing.slice(0,3).map(function(m){return m.t + ' (' + m.w + ')';}).join(' · ')
+    : 'All twelve checks pass. Nothing left to fix here.';
+}
+document.addEventListener('change', score);
+score();
+</script>
+<!-- GA4 -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-T6VWS5BNE3"></script>
+<script>
+  window.dataLayer=window.dataLayer||[];function gtag(){dataLayer.push(arguments)}
+  gtag('js',new Date());gtag('config','G-T6VWS5BNE3');
+  document.addEventListener('click',function(e){
+    var a=e.target.closest&&e.target.closest('a[href*="t.me/"]');
+    if(a){gtag('event','telegram_click',{link_url:a.href,page_path:location.pathname});}
+  },true);
+</script>
+</body></html>
