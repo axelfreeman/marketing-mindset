@@ -1,0 +1,187 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>A/B verdict calculator &mdash; was the difference real, and was the volume ever enough?</title>
+<meta name="description" content="Read a finished A/B or email test properly: Wilson interval per arm, Newcomb interval on the difference, the contact floor the observed lift would need at 80% power, and the three honest verdicts - not readable, a lead not a verdict, readable. Runs in your browser, nothing is sent anywhere.">
+<link rel="canonical" href="https://axelfreeman.github.io/marketing-mindset/tools/ab-verdict-calculator.html">
+<meta property="og:title" content="A/B verdict calculator">
+<meta property="og:url" content="https://axelfreeman.github.io/marketing-mindset/tools/ab-verdict-calculator.html">
+<meta property="og:description" content="Two questions every test read-out skips: is the interval separated from zero, and is the volume above the floor the observed lift needs?">
+<style>
+:root{--bg:#0a0b0e;--panel:#111319;--panel2:#161922;--line:#242836;--tx:#e8eaf0;--dim:#9aa3b5;--acc:#4ade80;--acc2:#60a5fa;--warn:#fbbf24}
+*{box-sizing:border-box}body{margin:0;background:var(--bg);color:var(--tx);font:17px/1.65 -apple-system,BlinkMacSystemFont,'Segoe UI',Roboto,Arial,sans-serif}
+.wrap{max-width:900px;margin:0 auto;padding:0 22px}a{color:var(--acc2);text-decoration:none;border-bottom:1px solid rgba(96,165,250,.35)}
+h1{font-family:Georgia,serif;font-size:clamp(27px,5vw,40px);font-weight:400;line-height:1.14;margin:40px 0 14px}
+h2{font-family:Georgia,serif;font-weight:400;font-size:23px;margin:34px 0 6px}
+p{color:var(--dim)}.lede{font-size:19px}
+.card{background:var(--panel);border:1px solid var(--line);border-radius:12px;padding:20px 22px;margin:16px 0}
+label{display:block;margin:12px 0 4px;font-size:15px;color:var(--dim)}
+input,textarea{width:100%;background:var(--panel2);border:1px solid var(--line);color:var(--tx);border-radius:8px;padding:11px 12px;font-size:16px;font-family:inherit}
+textarea{min-height:120px;font-family:ui-monospace,SFMono-Regular,Menlo,monospace;font-size:14px}
+button{background:var(--acc);color:#08110c;border:0;border-radius:8px;padding:11px 18px;font-size:16px;font-weight:600;cursor:pointer;margin:14px 10px 0 0}
+button.sec{background:var(--panel2);color:var(--tx);border:1px solid var(--line);font-weight:500}
+pre{background:var(--panel2);border:1px solid var(--line);border-radius:10px;padding:16px;overflow:auto;font-size:13px;line-height:1.5;white-space:pre-wrap;word-break:break-word}
+.hint{font-size:14px;color:var(--dim);margin-top:6px}
+table{width:100%;border-collapse:collapse;margin-top:8px}td,th{text-align:left;padding:7px 6px;border-bottom:1px solid var(--line);font-size:15px}
+code{background:var(--panel2);padding:2px 6px;border-radius:5px;font-size:14px}
+footer{border-top:1px solid var(--line);margin-top:44px;padding:20px 0 44px;color:var(--dim);font-size:15px}
+.badge{display:inline-block;font-size:13px;color:var(--acc);border:1px solid rgba(74,222,128,.4);border-radius:99px;padding:2px 10px;margin-bottom:8px}
+</style>
+</head>
+<body>
+<main>
+<p style="color:#9aa3b5"><a href="https://axelfreeman.github.io/marketing-mindset/">&larr; marketing-mindset</a></p>
+<h1>A/B verdict calculator</h1>
+<p style="color:#9aa3b5">Most read-outs answer one question (&ldquo;which arm won?&rdquo;) and skip two others:
+<b>is the difference separated from zero</b>, and <b>is the volume above the floor the observed lift would
+need</b>. This page answers all three, the same way the <a href="https://www.npmjs.com/package/marketing-mindset">published CLI</a> does
+(<code>npx marketing-mindset verdict</code>). Everything runs in your browser; nothing is sent anywhere.</p>
+
+<h2>1. The two arms</h2>
+<div style="margin:14px 0">
+<label style="display:block;margin:8px 0">Control &mdash; conversions / sample <input id="a" type="text" value="120/4000" style="width:100%"></label>
+<label style="display:block;margin:8px 0">Variant &mdash; conversions / sample <input id="b" type="text" value="168/4000" style="width:100%"></label>
+<label style="display:block;margin:8px 0">Alpha (confidence)
+<select id="alpha" style="width:100%">
+<option value="0.05">0.05 &mdash; 95% intervals (default)</option>
+<option value="0.01">0.01 &mdash; 99% intervals</option>
+<option value="0.1">0.1 &mdash; 90% intervals</option>
+</select></label>
+</div>
+
+<h2>2. The read-out</h2>
+<div id="out"></div>
+
+<h2>3. What the three verdicts mean</h2>
+<div style="margin:14px 0">
+<div class="card"><h3>not readable</h3><p>The interval for the difference includes zero. More volume, a higher base rate or a bigger difference &mdash; not a rebuild.</p></div>
+<div class="card"><h3>a lead, not a verdict</h3><p>The interval excludes zero, but the sample is below the floor the observed lift needs. Real signal, unreadable size: keep it running to the floor.</p></div>
+<div class="card"><h3>readable</h3><p>The interval excludes zero and the volume clears the floor. This is the only state in which a number can be acted on.</p></div>
+</div>
+
+<h2>4. Before the test starts</h2>
+<p style="color:#9aa3b5">A verdict calculator only helps if the floor was checked first:
+<a href="https://axelfreeman.github.io/marketing-mindset/tools/email-test-planner.html">how many sends an email
+test needs</a>, <a href="https://axelfreeman.github.io/marketing-mindset/tools/kill-rule-calculator.html">the stop
+rule written before the first send</a>,
+<a href="https://axelfreeman.github.io/marketing-mindset/tools/utm-ga4-naming-builder.html">the tagged url and
+event name that make the arms comparable</a>. The same arithmetic is in
+<a href="https://axelfreeman.com/marketing-engineer-job-description.html">the job description page</a>: a strict
+test at a 3% base rate needs 13,914 contacts per arm.</p>
+<p style="color:#9aa3b5">Written by Axel Freeman &mdash; <a href="https://axelfreeman.com/marketing-engineer.html">marketing engineer</a>.
+<a href="https://t.me/AxelFreeman">Telegram</a> &middot; <a href="https://axelfreeman.com/llms.txt">llms.txt</a></p>
+</main>
+<script>
+/*VC-START*/
+var VC_ZA = { "0.05": 1.9599639845, "0.01": 2.5758293036, "0.1": 1.6448536270 };
+var VC_ZB = { "0.8": 0.8416212336, "0.9": 1.2815515655 };
+function vcSampleSize(rate, lift, power, alpha) {
+  var p1 = Math.min(Math.max(rate, 0.000001), 0.999999);
+  var p2 = Math.min(p1 * (1 + lift), 0.999999);
+  var pbar = (p1 + p2) / 2;
+  var za = VC_ZA[String(alpha)] || VC_ZA["0.05"];
+  var zb = VC_ZB[String(power)] || VC_ZB["0.8"];
+  var num = Math.pow(za * Math.sqrt(2 * pbar * (1 - pbar)) + zb * Math.sqrt(p1 * (1 - p1) + p2 * (1 - p2)), 2);
+  return Math.ceil(num / Math.pow(p2 - p1, 2));
+}
+function vcWilson(conv, n, alpha) {
+  var z = VC_ZA[String(alpha)] || VC_ZA["0.05"];
+  var p = conv / n;
+  var d = 1 + (z * z) / n;
+  var centre = (p + (z * z) / (2 * n)) / d;
+  var half = (z * Math.sqrt((p * (1 - p)) / n + (z * z) / (4 * n * n))) / d;
+  return { low: Math.max(0, centre - half), high: Math.min(1, centre + half) };
+}
+function vcParseArm(v) {
+  var s = String(v === undefined ? "" : v).trim();
+  var m = s.match(/^(\d+)\s*\/\s*(\d+)$/);
+  if (!m) { return null; }
+  return { conv: Number(m[1]), n: Number(m[2]) };
+}
+function vcR6(x) { return Math.round(x * 1e6) / 1e6; }
+function readVerdict(input) {
+  var problems = [];
+  var alpha = Number(input.alpha === undefined ? 0.05 : input.alpha);
+  var a = vcParseArm(input.a), b = vcParseArm(input.b);
+  if (!a) { problems.push("control arm: write it as conversions/sample, for example 120/4000"); }
+  if (!b) { problems.push("variant arm: write it as conversions/sample, for example 168/4000"); }
+  if (a && (a.n <= 0 || a.conv > a.n)) { problems.push("control arm needs conversions <= sample and a sample above zero"); }
+  if (b && (b.n <= 0 || b.conv > b.n)) { problems.push("variant arm needs conversions <= sample and a sample above zero"); }
+  if (!VC_ZA[String(alpha)]) { problems.push("alpha must be 0.05, 0.01 or 0.1"); }
+  if (problems.length) { return { problems: problems }; }
+  var pa = a.conv / a.n, pb = b.conv / b.n;
+  var ia = vcWilson(a.conv, a.n, alpha), ib = vcWilson(b.conv, b.n, alpha);
+  var diff = pb - pa;
+  var lo = diff - Math.sqrt(Math.pow(pa - ia.low, 2) + Math.pow(ib.high - pb, 2));
+  var hi = diff + Math.sqrt(Math.pow(ia.high - pa, 2) + Math.pow(pb - ib.low, 2));
+  var decisive = lo > 0 || hi < 0;
+  var rel = pa > 0 ? diff / pa : null;
+  var floor = (rel !== null && rel !== 0) ? vcSampleSize(pa, Math.abs(rel), 0.8, alpha) : null;
+  var underpowered = floor !== null && b.n < floor;
+  var branch, verdict;
+  if (!decisive) {
+    branch = "not readable";
+    verdict = "The " + ((1 - alpha) * 100) + "% interval for the difference includes zero, so the point estimate is noise dressed as a result. The honest moves are more volume, a higher base rate, or a bigger difference - not a rebuild.";
+  } else if (underpowered) {
+    branch = "a lead, not a verdict";
+    verdict = "The interval excludes zero, but " + b.n + " per arm is below the " + floor + " that the observed lift would need. Keep it running to that floor before anything is rebuilt on it.";
+  } else {
+    branch = "readable";
+    verdict = "The interval excludes zero and the volume clears the " + floor + " the observed lift requires - this is a number a decision can be taken on.";
+  }
+  return {
+    problems: [],
+    control: { conversions: a.conv, n: a.n, rate: vcR6(pa), wilson_low: vcR6(ia.low), wilson_high: vcR6(ia.high) },
+    variant: { conversions: b.conv, n: b.n, rate: vcR6(pb), wilson_low: vcR6(ib.low), wilson_high: vcR6(ib.high) },
+    absolute_lift_pp: vcR6(diff * 100),
+    relative_lift: rel === null ? null : vcR6(rel),
+    difference_interval: [vcR6(lo), vcR6(hi)],
+    decisive: decisive, floor_per_arm: floor, underpowered: underpowered, alpha: alpha,
+    branch: branch, verdict: verdict
+  };
+}
+/*VC-END*/
+var $ = function (id) { return document.getElementById(id); };
+function fmt(n) { return n.toLocaleString("en-US"); }
+function render() {
+  var res = readVerdict({ a: $("a").value, b: $("b").value, alpha: $("alpha").value });
+  if (res.problems.length) {
+    $("out").innerHTML = "<ul style=\"color:#f0a0a0\">" + res.problems.map(function (p) { return "<li>" + p + "</li>"; }).join("") + "</ul>";
+    return;
+  }
+  var rows = [
+    ["Control", res.control.conversions + " / " + fmt(res.control.n) + " = " + (res.control.rate * 100).toFixed(2) + "%",
+     "Wilson " + (res.control.wilson_low * 100).toFixed(2) + "% .. " + (res.control.wilson_high * 100).toFixed(2) + "%"],
+    ["Variant", res.variant.conversions + " / " + fmt(res.variant.n) + " = " + (res.variant.rate * 100).toFixed(2) + "%",
+     "Wilson " + (res.variant.wilson_low * 100).toFixed(2) + "% .. " + (res.variant.wilson_high * 100).toFixed(2) + "%"],
+    ["Difference", res.absolute_lift_pp + "pp" + (res.relative_lift === null ? "" : " (" + (res.relative_lift * 100).toFixed(1) + "% relative)"),
+     "interval " + (res.difference_interval[0] * 100).toFixed(2) + "pp .. " + (res.difference_interval[1] * 100).toFixed(2) + "pp"],
+    ["Separated from zero", res.decisive ? "yes" : "no", ""],
+    ["Volume", res.floor_per_arm === null ? "not computable" : fmt(res.floor_per_arm) + " per arm needed for this lift",
+     res.floor_per_arm === null ? "" : (res.underpowered ? "below the floor" : "clears the floor")]
+  ];
+  $("out").innerHTML = "<table><tr><th></th><th>What happened</th><th>What it means</th></tr>" +
+    rows.map(function (r) { return "<tr><td><b>" + r[0] + "</b></td><td>" + r[1] + "</td><td>" + r[2] + "</td></tr>"; }).join("") +
+    "</table><p style=\"margin-top:12px\"><b>Verdict: " + res.branch + "</b> &mdash; " + res.verdict + "</p>";
+  document.getElementById("branch").textContent = res.branch;
+}
+["a", "b", "alpha"].forEach(function (f) {
+  var el = $(f);
+  if (el) { el.addEventListener("input", render); el.addEventListener("change", render); }
+});
+render();
+</script>
+<span id="branch" style="display:none"></span>
+<!-- GA4 -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-T6VWS5BNE3"></script>
+<script>
+  window.dataLayer=window.dataLayer||[];function gtag(){dataLayer.push(arguments)}
+  gtag('js',new Date());gtag('config','G-T6VWS5BNE3');
+  document.addEventListener('click',function(e){
+    var a=e.target.closest&&e.target.closest('a[href*="t.me/"]');
+    if(a){gtag('event','telegram_click',{link_url:a.href,page_path:location.pathname});}
+  },true);
+</script>
+</body></html>
