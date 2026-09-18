@@ -1,0 +1,189 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>FAQ / Q&amp;A schema generator — copy-ready FAQPage JSON-LD</title>
+<meta name="description" content="Type your questions and answers, get a copy-ready FAQPage JSON-LD block plus the warnings that decide whether an answer engine can quote it: answer length, question phrasing, minimum pairs. Runs in your browser, nothing is sent anywhere.">
+<link rel="canonical" href="https://axelfreeman.github.io/marketing-mindset/tools/faq-schema-generator.html">
+<meta property="og:title" content="FAQ / Q&amp;A schema generator">
+<meta property="og:url" content="https://axelfreeman.github.io/marketing-mindset/tools/faq-schema-generator.html">
+<style>
+:root{--bg:#0a0b0e;--panel:#111319;--panel2:#161922;--line:#242836;--tx:#e8eaf0;--dim:#9aa3b5;--acc:#4ade80;--acc2:#60a5fa;--warn:#fbbf24}
+*{box-sizing:border-box}body{margin:0;background:var(--bg);color:var(--tx);font:17px/1.65 -apple-system,BlinkMacSystemFont,'Segoe UI',Roboto,Arial,sans-serif}
+.wrap{max-width:900px;margin:0 auto;padding:0 22px}a{color:var(--acc2);text-decoration:none;border-bottom:1px solid rgba(96,165,250,.35)}
+h1{font-family:Georgia,serif;font-size:clamp(27px,5vw,40px);font-weight:400;line-height:1.14;margin:40px 0 14px}
+h2{font-family:Georgia,serif;font-weight:400;font-size:23px;margin:34px 0 6px}
+p{color:var(--dim)}.lede{font-size:19px}
+.card{background:var(--panel);border:1px solid var(--line);border-radius:12px;padding:20px 22px;margin:16px 0}
+label{display:block;margin:12px 0 4px;font-size:15px;color:var(--dim)}
+input,textarea{width:100%;background:var(--panel2);border:1px solid var(--line);color:var(--tx);border-radius:8px;padding:11px 12px;font-size:16px;font-family:inherit}
+textarea{min-height:120px;font-family:ui-monospace,SFMono-Regular,Menlo,monospace;font-size:14px}
+button{background:var(--acc);color:#08110c;border:0;border-radius:8px;padding:11px 18px;font-size:16px;font-weight:600;cursor:pointer;margin:14px 10px 0 0}
+button.sec{background:var(--panel2);color:var(--tx);border:1px solid var(--line);font-weight:500}
+pre{background:var(--panel2);border:1px solid var(--line);border-radius:10px;padding:16px;overflow:auto;font-size:13px;line-height:1.5;white-space:pre-wrap;word-break:break-word}
+.hint{font-size:14px;color:var(--dim);margin-top:6px}
+table{width:100%;border-collapse:collapse;margin-top:8px}td,th{text-align:left;padding:7px 6px;border-bottom:1px solid var(--line);font-size:15px}
+code{background:var(--panel2);padding:2px 6px;border-radius:5px;font-size:14px}
+footer{border-top:1px solid var(--line);margin-top:44px;padding:20px 0 44px;color:var(--dim);font-size:15px}
+.badge{display:inline-block;font-size:13px;color:var(--acc);border:1px solid rgba(74,222,128,.4);border-radius:99px;padding:2px 10px;margin-bottom:8px}
+</style>
+</head>
+<body>
+<main>
+<p style="color:#9aa3b5"><a href="https://axelfreeman.github.io/marketing-mindset/">&larr; marketing-mindset</a></p>
+<h1>FAQ / Q&amp;A schema generator</h1>
+<p style="color:#9aa3b5">FAQPage markup is the cheapest way to make a page quotable by an answer engine
+&mdash; and the easiest way to waste the effort if the answers are a sentence long. Type the pairs
+below: the JSON-LD block is built in your browser, nothing is sent anywhere, and the checks tell you
+what to fix before you paste it into a page.</p>
+<div style="margin:14px 0">
+<label style="display:block;margin:8px 0">Question 1 <input id="q0" type="text" value="What does a marketing engineer do?" style="width:100%"></label>
+<label style="display:block;margin:8px 0">Answer 1 <textarea id="a0" rows="3" style="width:100%">A marketing engineer owns one channel end to end plus the measurement around it: the offer page, the tracking event that makes a result readable, the automation that runs between them and the written rule for when a test is killed.</textarea></label>
+<label style="display:block;margin:8px 0">Question 2 <input id="q1" type="text" value="How many contacts does an honest A/B test need?" style="width:100%"></label>
+<label style="display:block;margin:8px 0">Answer 2 <textarea id="a1" rows="3" style="width:100%">It is arithmetic, not opinion. At a 3% base rate and a +20% relative lift with 80% power and alpha 0.05 the two-proportion floor is 13,914 contacts per arm, so 27,828 in total.</textarea></label>
+<label style="display:block;margin:8px 0">Question 3 <input id="q2" type="text" value="" style="width:100%"></label>
+<label style="display:block;margin:8px 0">Answer 3 <textarea id="a2" rows="3" style="width:100%"></textarea></label>
+<label style="display:block;margin:8px 0">Question 4 <input id="q3" type="text" value="" style="width:100%"></label>
+<label style="display:block;margin:8px 0">Answer 4 <textarea id="a3" rows="3" style="width:100%"></textarea></label>
+<button id="go">Build the markup</button>
+</div>
+<div id="checks" style="margin:10px 0"></div>
+<h2>The block to paste</h2>
+<pre id="out" style="white-space:pre-wrap;word-break:break-word;background:#161a22;padding:12px;border-radius:6px;color:#c8d0e0">{
+  "@context": "https://schema.org",
+  "@type": "FAQPage",
+  "mainEntity": [
+    {
+      "@type": "Question",
+      "name": "What does a marketing engineer do?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "A marketing engineer owns one channel end to end plus the measurement around it: the offer page, the tracking event that makes a result readable, the automation that runs between them and the written rule for when a test is killed. The unit sold is an outcome you can open, not hours in one craft."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "How many contacts does an honest A/B test need?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "It is arithmetic, not opinion. At a 3% base rate and a +20% relative lift with 80% power and alpha 0.05 the two-proportion floor is 13,914 contacts per arm, so 27,828 in total. Below that floor a difference between variants is noise, and the spend that produced it is a donation."
+      }
+    }
+  ]
+}</pre>
+<p style="color:#9aa3b5" id="count"></p>
+<h2>What the checks mean</h2>
+<ul>
+<li><b>Two pairs minimum.</b> One question is not an FAQ page, it is a sentence with markup attached.</li>
+<li><b>40 to 500 words per answer.</b> Shorter and there is nothing to quote; longer and the answer gets
+summarised away, with the choice of sentence taken out of your hands.</li>
+<li><b>Phrased as a question.</b> If the heading is an internal name ("Pricing model"), no one types it.</li>
+<li><b>The markup must match visible text.</b> FAQPage is a machine-readable copy of what the visitor can
+already read on the page. Markup for hidden text is a structured-data violation.</li>
+</ul>
+<h2>Frequently asked (this page's own markup)</h2>
+<div class="card"><h3>What does a marketing engineer do?</h3><p class="dim">A marketing engineer owns one channel end to end plus the measurement around it: the offer page, the tracking event that makes a result readable, the automation that runs between them and the written rule for when a test is killed. The unit sold is an outcome you can open, not hours in one craft.</p></div>
+<div class="card"><h3>Should the FAQ markup match what is on the page?</h3><p class="dim">Yes. FAQPage markup is a machine-readable copy of questions and answers that a human can already read on the same page. Markup for text the visitor cannot see is a structured-data violation, not a shortcut, and it is the fastest way to lose the rich result you were aiming for.</p></div>
+<div class="card"><h3>How long should an answer be?</h3><p class="dim">Between roughly 40 and 500 words. Under 40 words there is usually nothing for an answer engine to quote; over 500 the answer gets summarised down to the first sentence, and you lose control of which sentence that is. Put the number, the limit or the steps in the first two sentences.</p></div>
+<h2>Related free tools</h2>
+<p style="color:#9aa3b5">
+<a href="aeo-readiness-checklist.html">AEO readiness checklist</a> &middot;
+<a href="llms-txt-generator.html">llms.txt generator</a> &middot;
+<a href="marketing-engineer-jd-generator.html">JD generator</a> &middot;
+<a href="email-test-planner.html">test-size planner</a> &middot;
+<a href="kill-rule-calculator.html">kill-rule calculator</a> &middot;
+<a href="warmup-planner.html">warmup planner</a> &middot;
+<a href="outbound-deliverability-checklist.html">deliverability checklist</a></p>
+<h2>Do it for you</h2>
+<p>The schema, the sitemap, the llms.txt and the pages worth marking up are what the
+<a href="https://axelfreeman.com/marketing-engineer.html">marketing engineer engagement</a> covers: <b>Sprint $900</b>,
+<b>Engine $1,900/month</b>, <b>Full Build $2,900</b>.</p>
+<p><a href="https://t.me/AxelFreeman"><b>Write to me on Telegram &rarr;</b></a></p>
+<p style="color:#9aa3b5">The same checklist as data for an agent:
+<a href="https://www.npmjs.com/package/marketing-mindset">npx marketing-mindset aeo</a> &middot;
+<a href="https://www.npmjs.com/package/marketing-mindset-mcp">MCP server</a></p>
+</main>
+<script>
+/*FG-START*/
+function buildFaqSchema(pairs) {
+  const items = [];
+  pairs.forEach(function (p) {
+    const q = String(p.q || "").trim();
+    const a = String(p.a || "").trim();
+    if (!q || !a) return;
+    items.push({ "@type": "Question", name: q, acceptedAnswer: { "@type": "Answer", text: a } });
+  });
+  return { "@context": "https://schema.org", "@type": "FAQPage", mainEntity: items };
+}
+
+function validateFaq(pairs) {
+  const issues = [];
+  const filled = pairs.filter(function (p) { return String(p.q || "").trim() && String(p.a || "").trim(); });
+  if (filled.length < 2) {
+    issues.push("An FAQPage needs at least two questions with answers before it is worth publishing.");
+  }
+  pairs.forEach(function (p, i) {
+    const q = String(p.q || "").trim();
+    const a = String(p.a || "").trim();
+    if (!q && !a) return;
+    const words = a.split(/\s+/).filter(Boolean).length;
+    if (a && words < 40) {
+      issues.push("Q" + (i + 1) + ": the answer is " + words + " words. Answers under 40 words are rarely quoted — add the numbers, limits or steps.");
+    }
+    if (words > 500) {
+      issues.push("Q" + (i + 1) + ": the answer is " + words + " words. Long answers get summarised away — trim to the part that answers the question.");
+    }
+    if (q && !/\?$/.test(q) && !/^(how|what|why|when|where|who|which|is|are|do|does|can|should|will|cost|price)\b/i.test(q)) {
+      issues.push("Q" + (i + 1) + ": phrased as a label, not a question a human would type.");
+    }
+  });
+  return issues;
+}
+/*FG-END*/
+
+function collect() {
+  const pairs = [];
+  for (let i = 0; i < 4; i++) {
+    const q = document.getElementById('q' + i);
+    const a = document.getElementById('a' + i);
+    pairs.push({ q: q ? q.value : "", a: a ? a.value : "" });
+  }
+  return pairs;
+}
+
+function render() {
+  const pairs = collect();
+  const schema = buildFaqSchema(pairs);
+  document.getElementById('out').textContent = JSON.stringify(schema, null, 2);
+  const issues = validateFaq(pairs);
+  const box = document.getElementById('checks');
+  if (issues.length) {
+    box.innerHTML = '<b>' + issues.length + ' thing(s) to fix before publishing</b><ul>' +
+      issues.map(function (s) { return '<li>' + s + '</li>'; }).join('') + '</ul>';
+  } else {
+    box.innerHTML = '<b>Checks passed.</b> Paste the block below into the page that shows these answers.';
+  }
+  document.getElementById('count').textContent = 'Questions in the block: ' + schema.mainEntity.length +
+    ' \u00b7 answers total ' + schema.mainEntity.reduce(function (n, q) {
+      return n + q.acceptedAnswer.text.split(/\s+/).filter(Boolean).length; }, 0) + ' words.';
+}
+
+document.getElementById('go').addEventListener('click', render);
+document.querySelectorAll('input,textarea').forEach(function (el) {
+  el.addEventListener('input', render);
+});
+render();
+</script>
+<script type="application/ld+json">
+{"@context":"https://schema.org","@type":"FAQPage","mainEntity":[
+{"@type": "Question", "name": "What does a marketing engineer do?", "acceptedAnswer": {"@type": "Answer", "text": "A marketing engineer owns one channel end to end plus the measurement around it: the offer page, the tracking event that makes a result readable, the automation that runs between them and the written rule for when a test is killed. The unit sold is an outcome you can open, not hours in one craft."}},{"@type": "Question", "name": "Should the FAQ markup match what is on the page?", "acceptedAnswer": {"@type": "Answer", "text": "Yes. FAQPage markup is a machine-readable copy of questions and answers that a human can already read on the same page. Markup for text the visitor cannot see is a structured-data violation, not a shortcut, and it is the fastest way to lose the rich result you were aiming for."}},{"@type": "Question", "name": "How long should an answer be?", "acceptedAnswer": {"@type": "Answer", "text": "Between roughly 40 and 500 words. Under 40 words there is usually nothing for an answer engine to quote; over 500 the answer gets summarised down to the first sentence, and you lose control of which sentence that is. Put the number, the limit or the steps in the first two sentences."}}
+]}
+</script>
+<!-- GA4 -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-T6VWS5BNE3"></script>
+<script>
+  window.dataLayer=window.dataLayer||[];function gtag(){dataLayer.push(arguments)}
+  gtag('js',new Date());gtag('config','G-T6VWS5BNE3');
+</script>
+</body></html>
