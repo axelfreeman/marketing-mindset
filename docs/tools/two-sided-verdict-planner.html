@@ -40,7 +40,9 @@ one arm, the price of one full two-arm test, and which side can actually be read
 
 <section>
 <h2>Your sides</h2>
-<textarea id="sides" rows="5" style="width:100%;font-family:ui-monospace,Menlo,Consolas,monospace;background:#141821;color:#e6e9ef;border:1px solid #2a3040;border-radius:8px;padding:10px">sellers:400:0,matched-transactions:600:0,buyers:3000:0.4</textarea>
+<textarea id="sides" rows="5" style="width:100%;font-family:ui-monospace,Menlo,Consolas,monospace;background:#141821;color:#e6e9ef;border:1px solid #2a3040;border-radius:8px;padding:10px">sellers:400:0
+matched-transactions:600:0
+buyers:3000:0.4</textarea>
 <div style="display:flex;gap:14px;flex-wrap:wrap;margin:10px 0">
 <label>Base rate <input id="base" value="0.03" size="5"></label>
 <label>Relative lift <input id="lift" value="0.2" size="5"></label>
@@ -93,7 +95,7 @@ function tsFmt(n) { return String(n).replace(/\B(?=(?:\d{3})+(?!\d))/g, ","); }
 function tsMoney(x) { return "$" + (Math.round(x * 100) / 100).toFixed(2); }
 function tsParse(text) {
   var sides = [], notes = [];
-  String(text || "").split(/[\n;]+/).forEach(function (line) {
+  String(text || "").split(/[\n;,]+/).forEach(function (line) {
     line = line.trim();
     if (!line) { return; }
     var p = line.split(":").map(function (s) { return s.trim(); });
