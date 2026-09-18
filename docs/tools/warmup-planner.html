@@ -1,0 +1,150 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Cold email warmup planner — day-by-day sending ramp</title>
+<meta name="description" content="Free warmup planner for a new sending domain: enter a start date, a daily target and the number of mailboxes to get a day-by-day ramp (+50% per day, never above target), the cumulative volume and the four stop rules. Runs in your browser.">
+<link rel="canonical" href="https://axelfreeman.github.io/marketing-mindset/tools/warmup-planner.html">
+<meta property="og:title" content="Cold email warmup planner">
+<meta property="og:url" content="https://axelfreeman.github.io/marketing-mindset/tools/warmup-planner.html">
+<style>
+:root{--bg:#0a0b0e;--panel:#111319;--panel2:#161922;--line:#242836;--tx:#e8eaf0;--dim:#9aa3b5;--acc:#4ade80;--acc2:#60a5fa;--warn:#fbbf24}
+*{box-sizing:border-box}body{margin:0;background:var(--bg);color:var(--tx);font:17px/1.65 -apple-system,BlinkMacSystemFont,'Segoe UI',Roboto,Arial,sans-serif}
+.wrap{max-width:900px;margin:0 auto;padding:0 22px}a{color:var(--acc2);text-decoration:none;border-bottom:1px solid rgba(96,165,250,.35)}
+h1{font-family:Georgia,serif;font-size:clamp(27px,5vw,40px);font-weight:400;line-height:1.14;margin:40px 0 14px}
+h2{font-family:Georgia,serif;font-weight:400;font-size:23px;margin:34px 0 6px}
+p{color:var(--dim)}.lede{font-size:19px}
+.card{background:var(--panel);border:1px solid var(--line);border-radius:12px;padding:20px 22px;margin:16px 0}
+label{display:block;margin:12px 0 4px;font-size:15px;color:var(--dim)}
+input,textarea{width:100%;background:var(--panel2);border:1px solid var(--line);color:var(--tx);border-radius:8px;padding:11px 12px;font-size:16px;font-family:inherit}
+textarea{min-height:120px;font-family:ui-monospace,SFMono-Regular,Menlo,monospace;font-size:14px}
+button{background:var(--acc);color:#08110c;border:0;border-radius:8px;padding:11px 18px;font-size:16px;font-weight:600;cursor:pointer;margin:14px 10px 0 0}
+button.sec{background:var(--panel2);color:var(--tx);border:1px solid var(--line);font-weight:500}
+pre{background:var(--panel2);border:1px solid var(--line);border-radius:10px;padding:16px;overflow:auto;font-size:13px;line-height:1.5;white-space:pre-wrap;word-break:break-word}
+.hint{font-size:14px;color:var(--dim);margin-top:6px}
+table{width:100%;border-collapse:collapse;margin-top:8px}td,th{text-align:left;padding:7px 6px;border-bottom:1px solid var(--line);font-size:15px}
+code{background:var(--panel2);padding:2px 6px;border-radius:5px;font-size:14px}
+footer{border-top:1px solid var(--line);margin-top:44px;padding:20px 0 44px;color:var(--dim);font-size:15px}
+.badge{display:inline-block;font-size:13px;color:var(--acc);border:1px solid rgba(74,222,128,.4);border-radius:99px;padding:2px 10px;margin-bottom:8px}
+</style>
+</head>
+<body>
+<main>
+<p style="color:#9aa3b5"><a href="https://axelfreeman.github.io/marketing-mindset/">&larr; marketing-mindset</a></p>
+<h1>Cold email warmup planner</h1>
+<p style="color:#9aa3b5">A new sending domain has no reputation, so the first three weeks are a
+scheduling problem, not a copywriting problem. Fill in the four fields: the schedule is computed in
+your browser, nothing is sent anywhere, and no address or campaign data is stored.</p>
+<div style="margin:14px 0">
+<label style="display:block;margin:6px 0">Start date <input id="start" type="date" value="2026-09-21"></label>
+<label style="display:block;margin:6px 0">Target sends per day <input id="target" type="number" value="200" min="1" step="10"></label>
+<label style="display:block;margin:6px 0">Days to plan <input id="days" type="number" value="21" min="1" max="180"></label>
+<label style="display:block;margin:6px 0">Sending mailboxes <input id="mailboxes" type="number" value="4" min="1" step="1"></label>
+<button id="go">Build the schedule</button>
+</div>
+<div id="summary" style="font-size:1.05rem;margin:10px 0"></div>
+<div id="err" style="color:#f0c674"></div>
+<table id="tbl"><tr><th>Day</th><th>Date</th><th>Sends</th><th>Cumulative</th></tr></table>
+<h2>The four stop rules</h2>
+<ul>
+<li>Hard bounce rate above 2% in a day: stop the day and find the source of the addresses.</li>
+<li>Spam complaints above 0.1%: stop the campaign, not just the day.</li>
+<li>Any reply ends that person's sequence — the reply is the goal, not an interruption.</li>
+<li>Opens halving while sends stay flat: drop back two ramp days before continuing.</li>
+</ul>
+<h2>How the ramp works</h2>
+<p style="color:#9aa3b5">Day 1 starts at 20 sends (or your target, if it is smaller) and each
+following day is 50% more than the previous one, rounded, and never above the target. That is the
+shape most receiving filters expect from a domain that is building history. If you have several
+mailboxes, split the day's volume between them — one mailbox pushing the whole day is a signature,
+not a strategy.</p>
+<h2>Check the numbers before you send</h2>
+<p style="color:#9aa3b5">The schedule tells you when you reach full volume; the
+<a href="email-test-planner.html">test-size planner</a> tells you how many contacts an honest test
+needs; the <a href="kill-rule-calculator.html">kill-rule calculator</a> tells you when to stop. Use
+all three before the first send, not after the third.</p>
+<h2>Do it for you</h2>
+<p>The same ramp, the authentication records and the sequence are what the
+<a href="https://axelfreeman.com/marketing-engineer.html">marketing engineer engagement</a> covers: <b>Sprint $900</b>,
+<b>Engine $1,900/month</b>, <b>Full Build $2,900</b>.</p>
+<p><a href="https://t.me/AxelFreeman"><b>Write to me on Telegram &rarr;</b></a></p>
+<p style="color:#9aa3b5">Related free tools:
+<a href="outbound-deliverability-checklist.html">deliverability checklist</a> &middot;
+<a href="email-test-planner.html">test-size planner</a> &middot;
+<a href="kill-rule-calculator.html">kill-rule calculator</a> &middot;
+<a href="aeo-readiness-checklist.html">AEO readiness checklist</a> &middot;
+<a href="marketing-engineer-jd-generator.html">JD generator</a> &middot;
+<a href="llms-txt-generator.html">llms.txt generator</a></p>
+<p style="color:#9aa3b5">The same ramp as a CLI:
+<a href="https://www.npmjs.com/package/marketing-mindset">npx marketing-mindset warmup</a></p>
+</main>
+<script>
+/*RAMP-START*/
+function rampPlan(start, target, days, mailboxes) {
+  // Deterministic ramp: day 1 = min(20, target); +50%/day (rounded), never above target.
+  const rows = [];
+  let prev = Math.min(20, target);
+  let cumulative = 0;
+  let reached = 0;
+  for (let i = 0; i < days; i++) {
+    const vol = i === 0 ? prev : Math.min(target, Math.max(prev, Math.round(prev * 1.5)));
+    const d = new Date(Date.parse(start + "T00:00:00Z") + i * 86400000);
+    if (vol >= target && !reached) reached = i + 1;
+    cumulative += vol;
+    rows.push({ day: i + 1, date: d.toISOString().slice(0, 10), sends: vol, cumulative: cumulative });
+    prev = vol;
+  }
+  return {
+    rows: rows,
+    first_day: rows.length ? rows[0].sends : 0,
+    full_volume_day: reached || null,
+    total_sends: cumulative,
+    per_mailbox_at_target: Math.round((target / mailboxes) * 10) / 10,
+    per_mailbox_day1: Math.round((rows.length ? rows[0].sends / mailboxes : 0) * 10) / 10
+  };
+}
+/*RAMP-END*/
+
+function render() {
+  const start = document.getElementById('start').value;
+  const target = Math.floor(Number(document.getElementById('target').value));
+  const days = Math.floor(Number(document.getElementById('days').value));
+  const mailboxes = Math.floor(Number(document.getElementById('mailboxes').value));
+  const err = document.getElementById('err');
+  const summary = document.getElementById('summary');
+  const tbl = document.getElementById('tbl');
+  if (!/^\d{4}-\d{2}-\d{2}$/.test(start) || isNaN(Date.parse(start))) {
+    err.textContent = 'Start date must be a real date (YYYY-MM-DD).'; summary.textContent = ''; return;
+  }
+  if (!isFinite(target) || target < 1) { err.textContent = 'Target sends per day must be 1 or more.'; return; }
+  if (!isFinite(days) || days < 1 || days > 180) { err.textContent = 'Days must be between 1 and 180.'; return; }
+  if (!isFinite(mailboxes) || mailboxes < 1) { err.textContent = 'Mailboxes must be 1 or more.'; return; }
+  err.textContent = '';
+  const p = rampPlan(start, target, days, mailboxes);
+  summary.textContent = 'Day 1 sends ' + p.first_day + ' ('
+    + p.per_mailbox_day1 + '/mailbox). Full volume '
+    + (p.full_volume_day ? 'on day ' + p.full_volume_day : 'not reached within ' + days + ' days')
+    + '. ' + p.total_sends + ' sends in the window, '
+    + p.per_mailbox_at_target + ' per mailbox per day at target.';
+  let html = '<tr><th>Day</th><th>Date</th><th>Sends</th><th>Cumulative</th></tr>';
+  p.rows.forEach(function (r) {
+    html += '<tr><td>' + r.day + '</td><td>' + r.date + '</td><td>' + r.sends + '</td><td>' + r.cumulative + '</td></tr>';
+  });
+  tbl.innerHTML = html;
+}
+document.getElementById('go').addEventListener('click', render);
+document.querySelectorAll('input').forEach(function (i) { i.addEventListener('change', render); });
+render();
+</script>
+<!-- GA4 -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-T6VWS5BNE3"></script>
+<script>
+  window.dataLayer=window.dataLayer||[];function gtag(){dataLayer.push(arguments)}
+  gtag('js',new Date());gtag('config','G-T6VWS5BNE3');
+  document.addEventListener('click',function(e){
+    var a=e.target.closest&&e.target.closest('a[href*="t.me/"]');
+    if(a){gtag('event','telegram_click',{link_url:a.href,page_path:location.pathname});}
+  },true);
+</script>
+</body></html>
