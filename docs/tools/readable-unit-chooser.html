@@ -1,0 +1,211 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Which step of your funnel can fund a verdict? &mdash; readable unit chooser</title>
+<meta name="description" content="Enter the counted events of your funnel per month and see which consecutive step happens often enough to reach a test floor, how many months each one needs, and which unit is actually readable at your volume.">
+<link rel="canonical" href="https://axelfreeman.github.io/marketing-mindset/tools/readable-unit-chooser.html">
+<meta property="og:title" content="Readable unit chooser">
+<meta property="og:description" content="Not every step of a funnel can be read. This tool says which step of yours happens often enough to fund a strict two-arm verdict, and how many months each one takes.">
+<meta property="og:type" content="article">
+<meta property="og:url" content="https://axelfreeman.github.io/marketing-mindset/tools/readable-unit-chooser.html">
+<style>
+:root{--bg:#0a0b0e;--panel:#111319;--panel2:#161922;--line:#242836;--tx:#e8eaf0;--dim:#9aa3b5;--acc:#4ade80;--acc2:#60a5fa;--warn:#fbbf24}
+*{box-sizing:border-box}body{margin:0;background:var(--bg);color:var(--tx);font:17px/1.65 -apple-system,BlinkMacSystemFont,'Segoe UI',Roboto,Arial,sans-serif}
+.wrap{max-width:900px;margin:0 auto;padding:0 22px}a{color:var(--acc2);text-decoration:none;border-bottom:1px solid rgba(96,165,250,.35)}
+h1{font-family:Georgia,serif;font-size:clamp(27px,5vw,40px);font-weight:400;line-height:1.14;margin:40px 0 14px}
+h2{font-family:Georgia,serif;font-weight:400;font-size:23px;margin:34px 0 6px}
+p{color:var(--dim)}.lede{font-size:19px}
+.card{background:var(--panel);border:1px solid var(--line);border-radius:12px;padding:20px 22px;margin:16px 0}
+label{display:block;margin:12px 0 4px;font-size:15px;color:var(--dim)}
+input,textarea{width:100%;background:var(--panel2);border:1px solid var(--line);color:var(--tx);border-radius:8px;padding:11px 12px;font-size:16px;font-family:inherit}
+textarea{min-height:120px;font-family:ui-monospace,SFMono-Regular,Menlo,monospace;font-size:14px}
+button{background:var(--acc);color:#08110c;border:0;border-radius:8px;padding:11px 18px;font-size:16px;font-weight:600;cursor:pointer;margin:14px 10px 0 0}
+button.sec{background:var(--panel2);color:var(--tx);border:1px solid var(--line);font-weight:500}
+pre{background:var(--panel2);border:1px solid var(--line);border-radius:10px;padding:16px;overflow:auto;font-size:13px;line-height:1.5;white-space:pre-wrap;word-break:break-word}
+.hint{font-size:14px;color:var(--dim);margin-top:6px}
+table{width:100%;border-collapse:collapse;margin-top:8px}td,th{text-align:left;padding:7px 6px;border-bottom:1px solid var(--line);font-size:15px}
+code{background:var(--panel2);padding:2px 6px;border-radius:5px;font-size:14px}
+footer{border-top:1px solid var(--line);margin-top:44px;padding:20px 0 44px;color:var(--dim);font-size:15px}
+.badge{display:inline-block;font-size:13px;color:var(--acc);border:1px solid rgba(74,222,128,.4);border-radius:99px;padding:2px 10px;margin-bottom:8px}
+</style>
+</head>
+<body>
+<main>
+<p class="dim">Free tool &middot; no signup, nothing stored, runs in your browser</p>
+<h1>Which step of your funnel can fund a verdict?</h1>
+<p><b>A funnel is not a set of numbers, it is a queue of units you could be judged on.</b> Every consecutive pair
+in it &mdash; visits&rarr;signups, signups&rarr;activations, activations&rarr;paid &mdash; is a unit you can test,
+and each unit has its own floor: the events a strict two-arm test needs before a difference means anything. This
+tool takes the counted events of your funnel per month and reports, for each pair, the floor, the events each arm
+actually sees in a month, and how many months a verdict takes.</p>
+
+<h2>Your funnel, in events per month</h2>
+<table>
+<tr><th>Step</th><th>Events per month</th></tr>
+<tr><td><input id="n1" value="visits" size="14"></td><td><input id="c1" value="12000" size="10"></td></tr>
+<tr><td><input id="n2" value="signups" size="14"></td><td><input id="c2" value="900" size="10"></td></tr>
+<tr><td><input id="n3" value="activations" size="14"></td><td><input id="c3" value="270" size="10"></td></tr>
+<tr><td><input id="n4" value="paid" size="14"></td><td><input id="c4" value="40" size="10"></td></tr>
+</table>
+<p class="dim">Up to four steps, in order. A step with a zero count is simply skipped, so a three-step funnel is
+fine. The pairs are what get judged; the last step is where money lives and has no next pair.</p>
+
+<h2>What counts as worth detecting</h2>
+<table>
+<tr><th>Setting</th><th>Value</th></tr>
+<tr><td>Relative lift worth detecting (0.2 = +20%)</td><td><input id="lift" value="0.2" size="8"></td></tr>
+<tr><td>Months you are willing to wait</td><td><input id="horizon" value="6" size="8"></td></tr>
+<tr><td>Power (0.8 or 0.9)</td><td><input id="power" value="0.8" size="8"></td></tr>
+<tr><td>Alpha (0.05, 0.01 or 0.1)</td><td><input id="alpha" value="0.05" size="8"></td></tr>
+</table>
+<p><button id="go">Which unit is readable?</button></p>
+
+<h2>Result</h2>
+<div id="out"></div>
+
+<h2>How to read the answer</h2>
+<p>The floor assumes a 50/50 split, so each arm gets half of the earlier step's monthly volume. The months number
+is therefore not a prediction about how fast the test converts &mdash; it is how long the funnel takes to produce
+the events the verdict needs. Three things the output refuses to hide:</p>
+<ul>
+<li>the <b>earliest</b> step reads soonest and owns the least &mdash; it is usually the number already in the
+dashboard;</li>
+<li>the <b>money</b> step has no next pair, so money always reads one step behind whatever unit you chose;</li>
+<li>if nothing in the funnel is readable inside your horizon, the honest output is a progress report, not a
+test.</li>
+</ul>
+<p class="dim">The arithmetic is a statistics floor, not a forecast: at 80% power and alpha 0.05, a strict
+two-proportion comparison needs the sample size the floor formula gives. Compare with the same computation in a
+terminal: <a href="https://www.npmjs.com/package/marketing-mindset">npx marketing-mindset unit --steps visits:12000,signups:900,activations:270,paid:40</a>. Longer version of the argument, for
+developer tools where the signup is the wrong unit: <a href="https://axelfreeman.com/marketing-engineer-for-devtools.html">marketing engineer for devtools</a>.</p>
+<p class="dim">Written by Axel Freeman &mdash; marketing engineer. Free to use, no email required; the packages
+behind the method are public on <a href="https://axelfreeman.com/marketing-engineer.html">the offer page</a> ($900 Sprint, $1,900/month Engine, $2,900
+Full Build) and the tools list is at <a href="../tools/">/tools/</a>.</p>
+<p><a href="https://t.me/AxelFreeman"><b>Ask me a question on Telegram &rarr;</b></a></p>
+
+<script>
+/*RU-START*/
+var UN_ZA = { "0.05": 1.9599639845, "0.01": 2.5758293036, "0.1": 1.6448536270 };
+var UN_ZB = { "0.8": 0.8416212336, "0.9": 1.2815515655 };
+function unRound6(x) { return Math.round(x * 1000000) / 1000000; }
+function unFmt(n) { return String(n).replace(/\B(?=(\d{3})+(?!\d))/g, ","); }
+function unSampleSize(rate, lift, power, alpha) {
+  var p1 = Math.min(Math.max(rate, 0.000001), 0.999999);
+  var p2 = Math.min(p1 * (1 + lift), 0.999999);
+  var pbar = (p1 + p2) / 2;
+  var za = UN_ZA[String(alpha)] || UN_ZA["0.05"];
+  var zb = UN_ZB[String(power)] || UN_ZB["0.8"];
+  var num = Math.pow(za * Math.sqrt(2 * pbar * (1 - pbar)) + zb * Math.sqrt(p1 * (1 - p1) + p2 * (1 - p2)), 2);
+  return Math.ceil(num / Math.pow(p2 - p1, 2));
+}
+function planUnits(input) {
+  var steps = input.steps || [];
+  var lift = Number(input.lift !== undefined ? input.lift : 0.2);
+  var power = Number(input.power !== undefined ? input.power : 0.8);
+  var alpha = Number(input.alpha !== undefined ? input.alpha : 0.05);
+  var horizon = Number(input.horizon !== undefined ? input.horizon : 6);
+  var problems = [];
+  if (steps.length < 2) { problems.push("steps: pass at least two steps, e.g. visits:12000,signups:900"); }
+  steps.forEach(function (s) {
+    if (!s || !s.name) { problems.push("steps: every step needs a name"); }
+    if (!(Number(s.count) > 0)) { problems.push("steps: count for '" + ((s && s.name) || "?") + "' must be a positive number of events per month"); }
+  });
+  if (!(lift > 0) || !(lift < 5)) { problems.push("lift worth detecting: a fraction, 0.2 = +20% relative"); }
+  if (!UN_ZB[String(power)]) { problems.push("power must be 0.8 or 0.9"); }
+  if (!UN_ZA[String(alpha)]) { problems.push("alpha must be 0.05, 0.01 or 0.1"); }
+  if (!(horizon > 0)) { problems.push("horizon: months you are willing to wait, a positive number"); }
+  if (problems.length) { return { problems: problems }; }
+
+  var units = [];
+  for (var i = 0; i < steps.length - 1; i++) {
+    var a = steps[i], b = steps[i + 1];
+    var rate = Number(b.count) / Number(a.count);
+    var per_arm = unSampleSize(rate, lift, power, alpha);
+    var arm_events_per_month = Number(a.count) / 2;
+    var months = Math.ceil(per_arm / arm_events_per_month);
+    units.push({
+      unit: a.name + " -> " + b.name, from: a.name, to: b.name, rate: unRound6(rate),
+      floor_per_arm: per_arm, months_to_read: months,
+      arm_events_per_month: arm_events_per_month
+    });
+  }
+  var chosen = null;
+  units.forEach(function (u) { if (!chosen && u.months_to_read <= horizon) { chosen = u; } });
+  var unreadable = units.filter(function (u) { return u.months_to_read > horizon; }).map(function (u) { return u.unit; });
+  var last = units[units.length - 1];
+  var gates = [
+    "the earliest step is the cheapest to read and the least able to own the outcome: " + units[0].unit +
+      " reads in " + units[0].months_to_read + " month(s), which is why it is usually the number already in the dashboard",
+    "the money step has no next step at this volume: " + last.unit + " is the last pair in this funnel, so money always reads one step behind the unit you chose",
+    chosen
+      ? "readable at this volume: " + chosen.unit + " in " + chosen.months_to_read + " month(s) - fund that one test and set the read-out date before it starts"
+      : "nothing in this funnel is readable within " + horizon + " month(s): pick a more frequent unit or write down that the month produces a progress report"
+  ];
+  return {
+    steps: steps.length, lift: lift, power: power, alpha: alpha, horizon_months: horizon,
+    units: units,
+    readable_unit: chosen ? chosen.unit : "",
+    readable_months: chosen ? chosen.months_to_read : 0,
+    unreadable_units: unreadable,
+    gates: gates
+  };
+}
+/*RU-END*/
+var FIELDS = ["n1", "c1", "n2", "c2", "n3", "c3", "n4", "c4"];
+function readInput() {
+  var steps = [];
+  for (var i = 0; i < 4; i++) {
+    var name = document.getElementById("n" + (i + 1)).value.trim();
+    var count = Number(document.getElementById("c" + (i + 1)).value);
+    if (name && count > 0) { steps.push({ name: name, count: count }); }
+  }
+  return {
+    steps: steps,
+    lift: document.getElementById("lift").value,
+    horizon: document.getElementById("horizon").value,
+    power: document.getElementById("power").value,
+    alpha: document.getElementById("alpha").value
+  };
+}
+function render() {
+  var out = document.getElementById("out");
+  var res = planUnits(readInput());
+  if (res.problems) {
+    out.innerHTML = '<p><b>Fix these first:</b></p><ul>' + res.problems.map(function (p) { return "<li>" + p + "</li>"; }).join("") + "</ul>";
+    return;
+  }
+  var rows = res.units.map(function (u) {
+    return "<tr><td><b>" + u.unit + "</b></td><td>" + (u.rate * 100).toFixed(2) + "%</td><td>" +
+      unFmt(u.floor_per_arm) + "</td><td>" + unFmt(u.arm_events_per_month) + "</td><td>" + u.months_to_read +
+      (u.months_to_read <= res.horizon_months ? " &#10003;" : "") + "</td></tr>";
+  }).join("");
+  var head = res.readable_unit
+    ? '<p><b>Readable at this volume: ' + res.readable_unit + ' in ' + res.readable_months + ' month(s).</b> ' +
+      'Fund that one test and write the read-out date down before it starts.</p>'
+    : '<p><b>Nothing in this funnel is readable within ' + res.horizon_months + ' month(s).</b> ' +
+      'Pick a more frequent unit, or write down that the month produces a progress report.</p>';
+  out.innerHTML = head +
+    '<table><tr><th>Unit</th><th>Rate</th><th>Floor per arm</th><th>Events per arm a month</th><th>Months to read</th></tr>' +
+    rows + '</table>' +
+    (res.unreadable_units.length ? '<p class="dim">Out of reach at your volume and horizon: ' + res.unreadable_units.join(", ") + '.</p>' : "") +
+    '<ul>' + res.gates.map(function (g) { return "<li>" + g + "</li>"; }).join("") + '</ul>';
+}
+document.getElementById("go").addEventListener("click", render);
+FIELDS.forEach(function (f) { document.getElementById(f).addEventListener("change", render); });
+["lift", "horizon", "power", "alpha"].forEach(function (f) { document.getElementById(f).addEventListener("change", render); });
+render();
+</script>
+<!-- GA4 -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-T6VWS5BNE3"></script>
+<script>
+  window.dataLayer=window.dataLayer||[];function gtag(){dataLayer.push(arguments)}
+  gtag('js',new Date());gtag('config','G-T6VWS5BNE3');
+  document.addEventListener('click',function(e){
+    var a=e.target.closest&&e.target.closest('a[href*="t.me/"]');
+    if(a){gtag('event','telegram_click',{link_url:a.href,page_path:location.pathname});}
+  },true);
+</script>
+
+</body></html>
