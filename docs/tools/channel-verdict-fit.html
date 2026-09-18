@@ -1,0 +1,333 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Which of your channels can actually fund a verdict? &mdash; channel verdict fit</title>
+<meta name="description" content="Enter your acquisition channels with contacts per month and cost per contact: see the test floor per arm, the months until a verdict, the cost of one full two-arm test, and which channel to run first - or that none of them can finish inside your horizon. Same sample-size formula as npx marketing-mindset sample. Runs in your browser.">
+<link rel="canonical" href="https://axelfreeman.github.io/marketing-mindset/tools/channel-verdict-fit.html">
+<meta property="og:title" content="Which of your channels can actually fund a verdict?">
+<meta property="og:description" content="A channel is not a strategy. Its volume and its data cost decide whether any verdict can ever be read from it. Enter your channels and see which one can finish an honest test inside your horizon.">
+<meta property="og:type" content="article">
+<meta property="og:url" content="https://axelfreeman.github.io/marketing-mindset/tools/channel-verdict-fit.html">
+<style>
+:root{--bg:#0a0b0e;--panel:#111319;--panel2:#161922;--line:#242836;--tx:#e8eaf0;--dim:#9aa3b5;--acc:#4ade80;--acc2:#60a5fa;--warn:#fbbf24}
+*{box-sizing:border-box}body{margin:0;background:var(--bg);color:var(--tx);font:17px/1.65 -apple-system,BlinkMacSystemFont,'Segoe UI',Roboto,Arial,sans-serif}
+.wrap{max-width:900px;margin:0 auto;padding:0 22px}a{color:var(--acc2);text-decoration:none;border-bottom:1px solid rgba(96,165,250,.35)}
+h1{font-family:Georgia,serif;font-size:clamp(27px,5vw,40px);font-weight:400;line-height:1.14;margin:40px 0 14px}
+h2{font-family:Georgia,serif;font-weight:400;font-size:23px;margin:34px 0 6px}
+p{color:var(--dim)}.lede{font-size:19px}
+.card{background:var(--panel);border:1px solid var(--line);border-radius:12px;padding:20px 22px;margin:16px 0}
+label{display:block;margin:12px 0 4px;font-size:15px;color:var(--dim)}
+input,textarea{width:100%;background:var(--panel2);border:1px solid var(--line);color:var(--tx);border-radius:8px;padding:11px 12px;font-size:16px;font-family:inherit}
+textarea{min-height:120px;font-family:ui-monospace,SFMono-Regular,Menlo,monospace;font-size:14px}
+button{background:var(--acc);color:#08110c;border:0;border-radius:8px;padding:11px 18px;font-size:16px;font-weight:600;cursor:pointer;margin:14px 10px 0 0}
+button.sec{background:var(--panel2);color:var(--tx);border:1px solid var(--line);font-weight:500}
+pre{background:var(--panel2);border:1px solid var(--line);border-radius:10px;padding:16px;overflow:auto;font-size:13px;line-height:1.5;white-space:pre-wrap;word-break:break-word}
+.hint{font-size:14px;color:var(--dim);margin-top:6px}
+table{width:100%;border-collapse:collapse;margin-top:8px}td,th{text-align:left;padding:7px 6px;border-bottom:1px solid var(--line);font-size:15px}
+code{background:var(--panel2);padding:2px 6px;border-radius:5px;font-size:14px}
+footer{border-top:1px solid var(--line);margin-top:44px;padding:20px 0 44px;color:var(--dim);font-size:15px}
+.badge{display:inline-block;font-size:13px;color:var(--acc);border:1px solid rgba(74,222,128,.4);border-radius:99px;padding:2px 10px;margin-bottom:8px}
+</style>
+</head>
+<body>
+<main class="wrap">
+<p style="color:#9aa3b5"><a href="https://axelfreeman.github.io/marketing-mindset/">&larr; marketing-mindset</a>
+&middot; free tool, no signup, nothing stored, runs in your browser</p>
+<h1>Which of your channels can actually fund a verdict?</h1>
+<p><b>A channel is not a strategy.</b> It is a pipe with a volume, a price per contact, and a conversion rate you
+suspect is wrong. What makes it a channel you can act on is whether it can deliver enough contacts to one honest
+two-arm test before your patience runs out. That is arithmetic, not opinion: the contacts a strict test needs per
+arm (the floor), divided by the contacts one arm actually sees in a month (half of the channel's monthly volume),
+gives the months until a verdict.</p>
+
+<p>The floor is the same number for every channel in the table, and that is the point. What you test is a rate,
+and a rate does not care where the contact came from. At a 3% base rate and a +20% relative lift, a strict
+two-proportion comparison at 80% power and alpha 0.05 needs <b>13,914 contacts per arm</b> &mdash; 27,828 contacts
+in both arms. A channel that sends 9,000 contacts a month puts 4,500 in each arm and reaches that floor in four
+months. A channel that sends 1,200 a month puts 600 in each arm and needs twenty-four. Same floor, same test,
+different calendar.</p>
+
+<p>Cost is what turns that calendar into a decision. One full two-arm test costs the floor per arm, times the cost
+per contact, times two. Between two channels that both finish inside your horizon, the cheaper test is not the
+better channel &mdash; it is the first test. Run it, read the verdict, then spend the same money on the next one
+with a real answer behind you instead of a hypothesis.</p>
+
+<p>And if no channel finishes inside your horizon, the honest output is not a smaller test. Below the floor you are
+buying a sample, not a decision: the two arms will differ by noise and you will explain the noise. A channel that
+cannot finish one honest test inside your horizon is a <b>subscription, not a test</b> &mdash; it produces activity
+every month and a verdict never. The three ways out are named at the bottom of the result: accept a bigger lift,
+widen the horizon, or buy volume.</p>
+
+<h2>1. Your channels</h2>
+<textarea id="channels" spellcheck="false">email:9000:0.02,linkedin:1200:0.35,seo:30000:0.005</textarea>
+<p class="hint">One per line or comma separated, in the form <code>name:contacts_per_month:cost_per_contact</code>
+&mdash; for example <code>email:9000:0.02,linkedin:1200:0.35,seo:30000:0.005</code>. Cost is whatever a contact
+costs you in your own currency (a platform fee, a list price, a click price); it is printed, never converted.</p>
+
+<h2>2. What counts as worth detecting</h2>
+<table>
+<tr><th>Setting</th><th>Value</th></tr>
+<tr><td>Base rate &mdash; the conversion you are trying to move (0.03 = 3%)</td><td><input id="base" value="0.03" size="8"></td></tr>
+<tr><td>Relative lift worth detecting (0.2 = +20%)</td><td><input id="lift" value="0.2" size="8"></td></tr>
+<tr><td>Months you are willing to wait for a verdict</td><td><input id="horizon" value="6" size="8"></td></tr>
+<tr><td>Power (0.8 or 0.9)</td><td><input id="power" value="0.8" size="8"></td></tr>
+<tr><td>Alpha (0.05, 0.01 or 0.1)</td><td><input id="alpha" value="0.05" size="8"></td></tr>
+</table>
+<p><button id="go">Which channel can fund a verdict?</button></p>
+
+<h2>3. Result</h2>
+<div id="out"></div>
+
+<h2>4. Plain text version</h2>
+<pre id="txt"></pre>
+<p><button id="copy" class="sec">Copy the text</button> <span id="copied" class="hint"></span></p>
+
+<h2>How to read the answer</h2>
+<p>The months column is not a prediction about how fast the channel converts &mdash; it is how long the channel
+takes to produce the contacts a verdict needs. One arm sees half the monthly volume because a strict test splits
+50/50. Three things the table refuses to hide:</p>
+<ul>
+<li>the <b>floor</b> is identical for every channel, so the ranking is made by volume and price, never by
+preference;</li>
+<li><b>fits</b> is a yes/no about your horizon, not about the channel's quality: a good channel outside its horizon
+is still the wrong next purchase;</li>
+<li>the <b>first test</b> is the cheapest two-arm test that fits &mdash; ties go to the faster one &mdash; and if
+nothing fits, the tool says so in plain words instead of shrinking the test.</li>
+</ul>
+<p class="dim">The arithmetic is the published sample-size floor, not a forecast: compare with the same computation
+in a terminal, <a href="https://www.npmjs.com/package/marketing-mindset">npx marketing-mindset sample --base 0.03 --lift 0.2</a> (it prints <code>per_arm
+13914</code> and <code>total 27828</code>). Sibling tools: <a href="https://axelfreeman.github.io/marketing-mindset/tools/test-cost-calculator.html">what one
+honest test costs to finish</a>, <a href="https://axelfreeman.github.io/marketing-mindset/tools/readable-unit-chooser.html">which funnel step can fund a
+verdict</a>, <a href="https://axelfreeman.github.io/marketing-mindset/tools/test-queue-planner.html">the honest test queue planner</a>,
+<a href="https://axelfreeman.github.io/marketing-mindset/tools/ab-verdict-calculator.html">the A/B verdict calculator</a>, the full list at
+<a href="../tools/">/tools/</a>.</p>
+<p class="dim">Written by Axel Freeman &mdash; marketing engineer. Free to use, no email required; the packages
+behind the method are public on <a href="https://axelfreeman.com/marketing-engineer.html">the offer page</a> ($900 Sprint, $1,900/month Engine, $2,900
+Full Build).</p>
+<p><a href="https://t.me/AxelFreeman"><b>Tell me which channel you are about to fund on Telegram &rarr;</b></a></p>
+
+<script>
+/*CF-START*/
+var CF_ZA = { "0.05": 1.9599639845, "0.01": 2.5758293036, "0.1": 1.6448536270 };
+var CF_ZB = { "0.8": 0.8416212336, "0.9": 1.2815515655 };
+function cfRound6(x) { return Math.round(x * 1000000) / 1000000; }
+function cfFmt(n) { return String(n).replace(/\B(?=(\d{3})+(?!\d))/g, ","); }
+function cfFix(x, d) { var f = Math.pow(10, d); return (Math.round(x * f) / f).toFixed(d); }
+function cfPadL(s, n) { s = String(s); return s + new Array(Math.max(0, n - s.length) + 1).join(" "); }
+function cfPadR(s, n) { s = String(s); return new Array(Math.max(0, n - s.length) + 1).join(" ") + s; }
+function cfSampleSize(rate, lift, power, alpha) {
+  var p1 = Math.min(Math.max(rate, 0.000001), 0.999999);
+  var p2 = Math.min(p1 * (1 + lift), 0.999999);
+  var pbar = (p1 + p2) / 2;
+  var za = CF_ZA[String(alpha)] || CF_ZA["0.05"];
+  var zb = CF_ZB[String(power)] || CF_ZB["0.8"];
+  var num = Math.pow(za * Math.sqrt(2 * pbar * (1 - pbar)) + zb * Math.sqrt(p1 * (1 - p1) + p2 * (1 - p2)), 2);
+  return Math.ceil(num / Math.pow(p2 - p1, 2));
+}
+function cfParseChannels(spec) {
+  var out = [], problems = [], raw = String(spec === undefined || spec === null ? "" : spec);
+  var parts = raw.split(/[\n,]+/);
+  for (var i = 0; i < parts.length; i++) {
+    var s = parts[i].trim();
+    if (!s) { continue; }
+    var f = s.split(":");
+    if (f.length !== 3 || !f[0].trim() || !f[1].trim() || !f[2].trim()) {
+      problems.push("channels: '" + s + "' is not a name:contacts_per_month:cost_per_contact triple");
+      continue;
+    }
+    var name = f[0].trim(), contacts = Number(f[1]), cost = Number(f[2]);
+    if (!(contacts > 0)) {
+      problems.push("channels: contacts per month for '" + name + "' must be a positive number");
+    }
+    if (!(cost >= 0)) {
+      problems.push("channels: cost per contact for '" + name + "' must be zero or more");
+    }
+    if (!(contacts > 0) || !(cost >= 0)) { continue; }
+    out.push({ name: name, contacts_per_month: contacts, cost_per_contact: cost });
+  }
+  if (!out.length && !problems.length) {
+    problems.push("channels: pass at least one channel as name:contacts:cost, e.g. email:9000:0.02,linkedin:1200:0.35");
+  }
+  return { channels: out, problems: problems };
+}
+function cfChannelList(input) {
+  if (Array.isArray(input.channels)) {
+    var problems = [], out = [];
+    if (!input.channels.length) {
+      problems.push("channels: pass at least one channel as name:contacts:cost, e.g. email:9000:0.02,linkedin:1200:0.35");
+    }
+    input.channels.forEach(function (c) {
+      var name = c && c.name ? String(c.name).trim() : "";
+      var contacts = c ? Number(c.contacts_per_month) : NaN;
+      var cost = c ? Number(c.cost_per_contact) : NaN;
+      if (!name) { problems.push("channels: every channel needs a name"); }
+      if (!(contacts > 0)) { problems.push("channels: contacts per month for '" + (name || "?") + "' must be a positive number"); }
+      if (!(cost >= 0)) { problems.push("channels: cost per contact for '" + (name || "?") + "' must be zero or more"); }
+      if (name && contacts > 0 && cost >= 0) { out.push({ name: name, contacts_per_month: contacts, cost_per_contact: cost }); }
+    });
+    return { channels: out, problems: problems };
+  }
+  return cfParseChannels(input.channels);
+}
+function cfText(res) {
+  var L = [];
+  L.push("CHANNEL VERDICT FIT");
+  L.push("base rate " + cfFix(res.base_rate * 100, 2) + "% | lift +" + cfFix(res.lift * 100, 0) + "% | power " +
+    res.power + " | alpha " + res.alpha + " | horizon " + res.horizon_months + " month(s)");
+  L.push("floor per arm: " + cfFmt(res.floor_per_arm) + " contacts - the same number for every channel here: what you test is a rate, not a channel");
+  L.push("");
+  L.push(cfPadL("CHANNEL", 16) + cfPadR("CONTACTS/MO", 12) + cfPadR("ARM/MO", 9) + cfPadR("MONTHS", 8) +
+    cfPadR("FITS", 6) + cfPadR("COST/TEST", 11));
+  res.channels.forEach(function (c) {
+    L.push(cfPadL(c.name, 16) + cfPadR(cfFmt(c.contacts_per_month), 12) +
+      cfPadR(cfFmt(c.events_per_arm_per_month), 9) + cfPadR(String(c.months_to_verdict), 8) +
+      cfPadR(c.fits ? "yes" : "no", 6) + cfPadR(cfFix(c.cost_per_test, 2), 11));
+  });
+  L.push("");
+  L.push(res.first_to_run
+    ? "FIRST TO RUN: " + res.first_to_run + " - the cheapest two-arm test that still finishes inside " +
+      res.horizon_months + " month(s): " + cfFix(res.first_to_run_cost, 2) + " for " + res.first_to_run_months +
+      " month(s)."
+    : "FIRST TO RUN: none. No channel here reaches " + cfFmt(res.floor_per_arm) + " contacts per arm inside " +
+      res.horizon_months + " month(s), so no channel can produce a verdict in that window. Every one of them is " +
+      "a subscription, not a test. Raise the lift you accept, widen the horizon, or buy volume - that is the whole " +
+      "decision.");
+  return L.join("\n");
+}
+function planChannels(input) {
+  var parsed = cfChannelList(input);
+  var chan = parsed.channels, problems = parsed.problems.slice();
+  var base = Number(input.base !== undefined && input.base !== "" ? input.base : 0.03);
+  var lift = Number(input.lift !== undefined && input.lift !== "" ? input.lift : 0.2);
+  var power = Number(input.power !== undefined && input.power !== "" ? input.power : 0.8);
+  var alpha = Number(input.alpha !== undefined && input.alpha !== "" ? input.alpha : 0.05);
+  var horizon = Number(input.horizon !== undefined && input.horizon !== "" ? input.horizon : 6);
+  if (!(base > 0) || !(base < 1)) { problems.push("base rate: a fraction between 0 and 1, e.g. 0.03 for 3%"); }
+  if (!(lift > 0) || !(lift < 5)) { problems.push("lift worth detecting: a fraction, 0.2 = +20% relative"); }
+  if (!CF_ZB[String(power)]) { problems.push("power must be 0.8 or 0.9"); }
+  if (!CF_ZA[String(alpha)]) { problems.push("alpha must be 0.05, 0.01 or 0.1"); }
+  if (!(horizon > 0)) { problems.push("horizon: months you are willing to wait, a positive number"); }
+  if (problems.length) { return { problems: problems }; }
+
+  var floor = cfSampleSize(base, lift, power, alpha);
+  var rows = chan.map(function (c) {
+    var arm_month = cfRound6(c.contacts_per_month / 2);
+    var months = Math.ceil(floor / arm_month);
+    var cost_arm = c.cost_per_contact * floor;
+    var cost_test = cfRound6(2 * cost_arm);
+    return {
+      name: c.name, contacts_per_month: cfRound6(c.contacts_per_month), cost_per_contact: c.cost_per_contact,
+      floor_per_arm: floor, events_per_arm_per_month: arm_month, months_to_verdict: months,
+      cost_per_arm: Math.round(cost_arm * 100) / 100, cost_per_test: Math.round(cost_test * 100) / 100,
+      fits: months <= horizon
+    };
+  });
+  var first = null;
+  rows.forEach(function (c) {
+    if (!c.fits) { return; }
+    if (!first || c.cost_per_test < first.cost_per_test ||
+        (c.cost_per_test === first.cost_per_test && c.months_to_verdict < first.months_to_verdict)) { first = c; }
+  });
+  var fastest = rows[0], slowest = rows[0];
+  rows.forEach(function (c) {
+    if (c.months_to_verdict < fastest.months_to_verdict) { fastest = c; }
+    if (c.months_to_verdict > slowest.months_to_verdict) { slowest = c; }
+  });
+  var gates = [
+    "the floor is " + cfFmt(floor) + " contacts per arm, and it is the same number for every channel above: " +
+      "what you are testing is a conversion rate, and a rate does not care which channel delivered the contact",
+    "volume decides the calendar, not effort: " + fastest.name + " shows each arm " +
+      cfFmt(fastest.events_per_arm_per_month) + " contacts a month and reaches the floor in " +
+      fastest.months_to_verdict + " month(s); " + slowest.name + " needs " + slowest.months_to_verdict + " month(s)",
+    first
+      ? "run " + first.name + " first: it is the cheapest two-arm test that finishes inside " + horizon +
+        " month(s) - " + cfFix(first.cost_per_test, 2) + " in total, read-out in " + first.months_to_verdict +
+        " month(s); write the read-out date down before the first contact goes out"
+      : "no channel here finishes inside " + horizon + " month(s): the honest output is a progress report, not a " +
+        "verdict - raise the lift you accept, widen the horizon, or buy volume",
+    "a channel that cannot finish one honest test inside your horizon is a subscription, not a test: it produces " +
+      "activity every month and a decision never"
+  ];
+  var res = {
+    base_rate: base, lift: lift, power: power, alpha: alpha, horizon_months: horizon,
+    floor_per_arm: floor, channels: rows,
+    fitting: rows.filter(function (c) { return c.fits; }).map(function (c) { return c.name; }),
+    not_fitting: rows.filter(function (c) { return !c.fits; }).map(function (c) { return c.name; }),
+    first_to_run: first ? first.name : "",
+    first_to_run_months: first ? first.months_to_verdict : 0,
+    first_to_run_cost: first ? first.cost_per_test : 0,
+    gates: gates
+  };
+  res.text = cfText(res);
+  return res;
+}
+/*CF-END*/
+var FIELDS = ["channels", "base", "lift", "horizon", "power", "alpha"];
+function readInput() {
+  return {
+    channels: document.getElementById("channels").value,
+    base: document.getElementById("base").value,
+    lift: document.getElementById("lift").value,
+    horizon: document.getElementById("horizon").value,
+    power: document.getElementById("power").value,
+    alpha: document.getElementById("alpha").value
+  };
+}
+function render() {
+  var out = document.getElementById("out"), txt = document.getElementById("txt");
+  var res = planChannels(readInput());
+  if (res.problems) {
+    out.innerHTML = '<p><b>Fix these first:</b></p><ul>' +
+      res.problems.map(function (p) { return "<li>" + p + "</li>"; }).join("") + "</ul>";
+    txt.textContent = "";
+    return;
+  }
+  var rows = res.channels.map(function (c) {
+    return "<tr><td><b>" + c.name + "</b></td><td>" + cfFmt(c.contacts_per_month) + "</td><td>" +
+      cfFmt(c.events_per_arm_per_month) + "</td><td>" + cfFmt(c.floor_per_arm) + "</td><td>" + c.months_to_verdict +
+      (c.fits ? " &#10003;" : "") + "</td><td>" + cfFix(c.cost_per_test, 2) + "</td><td>" +
+      (c.fits ? "yes" : "no") + "</td></tr>";
+  }).join("");
+  var head = res.first_to_run
+    ? '<p><b>Run this one first: ' + res.first_to_run + '</b> &mdash; the cheapest two-arm test that finishes ' +
+      'inside ' + res.horizon_months + ' month(s): ' + cfFix(res.first_to_run_cost, 2) + ' for ' +
+      res.first_to_run_months + ' month(s), against a floor of ' + cfFmt(res.floor_per_arm) + ' contacts per arm.</p>'
+    : '<p><b>None of these channels can finish a verdict inside ' + res.horizon_months + ' month(s).</b> ' +
+      'With a floor of ' + cfFmt(res.floor_per_arm) + ' contacts per arm, the fastest channel here ' +
+      '(' + (res.channels[0] ? res.channels[0].name : "") + ') needs ' +
+      Math.min.apply(null, res.channels.map(function (c) { return c.months_to_verdict; })) +
+      ' month(s). That is a subscription, not a test: raise the lift you accept, widen the horizon, or buy volume.</p>';
+  out.innerHTML = head +
+    '<table><tr><th>Channel</th><th>Contacts/month</th><th>Per arm a month</th><th>Floor per arm</th>' +
+    '<th>Months to verdict</th><th>Cost per test</th><th>Fits</th></tr>' + rows + '</table>' +
+    (res.not_fitting.length ? '<p class="dim">Outside your ' + res.horizon_months + '-month horizon: ' +
+      res.not_fitting.join(", ") + '.</p>' : "") +
+    '<ul>' + res.gates.map(function (g) { return "<li>" + g + "</li>"; }).join("") + '</ul>';
+  txt.textContent = res.text;
+}
+document.getElementById("go").addEventListener("click", render);
+FIELDS.forEach(function (f) { document.getElementById(f).addEventListener("change", render); });
+document.getElementById("copy").addEventListener("click", function () {
+  var t = document.getElementById("txt").textContent, el = document.getElementById("copied");
+  if (!t) { el.textContent = "nothing to copy yet"; return; }
+  if (navigator.clipboard && navigator.clipboard.writeText) {
+    navigator.clipboard.writeText(t).then(function () { el.textContent = "copied"; },
+      function () { el.textContent = "select the text above and copy it"; });
+  } else { el.textContent = "select the text above and copy it"; }
+});
+render();
+</script>
+<!-- GA4 -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-T6VWS5BNE3"></script>
+<script>
+  window.dataLayer=window.dataLayer||[];function gtag(){dataLayer.push(arguments)}
+  gtag('js',new Date());gtag('config','G-T6VWS5BNE3');
+  document.addEventListener('click',function(e){
+    var a=e.target.closest&&e.target.closest('a[href*="t.me/"]');
+    if(a){gtag('event','telegram_click',{link_url:a.href,page_path:location.pathname});}
+  },true);
+</script>
+
+</body></html>
