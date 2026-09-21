@@ -13,8 +13,11 @@
 ![GitHub Repo stars](https://img.shields.io/github/stars/axelfreeman/marketing-mindset?style=social)
 ![Version](https://img.shields.io/github/v/release/axelfreeman/marketing-mindset)
 ![License](https://img.shields.io/github/license/axelfreeman/marketing-mindset)
-![Installs](https://img.shields.io/badge/skills.sh%20installs-15%2C000%2B-blue)
+[![skills.sh installs](https://img.shields.io/badge/skills.sh-50K%20installs-blue)](https://skills.sh/axelfreeman/marketing-mindset?utm_source=github&utm_medium=badge&utm_campaign=mindset)
 ![views](https://komarev.com/ghpvc/?username=axelfreeman&repo=marketing-mindset&label=views&style=flat-square&color=2563eb)
+
+**Install in one command:** `npx skills add axelfreeman/marketing-mindset`
+
 
 ---
 

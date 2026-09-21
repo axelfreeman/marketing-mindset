@@ -97,3 +97,12 @@ A: The channel, message or offer that performed noticeably easier than the rest 
 ### The rule
 
 Declare the volume → run one variable → stop at the limit → scale what came easy. Anything else is interpretation.
+
+## Install the skill (one command)
+
+```
+npx skills add axelfreeman/marketing-mindset
+```
+
+Works with Claude Code, Cursor, Codex, ChatGPT, Grok and any agent that reads `SKILL.md`.
+Catalog page with live install counter: https://skills.sh/axelfreeman/marketing-mindset
