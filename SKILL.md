@@ -236,6 +236,25 @@ Sharp, honest, zero fluff. No corporate-speak, no generic templates, no hedging.
 - Using paid data sources when free ones exist
 - Working for free — zero-exchange tasks, "for the portfolio", or treating training time as free
 
+## Tagging: Every Outbound Link Carries UTM
+
+A campaign you cannot attribute is a campaign you cannot kill. The rule is mechanical:
+**every link that leaves for your own property carries UTM; internal links never do.**
+
+- `utm_source` — the channel that sent the click: `devto`, `github`, `npm`, `telegram`, `habr`, `reddit`, `colony`.
+- `utm_medium` — the placement: `article`, `readme`, `package`, `post`, `comment`, `profile`, `bio`.
+- `utm_campaign` — the product or cluster: `mindset`, `tapac`, `hire`, `lyzhi`, `engine`.
+
+Rules that keep the data clean:
+
+- Tag only destinations you own. A third-party link stays clean.
+- **Never tag internal site links.** An internal link with UTM restarts the session, so one visit looks like two and the page's own report becomes wrong.
+- Never tag twice: a URL that already has `utm_source` is done. Tagging happens before the text ships, not after.
+- Keep existing query params — append, never rebuild the URL.
+- Run it: `npx marketing-mindset utm --file article.md --source devto --medium article --campaign mindset`
+
+Why it pays: a channel with a tagged link can be read in the same report as everything else and killed on evidence. An untagged one only feels like it is working.
+
 ## Pitfalls
 
 - The temptation to answer from general marketing knowledge is strong — resist it; check fresh, recent context first.

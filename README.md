@@ -8,7 +8,7 @@
 [![ChatGPT](https://img.shields.io/badge/ChatGPT-SKILL.lite.md-10a37f)](SKILL.lite.md)
 [![Grok](https://img.shields.io/badge/Grok-SKILL.md-111111)](SKILL.md)
 
-📄 **Landing page & docs:** https://axelfreeman.github.io/marketing-mindset/
+📄 **Landing page & docs:** https://axelfreeman.github.io/marketing-mindset/?utm_source=github&utm_medium=readme&utm_campaign=mindset
 
 ![GitHub Repo stars](https://img.shields.io/github/stars/axelfreeman/marketing-mindset?style=social)
 ![Version](https://img.shields.io/github/v/release/axelfreeman/marketing-mindset)
@@ -38,7 +38,7 @@ Below the limit you are measuring randomness, not the market. Declare the volume
 
 > Declare the volume → run one variable → stop at the limit → scale what came easy. Anything else is interpretation.
 
-Full write-up with sources: https://axelfreeman.github.io/marketing-mindset/
+Full write-up with sources: https://axelfreeman.github.io/marketing-mindset/?utm_source=github&utm_medium=readme&utm_campaign=mindset
 
 ---
 
@@ -180,17 +180,17 @@ Everything below is public and checkable — pages, packages, articles:
 
 | What | Link |
 |---|---|
-| Landing page & docs | https://axelfreeman.github.io/marketing-mindset/ |
+| Landing page & docs | https://axelfreeman.github.io/marketing-mindset/?utm_source=github&utm_medium=readme&utm_campaign=mindset |
 | Install (npm) | https://www.npmjs.com/package/marketing-mindset — `npx marketing-mindset` |
 | MCP server (npm) | https://www.npmjs.com/package/marketing-mindset-mcp |
-| Q&A pages | https://axelfreeman.github.io/marketing-mindset/qa/ |
-| Free tool: email test planner | https://axelfreeman.github.io/marketing-mindset/tools/email-test-planner.html |
+| Q&A pages | https://axelfreeman.github.io/marketing-mindset/qa/?utm_source=github&utm_medium=readme&utm_campaign=mindset |
+| Free tool: email test planner | https://axelfreeman.github.io/marketing-mindset/tools/email-test-planner.html?utm_source=github&utm_medium=readme&utm_campaign=mindset |
 | Release notes | https://github.com/axelfreeman/marketing-mindset/releases |
-| Work with the author (turnkey) | https://axelfreeman.com/marketing-engineer.html |
-| Scope of work | https://axelfreeman.com/scope.html |
-| Pricing comparison | https://axelfreeman.com/pricing.html |
-| What shipped (artifacts) | https://axelfreeman.com/cases.html |
-| Proof page (all links) | https://axelfreeman.com/proof.html |
+| Work with the author (turnkey) | https://axelfreeman.com/marketing-engineer.html?utm_source=github&utm_medium=readme&utm_campaign=mindset |
+| Scope of work | https://axelfreeman.com/scope.html?utm_source=github&utm_medium=readme&utm_campaign=mindset |
+| Pricing comparison | https://axelfreeman.com/pricing.html?utm_source=github&utm_medium=readme&utm_campaign=mindset |
+| What shipped (artifacts) | https://axelfreeman.com/cases.html?utm_source=github&utm_medium=readme&utm_campaign=mindset |
+| Proof page (all links) | https://axelfreeman.com/proof.html?utm_source=github&utm_medium=readme&utm_campaign=mindset |
 | Article: what a marketing engineer does | https://dev.to/axelfreeman/what-a-marketing-engineer-actually-does-and-what-the-invoice-pays-for-1blj |
 
 The skill is free and MIT. The paid work is the engineering around it: distribution, measurement, and the
