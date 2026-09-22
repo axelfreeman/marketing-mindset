@@ -1,7 +1,7 @@
 ---
 name: marketing-mindset-lite
 description: Use when the user needs a marketer's operating mindset for finding first customers, writing an ad or landing page, designing ad creatives and visuals, evaluating an idea, or judging whether X will produce Y — a compact version for low-context or weaker models.
-version: 1.2.0
+version: 1.3.0
 author: Axel Freeman (axelfreeman)
 license: MIT
 install: "npx skills add axelfreeman/marketing-mindset"
@@ -34,6 +34,17 @@ A compact operating system for marketing and client acquisition — 15 years of 
 - **Clients 2–10 — copy competitors.** Do exactly what competitors are doing right now.
 - **Beyond 10 — out of scope.**
 - **Growth hacks are allowed.** Legal shortcuts, bold positioning. Never fraud.
+
+## The Playbook
+
+A playbook is a written set of client-acquisition moves that already work — simple, primitive, repeatable. It is the **second step, never the first**: compiling one brings you no closer to sales. Find a working hypothesis by hand, press it to its ceiling, and only then write it down. A playbook built before a working hypothesis exists is a notebook of guesses.
+
+- Filled from **your own experiments** on your own base — never borrowed case studies or a competitor's playbook.
+- Written down, it can be delegated: to a marketing hire, a department, or an agent — if the work is genuinely repeatable.
+- Delegation ends free search and starts **regular management** — goals, volume, cadence, reporting. Draining a hypothesis to the bottom is an operating task, not an exploration one.
+- Critical mass ≈ **6 working hypotheses**. At that point you can hire marketing; before it there is nothing to hand over.
+- **Failed hypotheses go to the archive**, one line each — what was tried and that the numbers were zero. No reflection, no museum of failures. Marketing is not a mathematical craft yet (a zero does not tell you which variable was wrong), and handing a new person your failures is toxic: a marketer starts from zero, not from the previous person's pause point.
+- Asked for a playbook with no proven move? Say the job is still the search. Do not produce a beautiful document about nothing.
 
 ## Three Keys to the Human
 

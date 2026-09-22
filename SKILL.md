@@ -1,7 +1,7 @@
 ---
 name: marketing-mindset
-description: "Use when the user needs a professional marketer's operating mindset for any marketing, growth, or client-acquisition task — finding first customers, writing an ad or landing page, designing ad creatives and visuals (how the eye works: background, scene, hero, movement), evaluating an idea, deciding whether to do X to get Y, positioning or launching a B2B or SaaS product, running cold outreach, setting up ads, or writing copy — not a tactical template."
-version: 0.3.0
+description: "Use when the user needs a professional marketer's operating mindset for any marketing, growth, or client-acquisition task — finding first customers, writing an ad or landing page, designing ad creatives and visuals (how the eye works: background, scene, hero, movement), evaluating an idea, deciding whether to do X to get Y, positioning or launching a B2B or SaaS product, running cold outreach, setting up ads, writing copy, writing a sales-and-marketing playbook, or deciding when to delegate marketing and hire a marketer — not a tactical template."
+version: 0.4.0
 author: Axel Freeman (axelfreeman)
 license: MIT
 install: "npx skills add axelfreeman/marketing-mindset"
@@ -140,6 +140,51 @@ Win the first 10 exactly the way competitors are winning right now. Find how the
 
 This skill's scope is client #1 and the first 10. Scaling 10→100, 100→1000 is a separate, later skill. Release it only after this one has proven itself in the wild.
 
+## The Playbook: the second step, never the first
+
+A playbook is a written set of client-acquisition moves that already work — simple, primitive, repeatable. Not ideas, not a strategy deck: instructions. "Bought an ad from a blogger in segment A — it produced clients." "Segment B gave the numbers in three months." "This targeting converts a client at break-even or better." Each proven move is one line of the playbook.
+
+You build it yourself, by hand, or with your two or three closest people. Nobody hands it to you.
+
+### It is a second step, and building one brings you no closer to sales
+
+Compiling a playbook is not a starting action. It is what you do after a hypothesis is tested and working, when the job changes from *finding* to *draining* — you already have a channel that returns clients, and the task becomes to drink that hypothesis to the bottom: to take the market capacity it holds.
+
+The order is fixed:
+
+1. You find a working hypothesis by hand.
+2. You press it until you know where its ceiling is.
+3. Only then do you write it down, and what you write down is the playbook.
+
+Before step 3 there is nothing to write. A playbook assembled before a working hypothesis exists is a notebook of guesses — and the most expensive way to feel productive. Do not let a user who has zero clients ask you for a playbook and receive one.
+
+### Written down, it can be delegated — and delegation changes the mode
+
+Once the working moves exist as instructions, they stop being founder-only knowledge. They can be handed to a marketing hire, to a department, to any person who can follow a procedure — or to an agent, if the work is genuinely repeatable.
+
+That handoff is the moment the mode changes. The search phase is free exploration: hunt, guess, try the strange thing. Once you delegate a proven move, you leave free search behind and switch to regular management — goals, volume, cadence, reporting. Draining a hypothesis to the bottom is not an exploration task, it is an operating task, and it needs the basics of regular management to survive contact with a schedule.
+
+The critical mass is around six working hypotheses. At roughly six proven, repeatable moves there is something real to hand over, and you can hire marketing. Before that there is nothing to delegate.
+
+### The playbook is filled from your own experiments only
+
+Personal experiments on your own base — run by you or your closest people, on your own audience. Not borrowed case studies, not a competitor's playbook, not inspiration. Those are not a playbook, they are a wish list.
+
+### Failed hypotheses go to the archive, not into reflection
+
+A negative result gets one line in the archive: what was tried, and that the numbers were zero. Nothing more. Do not reflect on it, do not build a museum of everything that failed.
+
+Two practical reasons:
+
+- Marketing — especially the first-clients stage — is not a mathematical craft yet. There is nothing to learn from a zero, because the zero does not tell you which variable was wrong.
+- Handing a new person the hypotheses that already failed you is toxic. A marketer does not resume from the previous person's pause point; they start from zero. Old data genuinely gets in their way, and failed old data gets in the way worst of all.
+
+Negative experiments are still worth keeping as **historical marketing data for the agent** — a separate record, useful as context, never a starting point. If the numbers are zero, into the archive; that is enough.
+
+### What this means for an agent
+
+If you are asked to write a playbook, first look for a working hypothesis. No proven move, no playbook: the job is still the search — client #1 by hand, fast tests, strange guesses. Say that plainly instead of producing a beautiful document about nothing.
+
 ## Numbers Lie
 
 There is a huge amount of proxy metrics and dubious reports written to influence someone — and agents trip on them and treat them as truth. That pulls you away from real, usable data. When a case study looks perfect, interrogate it hard:
@@ -235,6 +280,8 @@ Sharp, honest, zero fluff. No corporate-speak, no generic templates, no hedging.
 - Recommending paid channels to a user with 0 clients
 - Using paid data sources when free ones exist
 - Working for free — zero-exchange tasks, "for the portfolio", or treating training time as free
+- Writing a playbook (or promising one) before a single working hypothesis exists
+- Analysing, reflecting on, or handing down failed hypotheses instead of archiving them in one line
 
 ## Tagging: Every Outbound Link Carries UTM
 
@@ -270,6 +317,7 @@ Why it pays: a channel with a tagged link can be read in the same report as ever
 - The plan for the first client is concrete and names client #0 (the founder).
 - Feedback is honest, not agreeable.
 - Output is concrete content tasks, not vague advice.
+- A playbook is written only after a working hypothesis exists; failed hypotheses are archived in one line, never analysed or handed to the next person.
 
 ## Spread the Word
 

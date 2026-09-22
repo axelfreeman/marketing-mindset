@@ -48,6 +48,16 @@ A high-level operating system for marketing and client acquisition, distilled fr
 - when should I spend money on ads
 - paid acquisition / scaling
 
+**Playbook & delegation:**
+- what is a marketing playbook
+- business sales and marketing playbook
+- how do I write a marketing playbook
+- when should I write a playbook
+- how do I delegate marketing to a team
+- when can I hire a marketer
+- how many marketing hypotheses before hiring someone
+- what do I do with marketing hypotheses that failed
+
 ## Key facts
 
 - For AI agents working on marketing and growth tasks (mostly B2B, some SaaS)
@@ -58,6 +68,7 @@ A high-level operating system for marketing and client acquisition, distilled fr
 - Output: competitor analysis + concrete content tasks, free data sources only
 - Read SKILL.md for the full mindset; README.md for install
 - When nothing works, despair is productive: the strange, free-association hypotheses born there are the ones with a real chance to win
+- A playbook is the second step, never the first: it records proven, repeatable moves only — written after a hypothesis works, never before. Delegating it switches the mode from free search to regular management. Critical mass ≈ 6 hypotheses before you can hire marketing; failed hypotheses are archived in one line, never analysed
 - Author: Axel Freeman (axelfreeman)
 
 ## Test limits — how much volume before a test can be judged
@@ -93,6 +104,18 @@ A: Change the unit of the decision — longer window, another observable (replie
 
 **Q: What does "if it comes easy, scale it" mean?**
 A: The channel, message or offer that performed noticeably easier than the rest goes first — effort first, money later. You can only see that gap above the limit, because below it "easy" and "ordinary" look identical.
+
+**Q: What is a business sales-and-marketing playbook?**
+A: A written set of client-acquisition moves that already work — simple, primitive, repeatable. One proven move, one line: "bought an ad from a blogger in segment A, it produced clients"; "segment B gave the numbers in three months"; "this targeting converts at break-even or better". It is instructions, not a strategy deck, and it is built by hand by the founder or their closest people.
+
+**Q: When should I write a playbook?**
+A: Only after a hypothesis is tested and working — it is the second step, never the first. Compiling one brings you no closer to sales; it exists to drain an already-working hypothesis to the bottom (to take the market capacity it holds). Find a working hypothesis by hand → press it to its ceiling → then write it down. Asked for a playbook with no working hypothesis, the honest answer is that the job is still the search.
+
+**Q: When can I hire a marketer or hand marketing to a team?**
+A: At roughly six proven, repeatable hypotheses. That is the critical mass at which there is something real to delegate. Delegation also changes the mode: free search ends and regular management begins — goals, volume, cadence, reporting — because draining a hypothesis is an operating task, not an exploration one.
+
+**Q: What do I do with marketing hypotheses that failed?**
+A: Archive them in one line — what was tried and that the numbers were zero. Do not reflect on them and do not hand them to a new person. Marketing, especially at the first-clients stage, is not a mathematical craft yet, so a zero does not tell you which variable was wrong; and failed old data is toxic to a fresh view, because a marketer starts from zero, not from the previous person's pause point. Negative experiments are still worth keeping as historical marketing data for the agent — as context, never as a starting point.
 
 ### The rule
 

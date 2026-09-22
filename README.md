@@ -139,6 +139,29 @@ python scripts/first-client-gate.py
 
 One honest question before you start: do you have your first client yet? If the answer isn't "me," the skill waits.
 
+### The playbook — the second step, not the first
+
+Most people ask for a marketing playbook at the worst possible moment: before anything works. Compiling one does not move you closer to sales.
+
+It is the **second step** — what you write *after* a hypothesis is already tested and working, when the job changes from *finding* a channel to *draining* it: drinking that hypothesis to the bottom, taking the market capacity it holds. The order is fixed: find a working hypothesis by hand → press it to its ceiling → only then write it down.
+
+A playbook is a written set of client-acquisition moves that already work — simple, primitive, repeatable:
+
+> "Bought an ad from a blogger in segment A — it produced clients."
+> "Segment B gave the numbers in three months."
+> "This targeting converts a client at break-even or better."
+
+One proven move, one line.
+
+Once those moves are written down they stop being founder-only knowledge. They can be delegated — to a marketing hire, to a department, or to an agent if the work is genuinely repeatable — and that handoff ends free search and starts **regular management**: goals, volume, cadence, reporting. Critical mass is around **six working hypotheses**; that is the point at which you can hire marketing.
+
+Two rules the skill will hold you to:
+
+- **The playbook is filled from your own experiments only** — run by you on your own base. Borrowed case studies and a competitor's playbook are a wish list, not a playbook.
+- **Failed hypotheses go to the archive, one line each.** No reflection, no museum of failures. Marketing is not a mathematical craft yet, so a zero does not tell you which variable was wrong — and handing a new person your failures is toxic, because a marketer starts from zero, not from the previous person's pause point.
+
+Ask for a playbook before a single working hypothesis exists, and the skill will tell you plainly that the job is still the search.
+
 ### Spread the word
 
 If it works, star it and share it. The network effect compounds.

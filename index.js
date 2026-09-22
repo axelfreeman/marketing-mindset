@@ -5,7 +5,7 @@ import { readFileSync } from 'node:fs'
 
 const NAME = 'marketing-mindset'
 const DESCRIPTION =
-  "Use when the user needs a professional marketer's operating mindset for any marketing, growth, or client-acquisition task — finding first customers, writing an ad or landing page, designing ad creatives and visuals, evaluating an idea, deciding whether to do X to get Y, positioning or launching a B2B or SaaS product, running cold outreach, setting up ads, or writing copy — not a tactical template."
+  "Use when the user needs a professional marketer's operating mindset for any marketing, growth, or client-acquisition task — finding first customers, writing an ad or landing page, designing ad creatives and visuals, evaluating an idea, deciding whether to do X to get Y, positioning or launching a B2B or SaaS product, running cold outreach, setting up ads, writing copy, writing a sales-and-marketing playbook, or deciding when to delegate marketing and hire a marketer — not a tactical template."
 
 export const name = NAME
 
